@@ -2,6 +2,7 @@ package com.example.se114_healthcareapplication;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.se114_healthcareapplication.generalinterfaces.IView;
 
 public class AuthenticateActivity extends AppCompatActivity {
 
@@ -10,4 +11,6 @@ public class AuthenticateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authenticate);
     }
+
+
 }

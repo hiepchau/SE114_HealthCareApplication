@@ -85,11 +85,11 @@
         app:layout_constraintVertical_bias="0.482" />
 
     <android.widget.Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_intro"
-        android:text="Đăng nhập"
+        android:text="Đăng ky"
         android:textAllCaps="false"
         android:textSize="20dp"
         android:layout_gravity="center"
@@ -100,5 +100,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.7" />
+
+    <android.widget.Button
+            android:id="@+id/btn_back_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_intro"
+            android:text="Đăng nhập"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.7" />
 
 </LinearLayout>
