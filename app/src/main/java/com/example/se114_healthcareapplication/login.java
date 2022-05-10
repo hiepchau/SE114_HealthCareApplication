@@ -1,8 +1,12 @@
 package com.example.se114_healthcareapplication;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -27,6 +31,7 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Button LoginBtn, SignUpBtn, GoogleBtn;
+    private EditText email,pass;
     private IPresenter mainPresenter;
 
     // TODO: Rename and change types of parameters
@@ -72,6 +77,8 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
         LoginBtn = v.findViewById(R.id.btn_login);
         SignUpBtn = v.findViewById(R.id.btn_goto_signin);
         GoogleBtn = v.findViewById(R.id.Google_btn);
+        email = v.findViewById(R.id.et_login_username);
+        pass = v.findViewById(R.id.et_login_password);
 
         setMainPresenter(new AuthenticatePresenter(this));
         SignUpBtn.setOnClickListener(new View.OnClickListener() {
@@ -81,12 +88,27 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
             }
         });
 
+        LoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String mail = email.getText().toString();
+                String psw = pass.getText().toString();
+                if(!mail.isEmpty() && !psw.isEmpty()){
+                    AuthenticatePresenter authen = (AuthenticatePresenter) mainPresenter;
+                    authen.Authenticate(mail,psw);
+                }
+            }
+        });
+
         return v;
     }
 
     @Override
     public void UpdateView(int code, Object entity) {
-
+        if(code == EMPTY_CODE){
+            email.setText("");
+            pass.setText("");
+        }
     }
 
     @Override
@@ -108,5 +130,15 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
     @Override
     public AuthenticatePresenter getMainpresnter() {
         return (AuthenticatePresenter) mainPresenter;
+    }
+
+    @Override
+    public void StartNewActivity(Intent intent) {
+        startActivity(intent);
+    }
+
+    @Override
+    public Activity getAppActivity() {
+        return getActivity();
     }
 }

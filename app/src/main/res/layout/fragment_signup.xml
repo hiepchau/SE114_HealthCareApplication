@@ -46,7 +46,8 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
+        app:layout_constraintVertical_bias="0.373"
+        android:id="@+id/register_mail_edt"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -64,7 +65,8 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintVertical_bias="0.482"
+        android:id="@+id/register_pass_edt"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -82,7 +84,8 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintVertical_bias="0.482"
+        android:id="@+id/register_repass_edt"/>
 
     <android.widget.Button
         android:id="@+id/btn_signup"

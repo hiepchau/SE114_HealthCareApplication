@@ -1,8 +1,11 @@
 package com.example.se114_healthcareapplication;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.widget.Button;
+import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -32,6 +35,7 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
     private String mParam2;
 
     private Button SigninBtn, BackBtn;
+    private EditText email,pass,repass;
 
     public signup() {
         // Required empty public constructor
@@ -70,20 +74,37 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_signup, container, false);
         setMainPresenter(new AuthenticatePresenter(this));
-        SigninBtn = v.findViewById(R.id.btn_back_login);
+        SigninBtn = v.findViewById(R.id.btn_signup);
         BackBtn = v.findViewById(R.id.btn_back_login);
-        SigninBtn.setOnClickListener(new View.OnClickListener() {
+        email = v.findViewById(R.id.register_mail_edt);
+        pass = v.findViewById(R.id.register_pass_edt);
+        repass = v.findViewById(R.id.register_repass_edt);
+        setMainPresenter(new AuthenticatePresenter(this));
+
+        BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mainPresenter.NotifyPresenter(R.id.btn_goto_signin);
             }
         });
+
+        SigninBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthenticatePresenter authen = (AuthenticatePresenter) mainPresenter;
+                authen.SignUp(email.getText().toString(),pass.getText().toString(),repass.getText().toString());
+            }
+        });
+
+
         return v;
     }
 
     @Override
     public void UpdateView(int code, Object entity) {
+        if(code == EMPTY_CODE){
 
+        }
     }
 
     @Override
@@ -105,5 +126,15 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
     @Override
     public AuthenticatePresenter getMainpresnter() {
         return (AuthenticatePresenter) mainPresenter;
+    }
+
+    @Override
+    public void StartNewActivity(Intent intent) {
+
+    }
+
+    @Override
+    public Activity getAppActivity() {
+        return getActivity();
     }
 }
