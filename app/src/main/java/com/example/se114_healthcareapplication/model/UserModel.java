@@ -3,7 +3,6 @@ package com.example.se114_healthcareapplication.model;
 import com.example.se114_healthcareapplication.generalinterfaces.IModel;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
