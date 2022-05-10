@@ -81,6 +81,8 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
         pass = v.findViewById(R.id.et_login_password);
 
         setMainPresenter(new AuthenticatePresenter(this));
+        AuthenticatePresenter authen = (AuthenticatePresenter) mainPresenter;
+        authen.checkSignedin();
         SignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
