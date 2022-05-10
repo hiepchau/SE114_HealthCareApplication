@@ -1,5 +1,6 @@
 package com.example.se114_healthcareapplication;
 
+import android.app.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
