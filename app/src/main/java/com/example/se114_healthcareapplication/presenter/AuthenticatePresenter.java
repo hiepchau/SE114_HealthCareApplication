@@ -197,11 +197,14 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
     }
     public void checkSignedin(){
         if(auth.getCurrentUser() != null){
-            Intent intent = new Intent(_view.getAppActivity(),HomeActivity.class);
-            intent.putExtra("session",auth.getCurrentUser().getUid());
-            Toast.makeText(_view.getAppActivity(), "Login successfully", Toast.LENGTH_SHORT).show();
-            _view.StartNewActivity(intent);
-            _view.getAppActivity().finish();
+            if(auth.getCurrentUser().isEmailVerified()) {
+                Intent intent = new Intent(_view.getAppActivity(), HomeActivity.class);
+                intent.putExtra("session", auth.getCurrentUser().getUid());
+                Toast.makeText(_view.getAppActivity(), "Login successfully", Toast.LENGTH_SHORT).show();
+                _view.StartNewActivity(intent);
+                _view.getAppActivity().finish();
+            }
         }
+        else auth.signOut();
     }
 }
