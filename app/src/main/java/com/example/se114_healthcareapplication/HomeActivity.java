@@ -11,9 +11,6 @@ import com.example.se114_healthcareapplication.view.IHomeView;
 import static android.view.View.GONE;
 
 public class HomeActivity extends AppCompatActivity  {
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
