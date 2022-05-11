@@ -192,7 +192,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                             Toast.makeText(_view.getAppActivity(),"Register failed:" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-             auth.signOut();
+
         }
     }
     public void checkSignedin(){
