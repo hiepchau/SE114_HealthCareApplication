@@ -2,6 +2,8 @@ package com.example.se114_healthcareapplication.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.wifi.hotspot2.pps.Credential;
+import android.util.Log;
 import android.view.Display;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResult;
@@ -32,10 +34,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.*;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AuthenticatePresenter extends PresenterBase implements IPresenter {
@@ -121,11 +120,17 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
         auth.signInWithEmailAndPassword(email,pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Intent intent = new Intent(_view.getAppActivity(),HomeActivity.class);
-                intent.putExtra("session",auth.getCurrentUser().getUid());
-                Toast.makeText(_view.getAppActivity(), "Login successfully", Toast.LENGTH_SHORT).show();
-                _view.StartNewActivity(intent);
-                _view.getAppActivity().finish();
+                if(auth.getCurrentUser().isEmailVerified()) {
+                    Intent intent = new Intent(_view.getAppActivity(), HomeActivity.class);
+                    intent.putExtra("session", auth.getCurrentUser().getUid());
+                    Toast.makeText(_view.getAppActivity(), "Login successfully", Toast.LENGTH_SHORT).show();
+                    _view.StartNewActivity(intent);
+                    _view.getAppActivity().finish();
+                }
+                else{
+                    Toast.makeText(_view.getAppActivity(), "Email not verified!",Toast.LENGTH_SHORT).show();
+                    auth.signOut();
+                }
             }
         })
                 .addOnFailureListener(new OnFailureListener() {
@@ -152,11 +157,33 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
             Toast.makeText(_view.getAppActivity(),"Password dont match", Toast.LENGTH_SHORT).show();
         }
         else if (p.equals(re)){
-            auth.createUserWithEmailAndPassword(u,p).addOnCompleteListener(_view.getAppActivity(), task -> {
+
+             auth.createUserWithEmailAndPassword(u,p).addOnCompleteListener(_view.getAppActivity(), task -> {
                 if(task.isSuccessful())
                 {
                     Toast.makeText(_view.getAppActivity(),"Register successfully", Toast.LENGTH_SHORT).show();
                     _view.UpdateView(IView.EMPTY_CODE,null);
+                    auth.signInWithEmailAndPassword(u,p);
+                    FirebaseUser user = auth.getCurrentUser();
+                    user.sendEmailVerification()
+                            .addOnCompleteListener(_view.getAppActivity(), new OnCompleteListener() {
+                                @Override
+                                public void onComplete(@NonNull Task task) {
+                                    // Re-enable button
+
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(_view.getAppActivity(),
+                                                "Verification email sent to " + user.getEmail(),
+                                                Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Log.e("Register:", "sendEmailVerification", task.getException());
+                                        Toast.makeText(_view.getAppActivity(),
+                                                "Failed to send verification email.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                    auth.signOut();
                 }
             })
                     .addOnFailureListener(new OnFailureListener() {
@@ -165,6 +192,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                             Toast.makeText(_view.getAppActivity(),"Register failed:" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
+             auth.signOut();
         }
     }
     public void checkSignedin(){
