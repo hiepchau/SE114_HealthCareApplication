@@ -137,4 +137,9 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
     public Activity getAppActivity() {
         return getActivity();
     }
+
+    @Override
+    public Fragment getCurrentFragment() {
+        return this;
+    }
 }

@@ -2,6 +2,8 @@ package com.example.se114_healthcareapplication.generalinterfaces;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.View;
+import androidx.fragment.app.Fragment;
 import com.example.se114_healthcareapplication.model.entity.BaseModelEntity;
 
 public interface IView<T extends IPresenter> {
@@ -12,4 +14,5 @@ public interface IView<T extends IPresenter> {
     T getMainpresnter();
     void StartNewActivity(Intent intent);
     Activity getAppActivity();
+    Fragment getCurrentFragment();
 }

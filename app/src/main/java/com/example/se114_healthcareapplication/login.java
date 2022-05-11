@@ -7,6 +7,12 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -18,6 +24,17 @@ import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.AuthenticatePresenter;
 import com.example.se114_healthcareapplication.presenter.PresenterBase;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,6 +100,7 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
         setMainPresenter(new AuthenticatePresenter(this));
         AuthenticatePresenter authen = (AuthenticatePresenter) mainPresenter;
         authen.checkSignedin();
+        authen.registerGoogleAuthen();
         SignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,8 +120,20 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
             }
         });
 
+
+
+
+        GoogleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                authen.AuthenticateWithGoogle();
+            }
+        });
+
         return v;
     }
+
+
 
     @Override
     public void UpdateView(int code, Object entity) {
@@ -143,4 +173,10 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
     public Activity getAppActivity() {
         return getActivity();
     }
+
+    @Override
+    public Fragment getCurrentFragment() {
+        return this;
+    }
+
 }
