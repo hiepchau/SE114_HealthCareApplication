@@ -15,14 +15,12 @@ import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 import org.w3c.dom.Text;
 
-<<<<<<< HEAD
-public class HomeActivity extends AppCompatActivity  {
-=======
+
 public class HomeActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
     TextView textView1;
->>>>>>> ee38748536e02489bf571ecc5cd1ed4d35cb87c6
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
