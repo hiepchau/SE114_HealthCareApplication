@@ -15,6 +15,7 @@ import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 import org.w3c.dom.Text;
 
+
 public class HomeActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
@@ -24,10 +25,8 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        TextView txt = findViewById(R.id.text);
         Button btn = findViewById(R.id.button);
-        TextView textView = findViewById(R.id.textView);
-        textView1 = findViewById(R.id.textView2);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +36,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
             }
         });
 
-        textView.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        txt.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     }
 
     @Override

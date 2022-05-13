@@ -1,19 +1,17 @@
 package com.example.se114_healthcareapplication;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link menu#newInstance} factory method to
+ * Use the {@link info_bmi#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class menu extends Fragment {
+public class info_bmi extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +22,7 @@ public class menu extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public menu() {
+    public info_bmi() {
         // Required empty public constructor
     }
 
@@ -34,11 +32,11 @@ public class menu extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment menu.
+     * @return A new instance of fragment info_bmi.
      */
     // TODO: Rename and change types and number of parameters
-    public static menu newInstance(String param1, String param2) {
-        menu fragment = new menu();
+    public static info_bmi newInstance(String param1, String param2) {
+        info_bmi fragment = new info_bmi();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +57,6 @@ public class menu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        return inflater.inflate(R.layout.fragment_info_bmi, container, false);
     }
 }

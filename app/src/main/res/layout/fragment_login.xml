@@ -8,15 +8,11 @@
     android:background="@drawable/image_background_login"
     tools:context=".login">
 
-    <Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/toolbar_menu2" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
+        android:fontFamily="@font/poppins_regular"
         android:text="Đăng nhập"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -37,7 +33,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/et_login"
         android:fontFamily="@font/roboto_regular"
-        android:text="Email"
+        android:hint="Email"
         android:paddingLeft="10dp"
         android:layout_marginBottom="10dp"
         android:layout_gravity="center"
@@ -56,7 +52,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/et_login"
         android:fontFamily="@font/roboto_regular"
-        android:text="Mật khẩu"
+        android:hint="Mật khẩu"
         android:paddingLeft="10dp"
         android:layout_gravity="center"
         android:textColor="@color/gray2"
@@ -91,6 +87,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="15dp"
         android:background="@drawable/btn_intro"
+        android:fontFamily="@font/poppins_regular"
         android:text="Đăng nhập"
         android:textAllCaps="false"
         android:textSize="20dp"
@@ -108,7 +105,8 @@
             android:layout_gravity="center"
             android:layout_marginBottom="15dp"
             android:background="@drawable/btn_intro"
-            android:text="Đăng ky"
+            android:text="Đăng ký"
+            android:fontFamily="@font/poppins_regular"
             android:textAllCaps="false"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -123,8 +121,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="15dp"
-        android:background="@color/pink3"
+        android:background="@color/background_blue"
         android:text="Login with Google"
+        android:fontFamily="@font/poppins_regular"
         android:textAllCaps="false"
         android:textColor="@color/blue"
         android:textSize="16dp"
