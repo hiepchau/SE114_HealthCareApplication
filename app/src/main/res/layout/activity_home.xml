@@ -23,9 +23,11 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom">
 
+
         <TextView
                 android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:text="Hi, Peter"
+                android:id="@+id/text"
                 android:textAlignment="center"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="20sp"
@@ -100,6 +102,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.635"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:gravity="center"
+                android:hint="log out"
+                android:id="@+id/button"
+                tools:layout_editor_absoluteY="589dp"
+                tools:layout_editor_absoluteX="152dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

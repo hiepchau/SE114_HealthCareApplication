@@ -21,25 +21,23 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sensorManager;
     TextView textView1;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_home);
-//
-//        Button btn = findViewById(R.id.button);
-//        TextView textView = findViewById(R.id.textView);
-//        textView1 = findViewById(R.id.textView2);
-//        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FirebaseAuth.getInstance().signOut();
-//                startActivity(new Intent(getApplicationContext(),AuthenticateActivity.class));
-//            }
-//        });
-//
-//        textView.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-//    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+        TextView txt = findViewById(R.id.text);
+        Button btn = findViewById(R.id.button);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),AuthenticateActivity.class));
+            }
+        });
+
+        txt.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+    }
 
     @Override
     protected void onResume() {
