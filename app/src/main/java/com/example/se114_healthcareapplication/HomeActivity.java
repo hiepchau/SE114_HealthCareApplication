@@ -55,6 +55,11 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent sensorEvent) {
         int count = (int) sensorEvent.values[0];
         textView1.setText(count);
+        Context context = getApplicationContext();
+        CharSequence text = "noSensor!";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     @Override
