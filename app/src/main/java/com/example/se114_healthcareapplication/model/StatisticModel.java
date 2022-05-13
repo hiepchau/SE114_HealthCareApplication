@@ -18,7 +18,6 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
     public List<StatisticEntity> getEntity() {
         return null;
     }
-
     @Override
     public void NotifyModel(int code) {
 
