@@ -2,7 +2,9 @@ package com.example.se114_healthcareapplication.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.wifi.hotspot2.pps.Credential;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import com.example.se114_healthcareapplication.model.entity.BaseModelEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
 
 import static android.os.Build.VERSION_CODES.R;
+import static android.provider.Settings.System.getString;
 import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 import com.example.se114_healthcareapplication.R.id;
@@ -206,5 +209,9 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
             }
         }
         else auth.signOut();
+    }
+
+    public void firstInit(){
+
     }
 }
