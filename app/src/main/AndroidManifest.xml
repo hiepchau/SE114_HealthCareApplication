@@ -24,6 +24,7 @@
                 android:launchMode="singleInstance"/>
 
         <service android:name=".Services.StepsCountServices"/>
+        <service android:name=".Services.RegisterService"/>
 
         <receiver
                 android:name=".Recievers.AlarmReciever"

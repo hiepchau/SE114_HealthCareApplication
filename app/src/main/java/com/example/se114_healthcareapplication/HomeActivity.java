@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import com.example.se114_healthcareapplication.Recievers.AlarmReciever;
+import com.example.se114_healthcareapplication.Services.RegisterService;
 import com.example.se114_healthcareapplication.Services.StepsCountServices;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
@@ -44,6 +45,9 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
         serviceIntent = new Intent(HomeActivity.this,StepsCountServices.class);
         startService(serviceIntent);
 
+        Intent registerintent = new Intent(HomeActivity.this, RegisterService.class);
+        startService(registerintent);
+
         StepsCountPresenter stepsCountPresenter = new StepsCountPresenter(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,12 +61,12 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
         AlarmPresenter alm = new AlarmPresenter(this);
 
         Button almBtn = findViewById(R.id.AlarmBtn);
-        registerReceiver(new AlarmReciever(),new IntentFilter("CUSTOM_ALARM"));
+//        registerReceiver(new AlarmReciever(),new IntentFilter("CUSTOM_ALARM"));
         almBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                alm.setAlarm((int) Calendar.getInstance().get(Calendar.HOUR_OF_DAY),(int) Calendar.getInstance().get(Calendar.MINUTE),"testing", true);
-                alm.triggerCustomAlarm(0,0);
+                alm.triggerCustomAlarm(1,21);
             }
         });
 
@@ -70,7 +74,6 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
 
     @Override
     protected void onDestroy() {
-        stopService(serviceIntent);
         super.onDestroy();
     }
 
