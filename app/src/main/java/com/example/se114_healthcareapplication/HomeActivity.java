@@ -1,5 +1,7 @@
 package com.example.se114_healthcareapplication;
 
+import android.app.Activity;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -12,14 +14,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.fragment.app.Fragment;
+import com.example.se114_healthcareapplication.Services.StepsCountServices;
+import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
+import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.presenter.AlarmPresenter;
+import com.example.se114_healthcareapplication.presenter.HomePresenter;
+import com.example.se114_healthcareapplication.presenter.StepsCountPresenter;
 import com.google.firebase.auth.FirebaseAuth;
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
 
-public class HomeActivity extends AppCompatActivity implements SensorEventListener {
 
-    private SensorManager sensorManager;
-    TextView textView1;
+public class HomeActivity extends AppCompatActivity implements IView<HomePresenter> {
+
+    private TextView textView1;
+    private HomePresenter mainPresenter;
+    private Intent serviceIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,43 +39,70 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_home);
         TextView txt = findViewById(R.id.text);
         Button btn = findViewById(R.id.button);
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        setMainPresenter(new HomePresenter(this));
+        serviceIntent = new Intent(HomeActivity.this,StepsCountServices.class);
+        startService(serviceIntent);
+
+        StepsCountPresenter stepsCountPresenter = new StepsCountPresenter(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),AuthenticateActivity.class));
+                mainPresenter.Logout();
             }
         });
 
         txt.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+        AlarmPresenter alm = new AlarmPresenter(this);
+
+        Button almBtn = findViewById(R.id.AlarmBtn);
+        almBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alm.setAlarm((int) Calendar.getInstance().get(Calendar.HOUR_OF_DAY),(int) Calendar.getInstance().get(Calendar.MINUTE),"testing", true);
+            }
+        });
+
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        Sensor stepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if(stepCounter == null){
-            Toast.makeText(this,"No senesor found",Toast.LENGTH_SHORT).show();
-        }
-        else {
-            sensorManager.registerListener(this,stepCounter,SensorManager.SENSOR_DELAY_UI);
-        }
+    protected void onDestroy() {
+        stopService(serviceIntent);
+        super.onDestroy();
     }
 
     @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        int count = (int) sensorEvent.values[0];
-        textView1.setText(count);
-        Context context = getApplicationContext();
-        CharSequence text = "noSensor!";
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+    public void UpdateView(int code, Object entity) {
+
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
+    public void SwitchView(int code) {
 
+    }
+
+    @Override
+    public void setMainPresenter(HomePresenter presenter) {
+        this.mainPresenter = presenter;
+    }
+
+    @Override
+    public HomePresenter getMainpresnter() {
+        return null;
+    }
+
+    @Override
+    public void StartNewActivity(Intent intent) {
+
+    }
+
+    @Override
+    public Activity getAppActivity() {
+        return this;
+    }
+
+    @Override
+    public Fragment getCurrentFragment() {
+        return null;
     }
 }

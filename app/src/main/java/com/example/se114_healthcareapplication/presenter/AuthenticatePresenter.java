@@ -2,7 +2,9 @@ package com.example.se114_healthcareapplication.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.wifi.hotspot2.pps.Credential;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import com.example.se114_healthcareapplication.model.entity.BaseModelEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
 
 import static android.os.Build.VERSION_CODES.R;
+import static android.provider.Settings.System.getString;
 import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 import com.example.se114_healthcareapplication.R.id;
@@ -88,10 +91,8 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(_view.getAppActivity(), "Login success!",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(_view.getAppActivity(),HomeActivity.class);
                             intent.putExtra("session",auth.getCurrentUser().getUid());
-                            Toast.makeText(_view.getAppActivity(), "Login successfully", Toast.LENGTH_SHORT).show();
                             _view.StartNewActivity(intent);
                             _view.getAppActivity().finish();
                         } else {
@@ -123,7 +124,6 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 if(auth.getCurrentUser().isEmailVerified()) {
                     Intent intent = new Intent(_view.getAppActivity(), HomeActivity.class);
                     intent.putExtra("session", auth.getCurrentUser().getUid());
-                    Toast.makeText(_view.getAppActivity(), "Login successfully", Toast.LENGTH_SHORT).show();
                     _view.StartNewActivity(intent);
                     _view.getAppActivity().finish();
                 }
@@ -206,5 +206,9 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
             }
         }
         else auth.signOut();
+    }
+
+    public void firstInit(){
+
     }
 }

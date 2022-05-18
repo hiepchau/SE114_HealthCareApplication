@@ -1,24 +1,43 @@
 package com.example.se114_healthcareapplication;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import android.widget.Button;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
+import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.presenter.IntroPresenter;
+import org.jetbrains.annotations.NotNull;
+
+import static androidx.core.app.ActivityCompat.requestPermissions;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link intro#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class intro extends Fragment {
+public class intro extends Fragment implements IView<IntroPresenter> {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private IPresenter mainPresenter;
+    private Button nextBtn;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +78,58 @@ public class intro extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_intro, container, false);
+        View v = inflater.inflate(R.layout.fragment_intro, container, false);
+        nextBtn = v.findViewById(R.id.StartBtn);
+        setMainPresenter(new IntroPresenter(this));
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                IntroPresenter presenter = (IntroPresenter) mainPresenter;
+                presenter.getRequiredPermission();
+
+                mainPresenter.NotifyPresenter(0);
+            }
+        });
+
+        return v;
     }
+
+    @Override
+    public void UpdateView(int code, Object entity) {
+
+    }
+
+    @Override
+    public void SwitchView(int code) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.authenticateContainer,login.class,null).commit();
+    }
+
+    @Override
+    public void setMainPresenter(IntroPresenter presenter) {
+        mainPresenter = presenter;
+    }
+
+    @Override
+    public IntroPresenter getMainpresnter() {
+        return null;
+    }
+
+    @Override
+    public void StartNewActivity(Intent intent) {
+
+    }
+
+    @Override
+    public Activity getAppActivity() {
+        return getActivity();
+    }
+
+    @Override
+    public Fragment getCurrentFragment() {
+        return null;
+    }
+
 }
