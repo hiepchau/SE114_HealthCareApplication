@@ -1,5 +1,6 @@
 package com.example.se114_healthcareapplication.presenter;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -7,6 +8,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.provider.AlarmClock;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
+import com.example.se114_healthcareapplication.AlarmActivity;
+import com.example.se114_healthcareapplication.Recievers.AlarmReciever;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 
@@ -17,9 +22,10 @@ import java.util.List;
 public class AlarmPresenter extends PresenterBase implements IPresenter {
 
     private AlarmManager alarmMgr;
-    private PendingIntent alarmIntent;
     public AlarmPresenter(IView view) {
+
         super(view);
+        alarmMgr = (AlarmManager) _view.getAppActivity().getSystemService(_view.getAppActivity().ALARM_SERVICE);
     }
 
     @Override
@@ -45,5 +51,21 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
                 }
         );
         _view.getAppActivity().startActivity(intent);
+    }
+
+
+    public void triggerCustomAlarm(int HRS, int MIN){
+
+        Intent alarmIntent = new Intent("CUSTOM_ALARM");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY,HRS);
+        calendar.set(Calendar.MINUTE,MIN);
+
+
+
+        PendingIntent fireIntent = PendingIntent.getBroadcast(_view.getAppActivity(),0,alarmIntent,0);
+        alarmMgr.cancel(fireIntent);
+        alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis() ,fireIntent);
     }
 }

@@ -1,13 +1,17 @@
 package com.example.se114_healthcareapplication.Services;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +29,18 @@ import java.util.Calendar;
 
 
 public class StepsCountServices extends Service implements SensorEventListener {
+
+    class DayChangedReciver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED))
+            {
+                Toast.makeText(getApplicationContext(),"Day changed!",Toast.LENGTH_SHORT).show();
+                getCurrentSteps();
+            }
+        }
+    }
 
     private SensorManager sensorManager;
     private int currentSteps;
@@ -48,6 +64,8 @@ public class StepsCountServices extends Service implements SensorEventListener {
         RegisterSensor();
         getCurrentSteps();
         testSend();
+        DayChangedReciver reciver = new DayChangedReciver();
+        getApplicationContext().registerReceiver(reciver,new IntentFilter(Intent.ACTION_DATE_CHANGED));
         return START_STICKY;
     }
 
@@ -104,6 +122,7 @@ public class StepsCountServices extends Service implements SensorEventListener {
                     if(snapshot.getValue(int.class)==null){
                         ref.setValue(0);
                         currentSteps = 0;
+                        Toast.makeText(getApplicationContext(),String.valueOf(currentSteps),Toast.LENGTH_SHORT).show();
                     }
                     else {
                         currentSteps = snapshot.getValue(int.class);
