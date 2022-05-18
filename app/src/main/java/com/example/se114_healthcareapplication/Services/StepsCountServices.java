@@ -9,15 +9,26 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.presenter.StepsCountPresenter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.*;
+import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Calendar;
 
 
 public class StepsCountServices extends Service implements SensorEventListener {
 
     private SensorManager sensorManager;
+    private int currentSteps;
+    private FirebaseAuth auth;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -28,12 +39,14 @@ public class StepsCountServices extends Service implements SensorEventListener {
     public void onCreate() {
         super.onCreate();
         sensorManager = (SensorManager) getSystemService(getApplicationContext().SENSOR_SERVICE);
+        auth = FirebaseAuth.getInstance();
         Toast.makeText(getApplicationContext(),"Service created",Toast.LENGTH_SHORT);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         RegisterSensor();
+        getCurrentSteps();
         testSend();
         return START_STICKY;
     }
@@ -48,9 +61,19 @@ public class StepsCountServices extends Service implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         Intent intent = new Intent("SEND_NEW_STEPS");
-        intent.putExtra("steps",(int)event.values[0]);
+        currentSteps ++;
+        intent.putExtra("steps",currentSteps);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
+                    .child(format.format(LocalDateTime.now())).child("CurrentSteps");
+            ref.setValue(currentSteps);
+        }
+
         // You can also include some extra data.
         sendBroadcast(intent);
+
 
     }
 
@@ -60,13 +83,42 @@ public class StepsCountServices extends Service implements SensorEventListener {
     }
 
     public void RegisterSensor(){
-        Sensor stepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        Sensor stepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         if(stepCounter == null){
             Toast.makeText(getApplicationContext(),"No senesor found",Toast.LENGTH_SHORT).show();
         }
         else {
             sensorManager.registerListener(this,stepCounter, SensorManager.SENSOR_DELAY_UI);
         }
+    }
+
+    private void getCurrentSteps(){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
+                    .child(format.format(LocalDateTime.now())).child("CurrentSteps");
+
+            ValueEventListener listener = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    if(snapshot.getValue(int.class)==null){
+                        ref.setValue(0);
+                        currentSteps = 0;
+                    }
+                    else {
+                        currentSteps = snapshot.getValue(int.class);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                }
+            };
+            ref.addValueEventListener(listener);
+            ref.removeEventListener(listener);
+        }
+
     }
 
     private void testSend(){
