@@ -24,6 +24,8 @@ import com.example.se114_healthcareapplication.presenter.StepsCountPresenter;
 import com.google.firebase.auth.FirebaseAuth;
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
+
 
 public class HomeActivity extends AppCompatActivity implements IView<HomePresenter> {
 
@@ -50,6 +52,16 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
         });
 
         txt.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+        AlarmPresenter alm = new AlarmPresenter(this);
+
+        Button almBtn = findViewById(R.id.AlarmBtn);
+        almBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alm.setAlarm((int) Calendar.getInstance().get(Calendar.HOUR_OF_DAY),(int) Calendar.getInstance().get(Calendar.MINUTE),"testing");
+            }
+        });
 
     }
 

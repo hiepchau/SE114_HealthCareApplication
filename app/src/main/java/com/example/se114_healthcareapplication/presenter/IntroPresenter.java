@@ -27,14 +27,18 @@ public class IntroPresenter extends PresenterBase implements IPresenter {
             &&
         (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.SCHEDULE_EXACT_ALARM) ==
                 PackageManager.PERMISSION_GRANTED)
+                &&
+                        (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.SET_ALARM) ==
+                                PackageManager.PERMISSION_GRANTED)
         ) {
             Toast.makeText(_view.getAppActivity(), "Permission grandted", Toast.LENGTH_SHORT).show();
         }
         else {
             requestPermissions(_view.getAppActivity(),
                     new String[]{ Manifest.permission.ACTIVITY_RECOGNITION,
-                    Manifest.permission.SCHEDULE_EXACT_ALARM},
-                    101);
+                    Manifest.permission.SCHEDULE_EXACT_ALARM,
+                            Manifest.permission.SET_ALARM},
+                    1);
         }
     }
 }

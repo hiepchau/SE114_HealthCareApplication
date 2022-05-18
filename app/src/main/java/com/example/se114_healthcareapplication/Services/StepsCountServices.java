@@ -41,6 +41,7 @@ public class StepsCountServices extends Service implements SensorEventListener {
     @Override
     public void onDestroy() {
         Toast.makeText(getApplicationContext(), "Service destroyed!", Toast.LENGTH_SHORT).show();
+        sensorManager.unregisterListener(this);
         super.onDestroy();
     }
 
@@ -74,5 +75,4 @@ public class StepsCountServices extends Service implements SensorEventListener {
         // You can also include some extra data.
         sendBroadcast(intent);
     }
-
 }
