@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
           package="com.example.se114_healthcareapplication">
 
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <application
             android:allowBackup="true"
@@ -19,17 +13,14 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         <activity
-                android:name=".AlarmActivity"
-                android:exported="true"
-                android:launchMode="singleInstance"/>
+                android:name=".test_activity"
+                android:exported="true">
+
+
+        </activity>
 
         <service android:name=".Services.StepsCountServices"/>
         <service android:name=".Services.RegisterService"/>
-
-        <receiver
-                android:name=".Recievers.AlarmReciever"
-                android:enabled="true"
-                android:exported="true"/>
 
         <activity
                 android:name=".AuthenticateActivity"
@@ -40,6 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
                 android:name=".HomeActivity"
                 android:exported="true">
