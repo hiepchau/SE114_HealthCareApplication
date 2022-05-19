@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- drawable/btn_water.xml -->
-<vector
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:width="120dp"
-        android:height="150dp"
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="200dp"
+        android:height="200dp"
         android:viewportWidth="120"
         android:viewportHeight="150">
 
@@ -15,9 +13,8 @@
 
         <path
                 android:pathData="M0 0V150H120V0"
-                android:fillColor="@color/blue"
+                android:fillColor="@color/background_blue"
         />
 
     </group>
-
 </vector>
