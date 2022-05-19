@@ -76,22 +76,12 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="44dp" app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
-            android:textColor="#1BAEEE"
+            android:textColor="#EC9A3A"
     />
     <TextView
-            android:text="Drink"
+            android:text="3000 steps"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView7"
-            android:layout_marginTop="444dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="45dp" app:layout_constraintTop_toTopOf="parent"
-            android:textSize="24dp"
-            android:textColor="#1BAEEE"
-    />
-    <TextView
-            android:text="4000 ml"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/DailyGoalWaterValue"
+            android:layout_height="wrap_content" android:id="@+id/DailyGoalStepValue"
             android:layout_marginTop="372dp"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +90,7 @@
             android:textColor="#C0C0C0"
     />
     <TextView
-            android:text="0 ml"
+            android:text="0 step"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/CompleteValue"
             android:layout_marginTop="372dp"
@@ -118,23 +108,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="264dp" app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
-            android:textColor="#1BAEEE"
-    />
-
-    <com.webianks.library.scroll_choice.ScrollChoice
-            android:layout_width="109dp"
-            android:layout_height="126dp"
-            app:scroll_background_color="#f5f5f5"
-            app:scroll_selected_item_background="#fff"
-            app:scroll_item_text_color="?attr/colorAccent"
-            app:scroll_atmospheric="true"
-            app:scroll_indicator="true"
-            app:scroll_item_align="center"
-            app:scroll_selected_item_text_color="#ffc107"
-            android:id="@+id/Scrollchoice123"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="500dp" android:layout_marginStart="39dp"
+            android:textColor="#EC9A3A"
     />
     <Button
             android:text="Button"
@@ -147,5 +121,27 @@
             android:gravity="center"
             android:scaleType="fitXY"
     />
+    <TextView
+            android:text="75%"
+            android:textSize="40dp"
+            android:layout_width="413dp"
+            android:layout_height="495dp" android:id="@+id/percentage"
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="234dp"
+            app:layout_constraintVertical_bias="1.0"/>
+    <TextView
+            android:text="of 3000 steps"
+            android:textSize="20dp"
+            android:layout_width="413dp"
+            android:layout_height="495dp" android:id="@+id/ofvaluefoot"
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="280dp"
+            app:layout_constraintVertical_bias="1.0"/>
 
 </FrameLayout>
