@@ -10,6 +10,7 @@ import android.provider.AlarmClock;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 import com.example.se114_healthcareapplication.AlarmActivity;
 import com.example.se114_healthcareapplication.Recievers.AlarmReciever;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
@@ -39,6 +40,7 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         intent.putExtra(AlarmClock.EXTRA_HOUR,Hour);
         intent.putExtra(AlarmClock.EXTRA_MINUTES,Minute);
         intent.putExtra(AlarmClock.EXTRA_MESSAGE, message);
+        intent.putExtra(AlarmClock.EXTRA_SKIP_UI,true);
         if(isrepeated) {
             intent.putExtra(AlarmClock.EXTRA_DAYS,
                     new int[]{
@@ -54,9 +56,14 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         }
         _view.getAppActivity().startActivity(intent);
 
+    }
+
+    public void DismissAlarm(String message){
         Intent intent1 = new Intent(AlarmClock.ACTION_DISMISS_ALARM);
         intent1.putExtra(AlarmClock.EXTRA_MESSAGE, message);
-        _view.getAppActivity().startActivity(intent);
+//        intent1.putExtra(AlarmClock.EXTRA_SKIP_UI,true);
+        _view.getAppActivity().startActivity(intent1);
+        Toast.makeText(_view.getAppActivity(),"Dismiss alarm",Toast.LENGTH_SHORT).show();
     }
 
 
