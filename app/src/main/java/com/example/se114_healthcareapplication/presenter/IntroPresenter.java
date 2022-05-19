@@ -27,14 +27,34 @@ public class IntroPresenter extends PresenterBase implements IPresenter {
             &&
         (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.SCHEDULE_EXACT_ALARM) ==
                 PackageManager.PERMISSION_GRANTED)
+                &&
+                        (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.SET_ALARM) ==
+                                PackageManager.PERMISSION_GRANTED)
+                &&
+                        (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.INTERNET) ==
+                                PackageManager.PERMISSION_GRANTED)
+                &&
+                        (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.ACCESS_NETWORK_STATE) ==
+                                PackageManager.PERMISSION_GRANTED)
+                &&
+                        (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.WAKE_LOCK) ==
+                                PackageManager.PERMISSION_GRANTED)
+                &&
+                        (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.DISABLE_KEYGUARD) ==
+                                PackageManager.PERMISSION_GRANTED)
         ) {
             Toast.makeText(_view.getAppActivity(), "Permission grandted", Toast.LENGTH_SHORT).show();
         }
         else {
             requestPermissions(_view.getAppActivity(),
                     new String[]{ Manifest.permission.ACTIVITY_RECOGNITION,
-                    Manifest.permission.SCHEDULE_EXACT_ALARM},
-                    101);
+                    Manifest.permission.SCHEDULE_EXACT_ALARM,
+                            Manifest.permission.SET_ALARM,
+                            Manifest.permission.INTERNET,
+                            Manifest.permission.ACCESS_NETWORK_STATE,
+                    Manifest.permission.WAKE_LOCK,
+                    Manifest.permission.DISABLE_KEYGUARD},
+                    1);
         }
     }
 }
