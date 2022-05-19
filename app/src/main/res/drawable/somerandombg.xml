@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- drawable/btn_water.xml -->
+<vector
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:aapt="http://schemas.android.com/aapt"
+        android:width="375dp"
+        android:height="578dp"
+        android:viewportWidth="120"
+        android:viewportHeight="150">
+
+    <group>
+
+        <clip-path
+                android:pathData="M30 0H90C106.569 0 120 13.4315 120 30V120C120 136.569 106.569 150 90 150H30C13.4315 150 0 136.569 0 120V30C0 13.4315 13.4315 0 30 0Z"
+        />
+
+        <path
+                android:pathData="M0 0V150H120V0"
+                android:fillColor="@color/background_blue"
+        />
+
+    </group>
+
+</vector>
