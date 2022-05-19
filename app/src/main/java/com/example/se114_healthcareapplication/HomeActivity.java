@@ -65,8 +65,8 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
         almBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                alm.setAlarm((int) Calendar.getInstance().get(Calendar.HOUR_OF_DAY),(int) Calendar.getInstance().get(Calendar.MINUTE),"testing", true);
-                alm.triggerCustomAlarm(1,21);
+                alm.setAlarm((int) Calendar.getInstance().get(Calendar.HOUR_OF_DAY),(int) Calendar.getInstance().get(Calendar.MINUTE),"testing", true);
+//                alm.triggerCustomAlarm(1,21);
             }
         });
 

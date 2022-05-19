@@ -39,17 +39,23 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         intent.putExtra(AlarmClock.EXTRA_HOUR,Hour);
         intent.putExtra(AlarmClock.EXTRA_MINUTES,Minute);
         intent.putExtra(AlarmClock.EXTRA_MESSAGE, message);
-        intent.putExtra(AlarmClock.EXTRA_DAYS,
-                new int[]{
-                        Calendar.MONDAY,
-                        Calendar.TUESDAY,
-                        Calendar.WEDNESDAY,
-                        Calendar.THURSDAY,
-                        Calendar.FRIDAY,
-                        Calendar.SATURDAY,
-                        Calendar.SUNDAY
-                }
-        );
+        if(isrepeated) {
+            intent.putExtra(AlarmClock.EXTRA_DAYS,
+                    new int[]{
+                            Calendar.MONDAY,
+                            Calendar.TUESDAY,
+                            Calendar.WEDNESDAY,
+                            Calendar.THURSDAY,
+                            Calendar.FRIDAY,
+                            Calendar.SATURDAY,
+                            Calendar.SUNDAY
+                    }
+            );
+        }
+        _view.getAppActivity().startActivity(intent);
+
+        Intent intent1 = new Intent(AlarmClock.ACTION_DISMISS_ALARM);
+        intent1.putExtra(AlarmClock.EXTRA_MESSAGE, message);
         _view.getAppActivity().startActivity(intent);
     }
 
