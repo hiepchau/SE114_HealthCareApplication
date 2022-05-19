@@ -36,7 +36,6 @@ public class StepsCountServices extends Service implements SensorEventListener {
         public void onReceive(Context context, Intent intent) {
             if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED))
             {
-                Toast.makeText(getApplicationContext(),"Day changed!",Toast.LENGTH_SHORT).show();
                 getCurrentSteps();
             }
         }

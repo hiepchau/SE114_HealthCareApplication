@@ -6,7 +6,8 @@
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:background="@drawable/background_fragment_menu"
                                                    android:layout_gravity="center"
-                                                   tools:context=".water_segment">
+                                                   tools:context=".water_segment"
+android:clickable="true">
 
     <TextView
             android:text="Daily goal"

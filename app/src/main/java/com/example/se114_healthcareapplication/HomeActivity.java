@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.Recievers.AlarmReciever;
 import com.example.se114_healthcareapplication.Services.RegisterService;
 import com.example.se114_healthcareapplication.Services.StepsCountServices;
@@ -39,39 +40,12 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        TextView txt = findViewById(R.id.text);
-        Button btn = findViewById(R.id.button);
         setMainPresenter(new HomePresenter(this));
         serviceIntent = new Intent(HomeActivity.this,StepsCountServices.class);
         startService(serviceIntent);
 
         Intent registerintent = new Intent(HomeActivity.this, RegisterService.class);
         startService(registerintent);
-
-        StepsCountPresenter stepsCountPresenter = new StepsCountPresenter(this);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mainPresenter.Logout();
-            }
-        });
-
-        txt.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-
-        AlarmPresenter alm = new AlarmPresenter(this);
-
-        Button almBtn = findViewById(R.id.AlarmBtn);
-//        registerReceiver(new AlarmReciever(),new IntentFilter("CUSTOM_ALARM"));
-        almBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-//                alm.setAlarm((int) Calendar.getInstance().get(Calendar.HOUR_OF_DAY),(int) Calendar.getInstance().get(Calendar.MINUTE),"testing", true);
-//                alm.DismissAlarm("testing");
-                alm.triggerCustomAlarm(1,21);
-            }
-        });
-
     }
 
     @Override
@@ -111,6 +85,11 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
 
     @Override
     public Fragment getCurrentFragment() {
+        return null;
+    }
+
+    @Override
+    public FragmentManager GetFragmentManager() {
         return null;
     }
 }

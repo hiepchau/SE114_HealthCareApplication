@@ -6,7 +6,7 @@
                                                    android:layout_gravity="center"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:background="@drawable/background_fragment_menu"
-                                                   tools:context=".HomeFragment">
+                                                   tools:context=".MenuFragment">
 
     <android.widget.Button
             android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
             android:textAllCaps="false"
             android:textSize="20sp"
             android:layout_margin="30dp"
-            android:id="@+id/AlarmBtn" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/btn_alarm" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.79"
             app:layout_constraintVertical_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/btn_steps"/>
@@ -63,7 +63,11 @@
             android:layout_margin="30dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.58"
-            app:layout_constraintVertical_bias="0.517" app:layout_constraintEnd_toStartOf="@+id/AlarmBtn"
+            app:layout_constraintVertical_bias="0.517"
             app:layout_constraintTop_toBottomOf="@+id/btn_water"/>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="logout"
+            android:id="@+id/logout_btn"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

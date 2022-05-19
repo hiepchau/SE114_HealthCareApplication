@@ -6,7 +6,8 @@
                                                    android:layout_height="400dp"
                                                    android:background="@drawable/background_fragment_menu"
                                                    android:layout_gravity="center"
-                                                   tools:context=".step_segment">
+                                                   tools:context=".step_segment"
+android:clickable="true">
 
     <TextView
             android:text="Daily goal"

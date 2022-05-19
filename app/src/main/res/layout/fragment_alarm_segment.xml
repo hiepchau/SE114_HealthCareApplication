@@ -6,7 +6,8 @@
                                                    android:layout_height="400dp"
                                                    android:background="@drawable/background_fragment_menu"
                                                    android:layout_gravity="center"
-                                                   tools:context=".alarm_segment">
+                                                   tools:context=".alarm_segment"
+android:clickable="true">
     <TextView
             android:text="Bedtime"
             android:fontFamily="@font/poppins_regular"

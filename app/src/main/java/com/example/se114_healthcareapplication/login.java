@@ -179,4 +179,9 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
         return this;
     }
 
+    @Override
+    public FragmentManager GetFragmentManager() {
+        return getActivity().getSupportFragmentManager();
+    }
+
 }

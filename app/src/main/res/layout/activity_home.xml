@@ -8,108 +8,31 @@
         android:background="#5261EA"
         tools:context=".HomeActivity">
 
-    <!--Bottom Navigation-->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_nav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:menu="@menu/menu_bottom_nav"
-            app:itemBackground="@color/white"
-            app:itemIconTint="@color/custom_bottom_nav"
-            app:itemTextColor="@color/custom_bottom_nav">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <!--Bottom Navigation-->
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu="@menu/menu_bottom_nav"
+                app:itemBackground="@color/white"
+                app:itemIconTint="@color/custom_bottom_nav"
+                app:itemTextColor="@color/custom_bottom_nav" android:layout_alignParentBottom="true"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentContainer_homeactivity">
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+    <androidx.fragment.app.FragmentContainerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom">
-
-        <!--Container text top-->
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Datetime"
-                android:text="Date time"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:textSize="18dp" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.176"
-                app:layout_constraintVertical_bias="0.052"/>
-        <TextView
-                android:text="Hi, Peter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                android:id="@+id/text"
-                android:textSize="24dp"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintTop_toTopOf="parent" android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.115" app:layout_constraintHorizontal_bias="0.177"/>
-        <TextView
-                android:text="Status today"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_regular"
-                android:id="@+id/status"
-                android:textSize="16dp"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.183"
-                app:layout_constraintVertical_bias="0.191"/>
-        <TextView
-                android:text="Travel and you will be born for the second time"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_width="271dp"
-                android:layout_height="19dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textColor="@color/gray"
-                android:id="@+id/statustext"
-                android:textSize="13dp"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.314"
-                app:layout_constraintVertical_bias="0.259"/>
-        <!--Image Avatar-->
-        <ImageView
-                android:layout_width="102dp"
-                android:layout_height="99dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="32dp" android:layout_marginStart="154dp"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
-
-        <!--Btn Alarm để tạm ở đây để Dung test Alarm, ok thì xóa-->
-        <android.widget.Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/btn_water"
-                android:fontFamily="@font/roboto_regular"
-                android:text="Alarm"
-                android:textAllCaps="false"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.518"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.625"
-                android:id="@+id/AlarmBtn"/>
-
-        <!--Btn log out-->
-        <android.widget.Button
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:background="@color/blue"
-                android:gravity="center"
-                android:hint="log out"
-                android:id="@+id/button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.904"
-                app:layout_constraintVertical_bias="0.879"/>
+            android:name="com.example.se114_healthcareapplication.HomeFragment"
+            android:id="@+id/fragmentContainer_homeactivity"
+            android:layout_marginBottom="50dp"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
