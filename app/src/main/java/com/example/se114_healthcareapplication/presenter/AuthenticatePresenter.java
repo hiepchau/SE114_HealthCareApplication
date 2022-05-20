@@ -72,7 +72,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                             } catch (ApiException e) {
                                 // Google Sign In failed, update UI appropriately
                                 // ...
-                                Toast.makeText(_view.getAppActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(_view.getAppActivity(), e.toString(), Toast.LENGTH_SHORT).show();
                             }
                         }
                 });

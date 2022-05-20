@@ -143,7 +143,7 @@ public class MenuFragment extends Fragment implements IView<MenuPresenter> {
 
     @Override
     public Fragment getCurrentFragment() {
-        return null;
+        return this;
     }
 
     @Override

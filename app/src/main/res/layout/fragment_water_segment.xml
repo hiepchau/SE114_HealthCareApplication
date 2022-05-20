@@ -43,7 +43,8 @@ android:clickable="true">
     <TextView
             android:text="0 ml"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/CompleteValue"
+            android:layout_height="wrap_content"
+            android:id="@+id/CompleteValue"
             app:layout_constraintStart_toStartOf="parent"
             android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"
@@ -96,6 +97,7 @@ android:clickable="true">
             app:layout_constraintHorizontal_bias="0.762" app:layout_constraintVertical_bias="0.952"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/btn_confirm"
+            android:id="@+id/btn_confirm"
             android:hint="Confirm"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

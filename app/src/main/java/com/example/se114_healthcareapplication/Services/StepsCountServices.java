@@ -81,12 +81,10 @@ public class StepsCountServices extends Service implements SensorEventListener {
         currentSteps ++;
         intent.putExtra("steps",currentSteps);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
                     .child(format.format(LocalDateTime.now())).child("CurrentSteps");
             ref.setValue(currentSteps);
-        }
 
         // You can also include some extra data.
         sendBroadcast(intent);
@@ -110,7 +108,7 @@ public class StepsCountServices extends Service implements SensorEventListener {
     }
 
     private void getCurrentSteps(){
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
             DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
                     .child(format.format(LocalDateTime.now())).child("CurrentSteps");
@@ -118,10 +116,8 @@ public class StepsCountServices extends Service implements SensorEventListener {
             ValueEventListener listener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                    if(snapshot.getValue(int.class)==null){
+                    if(!snapshot.exists()){
                         ref.setValue(0);
-                        currentSteps = 0;
-                        Toast.makeText(getApplicationContext(),String.valueOf(currentSteps),Toast.LENGTH_SHORT).show();
                     }
                     else {
                         currentSteps = snapshot.getValue(int.class);
@@ -134,8 +130,6 @@ public class StepsCountServices extends Service implements SensorEventListener {
                 }
             };
             ref.addValueEventListener(listener);
-            ref.removeEventListener(listener);
-        }
 
     }
 

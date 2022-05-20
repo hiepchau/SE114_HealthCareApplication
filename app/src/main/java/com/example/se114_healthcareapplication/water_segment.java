@@ -1,14 +1,16 @@
 package com.example.se114_healthcareapplication;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentManager;
+import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.presenter.WaterPresenter;
 import com.webianks.library.scroll_choice.ScrollChoice;
 
 import java.util.ArrayList;
@@ -19,14 +21,18 @@ import java.util.List;
  * Use the {@link water_segment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class water_segment extends Fragment  {
+public class water_segment extends Fragment implements IView<WaterPresenter> {
 List<String> datas = new ArrayList<>();
-TextView waterchoiceview;
+TextView complete;
+Button confirm;
+WaterPresenter mainPresenter;
 ScrollChoice waterchoice ;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    public static final int UPDATE_COMPLETE = 101;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -67,21 +73,35 @@ ScrollChoice waterchoice ;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        initViews();
-        loadDatas();
+
 
         View v= inflater.inflate(R.layout.fragment_water_segment, container, false);
+        loadDatas();
+
+        complete = v.findViewById(R.id.CompleteValue);
+        confirm = v.findViewById(R.id.btn_confirm);
         waterchoice = v.findViewById(R.id.Scrollchoice123);
-        waterchoice.addItems(datas,3);//default choice
-        waterchoice.setOnItemSelectedListener(new ScrollChoice.OnItemSelectedListener() {
+        waterchoice.addItems(datas,0);//default choice
+
+        setMainPresenter(new WaterPresenter(this));
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(ScrollChoice scrollChoice, int position, String name) {
-
-
+            public void onClick(View v) {
+                int amt = waterchoice.getCurrentItemPosition();
+                amt = amt*2*100;
+                mainPresenter.addWater(amt);
             }
         });
+
         return v;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mainPresenter.getCurrentWater();
+    }
+
     private void loadDatas(){
         datas.add("0");
         datas.add("200");
@@ -90,8 +110,47 @@ ScrollChoice waterchoice ;
         datas.add("800");
         datas.add("1000");
     }
-    private void initViews(){
+
+    @Override
+    public void UpdateView(int code, Object entity) {
+        if(code == UPDATE_COMPLETE){
+            int update = (int)entity;
+            complete.setText(String.valueOf(update)+" ml");
+        }
+    }
+
+    @Override
+    public void SwitchView(int code) {
 
     }
 
+    @Override
+    public void setMainPresenter(WaterPresenter presenter) {
+        mainPresenter = presenter;
+    }
+
+    @Override
+    public WaterPresenter getMainpresnter() {
+        return mainPresenter;
+    }
+
+    @Override
+    public void StartNewActivity(Intent intent) {
+
+    }
+
+    @Override
+    public Activity getAppActivity() {
+        return getActivity();
+    }
+
+    @Override
+    public Fragment getCurrentFragment() {
+        return this;
+    }
+
+    @Override
+    public FragmentManager GetFragmentManager() {
+        return getActivity().getSupportFragmentManager();
+    }
 }
