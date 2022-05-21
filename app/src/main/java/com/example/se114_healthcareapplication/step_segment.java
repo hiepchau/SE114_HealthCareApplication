@@ -1,22 +1,33 @@
 package com.example.se114_healthcareapplication;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentManager;
+import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.presenter.StepsCountPresenter;
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link step_segment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class step_segment extends Fragment {
+public class step_segment extends Fragment implements IView<StepsCountPresenter> {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private StepsCountPresenter mainPresenter;
+    private TextView completetxt, percent;
+    public static int UPDATE_STEPS = 1;
+    public static int UPDATE_PERCENT = 2;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -57,6 +68,59 @@ public class step_segment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_step_segment, container, false);
+        View view = inflater.inflate(R.layout.fragment_step_segment, container, false);
+
+        completetxt = view.findViewById(R.id.CompleteValue);
+        percent = view.findViewById(R.id.percentage);
+
+        setMainPresenter(new StepsCountPresenter(this));
+        return view;
+    }
+
+    @Override
+    public void UpdateView(int code, Object entity) {
+        if(code == UPDATE_STEPS){
+            int tmp = (int)entity;
+            completetxt.setText(String.valueOf(tmp)+" steps");
+        }
+        if(code== UPDATE_PERCENT){
+            float tmp =(float) entity;
+            percent.setText(String.valueOf(tmp)+"%");
+        }
+    }
+
+    @Override
+    public void SwitchView(int code) {
+
+    }
+
+    @Override
+    public void setMainPresenter(StepsCountPresenter presenter) {
+        this.mainPresenter = presenter;
+    }
+
+    @Override
+    public StepsCountPresenter getMainpresnter() {
+        return mainPresenter;
+    }
+
+    @Override
+    public void StartNewActivity(Intent intent) {
+
+    }
+
+    @Override
+    public Activity getAppActivity() {
+        return getActivity();
+    }
+
+    @Override
+    public Fragment getCurrentFragment() {
+        return this;
+    }
+
+    @Override
+    public FragmentManager GetFragmentManager() {
+        return getActivity().getSupportFragmentManager();
     }
 }

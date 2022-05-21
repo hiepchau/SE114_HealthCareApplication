@@ -12,6 +12,7 @@ import android.util.Log;
 import android.widget.Toast;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.step_segment;
 
 public class StepsCountPresenter extends PresenterBase implements IPresenter {
 
@@ -22,8 +23,9 @@ public class StepsCountPresenter extends PresenterBase implements IPresenter {
             if(intent.getAction().equals("SEND_NEW_STEPS"))
             {
                 int step = intent.getIntExtra("steps",0);
-                Toast.makeText(_view.getAppActivity(), String.valueOf(step),Toast.LENGTH_SHORT).show();
-                Log.e("Services",String.valueOf(step));
+                _view.UpdateView(step_segment.UPDATE_STEPS,step);
+                float percent = (float) step/3000;
+                _view.UpdateView(step_segment.UPDATE_PERCENT,percent);
                 // Show it in GraphView
             }
         }
