@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="395dp"
+             android:layout_height="400dp"
+             android:layout_gravity="center"
+             android:background="@drawable/background_fragment_menu"
+             tools:context=".user">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Email" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.111"
+                app:layout_constraintVertical_bias="0.068"/>
+
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="20520525@gm.uit.edu.vn" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.861"
+                app:layout_constraintVertical_bias="0.068"/>
+
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Birthday" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.116"
+                app:layout_constraintVertical_bias="0.167"/>
+
+
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Aug 18,1990"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.898"
+                app:layout_constraintVertical_bias="0.165"/>
+
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Height" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.112"
+                app:layout_constraintVertical_bias="0.275"/>
+
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="175 cm"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.908"
+                app:layout_constraintVertical_bias="0.272"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Weight" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.113"
+                app:layout_constraintVertical_bias="0.391"/>
+
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="75 kg" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.911"
+                app:layout_constraintVertical_bias="0.391"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Gender" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.114"
+                app:layout_constraintVertical_bias="0.501"/>
+        <android.widget.ToggleButton
+                android:layout_width="60dp" android:layout_height="25dp"
+                android:text="Male"
+                android:textOff="Male"
+                android:textOn="Female"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@drawable/background_gender" android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.925"
+                app:layout_constraintVertical_bias="0.501"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--Open Manage data-->
+    <android.widget.Button
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:background="@drawable/background_fragment_menu"
+            android:text="Manage my data"
+            android:textAllCaps="false"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="40dp"
+            android:textAlignment="center"
+            android:drawableStart="@drawable/ic_manage_account"
+            android:drawableEnd="@drawable/ic_open"
+            android:layout_alignParentBottom="true" android:layout_marginBottom="126dp" android:layout_marginTop="244dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" android:layout_alignParentEnd="true"/>
+
+    <android.widget.Button
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:background="@drawable/background_fragment_menu"
+            android:text="Sign out"
+            android:textAllCaps="false"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="40dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textAlignment="center"
+            android:drawableStart="@drawable/ic_sign_out"
+            android:drawableEnd="@drawable/ic_open"
+            android:layout_alignParentBottom="true" android:layout_marginBottom="61dp" android:layout_marginTop="309dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" android:layout_alignParentEnd="true"/>
+
+
+</FrameLayout>
