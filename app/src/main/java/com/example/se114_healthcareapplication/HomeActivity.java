@@ -41,11 +41,14 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setMainPresenter(new HomePresenter(this));
+        StepsCountPresenter stepsCountPresenter = new StepsCountPresenter(this);
         serviceIntent = new Intent(HomeActivity.this,StepsCountServices.class);
         startService(serviceIntent);
 
         Intent registerintent = new Intent(HomeActivity.this, RegisterService.class);
         startService(registerintent);
+
+
     }
 
     @Override
