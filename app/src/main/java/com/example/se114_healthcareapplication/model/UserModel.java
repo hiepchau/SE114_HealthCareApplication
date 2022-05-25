@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import com.example.se114_healthcareapplication.generalinterfaces.IModel;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import org.jetbrains.annotations.NotNull;
@@ -16,6 +18,7 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
     UserEntity currentUser;
     FirebaseAuth auth;
     DatabaseReference ref;
+    public static final int UPDATE_USER_SUCCESS = 1022;
     public UserModel(IPresenter presenter){
         super(presenter);
         auth = FirebaseAuth.getInstance();
@@ -24,28 +27,7 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
     }
     @Override
     public List<UserEntity> getEntity() {
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                for (DataSnapshot snap: snapshot.getChildren()
-                     ) {
-                    String firstname = snap.child("FirstName").getValue(String.class);
-                    String lastname = snap.child("LastName").getValue(String.class);
-                    String ID = auth.getCurrentUser().getUid();
-                    int age = snap.child("Age").getValue(int.class);
-                    int Gen = snap.child("Gender").getValue(int.class);
-                    currentUser = new UserEntity(firstname,lastname,ID,age,Gen);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
-        List<UserEntity> userlist = new ArrayList<>();
-        userlist.add(currentUser);
-        return userlist;
+        return null;
     }
 
     @Override
@@ -55,8 +37,34 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
 
     @Override
     public void UpdateDatabase(UserEntity entity) {
-        ref.setValue(entity);
+
+        ref.setValue(entity).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                _presenter.NotifyPresenter(IPresenter.REGISTER_FAILED);
+            }
+        });
     }
+    public UserEntity getCurrentUser(){
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot snap: snapshot.getChildren()
+                ) {
+                    String firstname = snap.child("FirstName").getValue(String.class);
+                    String lastname = snap.child("LastName").getValue(String.class);
+                    int age = snap.child("Age").getValue(int.class);
+                    int Gen = snap.child("Gender").getValue(int.class);
+                    int rewater = snap.child("recommendWater").getValue(int.class);
+                    currentUser = new UserEntity(firstname,lastname,age,Gen,rewater);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
+            }
+        });
+        return currentUser;
+    }
 }

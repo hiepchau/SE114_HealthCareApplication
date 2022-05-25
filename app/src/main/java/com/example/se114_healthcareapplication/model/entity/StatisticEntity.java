@@ -1,19 +1,20 @@
 package com.example.se114_healthcareapplication.model.entity;
 
 public class StatisticEntity extends BaseModelEntity{
-    private int Height;
-    private int Weight;
+    public double Height;
+    public double Weight;
+    public int Water;
+    public int Steps;
+    public long SleepTime;
+    public long CreatedTime;
 
-    public StatisticEntity(int height, int weight) {
+    public StatisticEntity(double height, double weight, int water, int steps, int sleepTime) {
         Height = height;
         Weight = weight;
+        this.Water = water;
+        this.Steps = steps;
+        this.SleepTime = sleepTime;
+        this.CreatedTime = System.currentTimeMillis();
     }
 
-    public int getHeight() {
-        return Height;
-    }
-
-    public int getWeight() {
-        return Weight;
-    }
 }

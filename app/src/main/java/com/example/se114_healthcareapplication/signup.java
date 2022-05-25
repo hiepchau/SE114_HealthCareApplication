@@ -35,7 +35,7 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
     private String mParam2;
 
     private Button SigninBtn, BackBtn;
-    private EditText email,pass,repass;
+    private EditText email,pass,repass,firstname,age,height,weight;
 
     public signup() {
         // Required empty public constructor
@@ -79,6 +79,10 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
         email = v.findViewById(R.id.register_mail_edt);
         pass = v.findViewById(R.id.register_pass_edt);
         repass = v.findViewById(R.id.register_repass_edt);
+        firstname = v.findViewById(R.id.firstname_edt);
+        age = v.findViewById(R.id.age_edt);
+        height = v.findViewById(R.id.height_edt);
+        weight = v.findViewById(R.id.weight_edt);
         setMainPresenter(new AuthenticatePresenter(this));
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
@@ -92,10 +96,13 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
             @Override
             public void onClick(View view) {
                 AuthenticatePresenter authen = (AuthenticatePresenter) mainPresenter;
-                authen.SignUp(email.getText().toString(),pass.getText().toString(),repass.getText().toString());
+                String fname = firstname.getText().toString();
+                int tAge = Integer.parseInt(age.getText().toString());
+                double tHeight = Double.parseDouble(height.getText().toString());
+                double tWeight = Double.parseDouble(weight.getText().toString());
+                authen.SignUp(email.getText().toString(),pass.getText().toString(),repass.getText().toString(),fname,tAge,tHeight,tWeight);
             }
         });
-
 
         return v;
     }
@@ -103,7 +110,13 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
     @Override
     public void UpdateView(int code, Object entity) {
         if(code == EMPTY_CODE){
-
+            email.setText("");
+            pass.setText("");
+            repass.setText("");
+            firstname.setText("");
+            age.setText("");
+            height.setText("");
+            weight.setText("");
         }
     }
 

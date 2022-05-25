@@ -19,8 +19,10 @@ import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IModel;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.model.UserModel;
 import com.example.se114_healthcareapplication.model.entity.BaseModelEntity;
+import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
 
 import static android.os.Build.VERSION_CODES.R;
@@ -44,6 +46,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
     FirebaseAuth auth;
     ActivityResultLauncher<Intent> activityResultLauncher;
     public final int GOOGLE_REQUEST = 1001;
+    private boolean canContinue;
     private GoogleSignInClient client;
     public AuthenticatePresenter(IView view) {
         super(view);
@@ -114,6 +117,10 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
             case id.btn_goto_signin:
                 _view.SwitchView(id.btn_goto_signin);
                 break;
+            case REGISTER_FAILED:
+                _view.UpdateView(IView.EMPTY_CODE,null);
+                Toast.makeText(_view.getAppActivity(), "Register failed",Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
@@ -142,10 +149,11 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 });
     }
 
-    public void SignUp(String email,String pass, String repass){
+    public void SignUp(String email,String pass, String repass, String firstname, int age, double height, double weight){
         String u = email;
         String p = pass;
         String re = repass;
+
         if(u.isEmpty() || p.isEmpty() || re.isEmpty()){
             Toast.makeText(_view.getAppActivity(), "Information required!", Toast.LENGTH_SHORT).show();
             return;
@@ -164,6 +172,12 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                     Toast.makeText(_view.getAppActivity(),"Register successfully", Toast.LENGTH_SHORT).show();
                     _view.UpdateView(IView.EMPTY_CODE,null);
                     auth.signInWithEmailAndPassword(u,p);
+                    UserModel userModel = new UserModel(this);
+                    StatisticModel statisticModel = new StatisticModel(this);
+                    UserEntity userEntity = new UserEntity(firstname,"",age,0,3000);
+                    userModel.UpdateDatabase(userEntity);
+                    StatisticEntity statistic = new StatisticEntity(height,weight,0,0,0);
+                    statisticModel.UpdateDatabase(statistic);
                     FirebaseUser user = auth.getCurrentUser();
                     user.sendEmailVerification()
                             .addOnCompleteListener(_view.getAppActivity(), new OnCompleteListener() {
