@@ -9,14 +9,17 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.example.se114_healthcareapplication.Recievers.AlarmReciever;
 import com.example.se114_healthcareapplication.Services.RegisterService;
 import com.example.se114_healthcareapplication.Services.StepsCountServices;
@@ -24,8 +27,13 @@ import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.AlarmPresenter;
 import com.example.se114_healthcareapplication.presenter.HomePresenter;
+import com.example.se114_healthcareapplication.presenter.MenuPresenter;
 import com.example.se114_healthcareapplication.presenter.StepsCountPresenter;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
 import java.util.Calendar;
@@ -42,6 +50,29 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
         setContentView(R.layout.activity_home);
         setMainPresenter(new HomePresenter(this));
         StepsCountPresenter stepsCountPresenter = new StepsCountPresenter(this);
+
+        BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
+        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_home:
+                        mainPresenter.NotifyPresenter(HomePresenter.SWITCH_TO_HOME);
+                        break;
+                    case R.id.action_target:
+                        mainPresenter.NotifyPresenter(HomePresenter.SWITCH_TO_TARGET);
+                        break;
+                    case R.id.action_notification:
+                        mainPresenter.NotifyPresenter(HomePresenter.SWITCH_TO_NOTIFICATIONS);
+                        break;
+                    case R.id.action_user:
+                        mainPresenter.NotifyPresenter(HomePresenter.SWITCH_TO_USER);
+                        break;
+                }
+                return true;
+            }
+        });
+
         serviceIntent = new Intent(HomeActivity.this,StepsCountServices.class);
         startService(serviceIntent);
 

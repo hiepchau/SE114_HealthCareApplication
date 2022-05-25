@@ -23,7 +23,6 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
     @Override
     public void NotifyPresenter(int code) {
         if(code == SWITCH_TO_WATER){
-
             FragmentManager fragmentManager = _view.GetFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer_function,water_segment.class,null).addToBackStack("").commit();
