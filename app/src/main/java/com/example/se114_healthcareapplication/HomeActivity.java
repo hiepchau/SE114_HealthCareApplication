@@ -124,6 +124,6 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
 
     @Override
     public FragmentManager GetFragmentManager() {
-        return null;
+        return getSupportFragmentManager();
     }
 }

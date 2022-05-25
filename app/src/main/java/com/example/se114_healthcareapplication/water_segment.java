@@ -83,7 +83,7 @@ ScrollChoice waterchoice ;
         waterchoice = v.findViewById(R.id.Scrollchoice123);
         waterchoice.addItems(datas,0);//default choice
 
-        setMainPresenter(new WaterPresenter(this));
+
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,14 +92,13 @@ ScrollChoice waterchoice ;
                 mainPresenter.addWater(amt);
             }
         });
-
+        setMainPresenter(new WaterPresenter(this));
         return v;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mainPresenter.getCurrentWater();
     }
 
     private void loadDatas(){

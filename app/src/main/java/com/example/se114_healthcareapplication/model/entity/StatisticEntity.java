@@ -8,7 +8,7 @@ public class StatisticEntity extends BaseModelEntity{
     public long SleepTime;
     public long CreatedTime;
 
-    public StatisticEntity(double height, double weight, int water, int steps, int sleepTime) {
+    public StatisticEntity(double height, double weight, int water, int steps, long sleepTime) {
         Height = height;
         Weight = weight;
         this.Water = water;

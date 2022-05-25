@@ -84,7 +84,7 @@ public class step_segment extends Fragment implements IView<StepsCountPresenter>
             completetxt.setText(String.valueOf(tmp)+" steps");
         }
         if(code== UPDATE_PERCENT){
-            float tmp =(float) entity;
+            double tmp =(double) entity;
             percent.setText(String.valueOf(tmp)+"%");
         }
     }

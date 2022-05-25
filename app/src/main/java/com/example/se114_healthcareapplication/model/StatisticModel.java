@@ -32,6 +32,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         height =0;
         weight = 0;
         currentWater = 0;
+        getCurrentStatistic();
     }
 
     @Override
@@ -128,6 +129,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                 }
                 else {
                     currentWater = snapshot.getValue(int.class);
+                    _presenter.NotifyPresenter(IPresenter.STEPS_COUNT_UPDATED);
                 }
             }
 
@@ -172,6 +174,8 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                     int water = snapshot.child("Water").getValue(int.class);
                     int steps = snapshot.child("Steps").getValue(int.class);
                     long sleep = snapshot.child("SleepTime").getValue(int.class);
+                    currentEntity = new StatisticEntity(we,he,water,steps,sleep);
+                    _presenter.NotifyPresenter(123);
                 }
             }
 
