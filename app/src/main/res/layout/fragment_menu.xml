@@ -18,7 +18,7 @@
         <android.widget.Button
                 android:id="@+id/btn_water"
                 android:layout_width="80dp" android:layout_height="20dp"
-                android:hint="3000 steps"
+                android:hint="3000 ml"
                 android:textSize="18dp"
                 android:background="@drawable/btn_water" android:layout_alignParentBottom="true"
                 android:layout_marginBottom="31dp" android:layout_alignParentEnd="true"

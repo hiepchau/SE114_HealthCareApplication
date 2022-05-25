@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -47,7 +48,8 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private Button LoginBtn, SignUpBtn, GoogleBtn;
+    private Button LoginBtn, SignUpBtn;
+    private ImageButton GoogleBtn;
     private EditText email,pass;
     private IPresenter mainPresenter;
 
