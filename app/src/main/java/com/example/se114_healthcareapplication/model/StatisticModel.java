@@ -52,12 +52,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
                     .child("Statistic")
                     .child(format.format(LocalDateTime.now()));
-            ref.setValue(entity).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull @NotNull Exception e) {
-                    _presenter.NotifyPresenter(IPresenter.REGISTER_FAILED);
-                }
-            });
+            ref.setValue(entity);
         }
     }
     public void UpdateWater(int amt){

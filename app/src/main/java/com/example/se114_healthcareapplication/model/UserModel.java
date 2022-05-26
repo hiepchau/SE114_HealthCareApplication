@@ -19,6 +19,8 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
     FirebaseAuth auth;
     DatabaseReference ref;
     public static final int UPDATE_USER_SUCCESS = 1022;
+    public static final int NOT_REGISTERED = 404;
+    public static final int REGISTERED = 200;
     public UserModel(IPresenter presenter){
         super(presenter);
         auth = FirebaseAuth.getInstance();
@@ -38,12 +40,7 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
     @Override
     public void UpdateDatabase(UserEntity entity) {
 
-        ref.setValue(entity).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                _presenter.NotifyPresenter(IPresenter.REGISTER_FAILED);
-            }
-        });
+        ref.setValue(entity);
     }
     public UserEntity getCurrentUser(){
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -66,5 +63,23 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
             }
         });
         return currentUser;
+    }
+    public void checkRegistered(){
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if(!snapshot.exists()){
+                    _presenter.NotifyPresenter(NOT_REGISTERED);
+                }
+                else {
+                    _presenter.NotifyPresenter(REGISTERED);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 }

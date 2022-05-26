@@ -13,8 +13,9 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import com.example.se114_healthcareapplication.AuthenticateActivity;
-import com.example.se114_healthcareapplication.HomeActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.example.se114_healthcareapplication.*;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IModel;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
@@ -88,20 +89,18 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        AuthenticatePresenter authCLone = this;
+
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(_view.getAppActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Intent intent = new Intent(_view.getAppActivity(),HomeActivity.class);
-                            intent.putExtra("session",auth.getCurrentUser().getUid());
-                            _view.StartNewActivity(intent);
-                            _view.getAppActivity().finish();
+                            UserModel userModel = new UserModel(authCLone);
+                            userModel.checkRegistered();
                         } else {
-                            Toast.makeText(_view.getAppActivity(), "Sorry auth failed.", Toast.LENGTH_SHORT).show();
-
-
+                            Toast.makeText(_view.getAppActivity(), "Cannot authenticate via Google at the moment", Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -121,6 +120,18 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 _view.UpdateView(IView.EMPTY_CODE,null);
                 Toast.makeText(_view.getAppActivity(), "Register failed",Toast.LENGTH_SHORT).show();
                 break;
+            case UserModel.NOT_REGISTERED:
+                FragmentManager fragmentManager = _view.GetFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(id.authenticateContainer, register_google.class,null).addToBackStack("").commit();
+                break;
+                case UserModel.REGISTERED:
+                    Intent intent = new Intent(_view.getAppActivity(),HomeActivity.class);
+                    intent.putExtra("session",auth.getCurrentUser().getUid());
+                    _view.StartNewActivity(intent);
+                    _view.getAppActivity().finish();
+                    break;
+
         }
     }
 
@@ -208,6 +219,19 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                     });
 
         }
+    }
+
+    public void RegisterGoogle(String firstname, int age, double height, double weight){
+        UserModel userModel = new UserModel(this);
+        StatisticModel statisticModel = new StatisticModel(this);
+        UserEntity userEntity = new UserEntity(firstname,"",age,0,3000);
+        userModel.UpdateDatabase(userEntity);
+        StatisticEntity statistic = new StatisticEntity(height,weight,0,0,0);
+        statisticModel.UpdateDatabase(statistic);
+        Intent intent = new Intent(_view.getAppActivity(),HomeActivity.class);
+        intent.putExtra("session",auth.getCurrentUser().getUid());
+        _view.StartNewActivity(intent);
+        _view.getAppActivity().finish();
     }
     public void checkSignedin(){
         if(auth.getCurrentUser() != null){
