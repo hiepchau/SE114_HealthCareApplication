@@ -74,7 +74,9 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY,HRS);
         calendar.set(Calendar.MINUTE,MIN);
-
+        if(calendar.getTimeInMillis()< System.currentTimeMillis()){
+            calendar.add(Calendar.DATE,1);
+        }
 
 
         PendingIntent fireIntent = PendingIntent.getBroadcast(_view.getAppActivity(),0,alarmIntent,0);

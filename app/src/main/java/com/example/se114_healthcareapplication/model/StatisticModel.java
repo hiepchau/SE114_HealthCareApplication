@@ -154,6 +154,29 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                 for(DataSnapshot snap : snapshot.getChildren()){
                     height = snap.child("Height").getValue(double.class);
                     weight = snap.child("Weight").getValue(double.class);
+                    ValueEventListener listener = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                            if (!snapshot.exists()) {
+                                currentEntity = new StatisticEntity(height,weight,0,0,0);
+                                ref.setValue(currentEntity);
+                            } else {
+                                double we = snapshot.child("Weight").getValue(double.class);
+                                double he = snapshot.child("Height").getValue(double.class);
+                                int water = snapshot.child("Water").getValue(int.class);
+                                int steps = snapshot.child("Steps").getValue(int.class);
+                                long sleep = snapshot.child("SleepTime").getValue(int.class);
+                                currentEntity = new StatisticEntity(we,he,water,steps,sleep);
+                                _presenter.NotifyPresenter(123);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                            currentEntity = null;
+                        }
+                    };
+                    ref.addListenerForSingleValueEvent(listener);
                 }
             }
 
@@ -162,29 +185,6 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
 
             }
         });
-        ValueEventListener listener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if (!snapshot.exists()) {
-                    currentEntity = new StatisticEntity(weight,height,0,0,0);
-                    ref.setValue(currentEntity);
-                } else {
-                    double we = snapshot.child("Weight").getValue(double.class);
-                    double he = snapshot.child("Height").getValue(double.class);
-                    int water = snapshot.child("Water").getValue(int.class);
-                    int steps = snapshot.child("Steps").getValue(int.class);
-                    long sleep = snapshot.child("SleepTime").getValue(int.class);
-                    currentEntity = new StatisticEntity(we,he,water,steps,sleep);
-                    _presenter.NotifyPresenter(123);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                currentEntity = null;
-            }
-        };
-        ref.addListenerForSingleValueEvent(listener);
         return currentEntity;
     }
 }

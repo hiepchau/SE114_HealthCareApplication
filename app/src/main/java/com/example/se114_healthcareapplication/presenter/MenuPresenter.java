@@ -34,6 +34,12 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
             fragmentTransaction.replace(R.id.fragmentContainer_function, alarm_segment.class,null).addToBackStack("").commit();
         }
 
+        if(code == SWITCH_TO_BMI){
+            FragmentManager fragmentManager = _view.GetFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer_function, bmi_segment.class,null).addToBackStack("").commit();
+        }
+
 
         if(code == SWITCH_TO_STEP){
             FragmentManager fragmentManager = _view.GetFragmentManager();
