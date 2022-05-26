@@ -21,7 +21,8 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
 
     ArrayList<StatisticEntity> statlist;
     FirebaseAuth auth;
-    StatisticEntity currentEntity;
+    public StatisticEntity currentEntity;
+    public static int DONE_INIT_DATA = 123;
     double height, weight;
     int currentWater;
     int currentSteps;
@@ -167,7 +168,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                                 int steps = snapshot.child("Steps").getValue(int.class);
                                 long sleep = snapshot.child("SleepTime").getValue(int.class);
                                 currentEntity = new StatisticEntity(we,he,water,steps,sleep);
-                                _presenter.NotifyPresenter(123);
+                                _presenter.NotifyPresenter(DONE_INIT_DATA);
                             }
                         }
 
@@ -176,7 +177,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                             currentEntity = null;
                         }
                     };
-                    ref.addListenerForSingleValueEvent(listener);
+                    ref.addValueEventListener(listener);
                 }
             }
 

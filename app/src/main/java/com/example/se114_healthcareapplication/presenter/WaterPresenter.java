@@ -31,7 +31,7 @@ public class WaterPresenter extends PresenterBase implements IPresenter {
     @Override
     public void NotifyPresenter(int code) {
         if(code==123){
-            _view.UpdateView(water_segment.UPDATE_COMPLETE,statisticModel.getCurrentStatistic().Water);
+            _view.UpdateView(water_segment.UPDATE_COMPLETE,statisticModel.currentEntity.Water);
         }
     }
     public void addWater(int amt){
