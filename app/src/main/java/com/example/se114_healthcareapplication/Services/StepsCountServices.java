@@ -34,7 +34,9 @@ public class StepsCountServices extends Service implements SensorEventListener, 
 
     @Override
     public void NotifyPresenter(int code) {
-
+        if(code==STEPS_COUNT_UPDATED){
+            currentSteps = statisticModel.getCurrentSteps();
+        }
     }
 
     class DayChangedReciver extends BroadcastReceiver {
@@ -43,7 +45,7 @@ public class StepsCountServices extends Service implements SensorEventListener, 
         public void onReceive(Context context, Intent intent) {
             if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED))
             {
-                currentSteps = statisticModel.registerListenerForSteps();
+                statisticModel.registerListenerForSteps();
             }
         }
     }
@@ -70,7 +72,7 @@ public class StepsCountServices extends Service implements SensorEventListener, 
     public int onStartCommand(Intent intent, int flags, int startId) {
         RegisterSensor();
         statisticModel = new StatisticModel(this);
-        currentSteps = statisticModel.registerListenerForSteps();
+        statisticModel.registerListenerForSteps();
         DayChangedReciver reciver = new DayChangedReciver();
         getApplicationContext().registerReceiver(reciver,new IntentFilter(Intent.ACTION_DATE_CHANGED));
         return START_STICKY;

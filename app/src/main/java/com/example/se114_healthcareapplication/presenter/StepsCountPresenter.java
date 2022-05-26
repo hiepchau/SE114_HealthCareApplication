@@ -23,12 +23,13 @@ public class StepsCountPresenter extends PresenterBase implements IPresenter {
     public StepsCountPresenter(IView view) {
         super(view);
         statisticModel = new StatisticModel(this);
-        currentSteps = statisticModel.registerListenerForSteps();
+        statisticModel.registerListenerForSteps();
     }
 
     @Override
     public void NotifyPresenter(int code) {
         if(code == STEPS_COUNT_UPDATED){
+            currentSteps = statisticModel.getCurrentSteps();
             _view.UpdateView(step_segment.UPDATE_STEPS,currentSteps);
             _view.UpdateView(step_segment.UPDATE_PERCENT,((double)currentSteps/3000)*100);
         }

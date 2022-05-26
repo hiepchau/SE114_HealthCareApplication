@@ -24,6 +24,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
     StatisticEntity currentEntity;
     double height, weight;
     int currentWater;
+    int currentSteps;
 
     public StatisticModel(IPresenter presenter) {
         super(presenter);
@@ -32,6 +33,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         height =0;
         weight = 0;
         currentWater = 0;
+        currentSteps = 0;
         getCurrentStatistic();
     }
 
@@ -69,7 +71,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
                 .child("Statistic")
                 .child(format.format(LocalDateTime.now()))
-                .child("SleepTime");
+                .child("Steps");
         ref.setValue(stp);
     }
 
@@ -109,7 +111,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         ref.setValue(slp);
     }
 
-    public int registerListenerForSteps(){
+    public void registerListenerForSteps(){
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
                 .child("Statistic")
@@ -121,19 +123,22 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if(!snapshot.exists()){
                     getCurrentStatistic();
+                    _presenter.NotifyPresenter(IPresenter.STEPS_COUNT_UPDATED);
                 }
                 else {
-                    currentWater = snapshot.getValue(int.class);
+                    currentSteps = snapshot.getValue(int.class);
                     _presenter.NotifyPresenter(IPresenter.STEPS_COUNT_UPDATED);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
             }
         });
-        return currentWater;
+    }
+
+    public int getCurrentSteps(){
+        return currentSteps;
     }
 
     public StatisticEntity getCurrentStatistic() {
@@ -142,7 +147,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                 .child("Statistic")
                 .child(format.format(LocalDateTime.now()));
         Query query = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
-                .child("Statistic").orderByChild("CreatedTime").limitToFirst(1);
+                .child("Statistic").orderByChild("CreatedTime").limitToLast(1);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
