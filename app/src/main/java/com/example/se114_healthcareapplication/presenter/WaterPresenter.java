@@ -1,5 +1,9 @@
 package com.example.se114_healthcareapplication.presenter;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -19,13 +23,11 @@ public class WaterPresenter extends PresenterBase implements IPresenter {
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     private StatisticModel statisticModel;
     public StatisticEntity initEntity;
-    public static final int GET_CURRENT_WATER = 100;
     public WaterPresenter(IView view) {
 
         super(view);
         statisticModel = new StatisticModel(this);
         initEntity = statisticModel.getCurrentStatistic();
-        if(initEntity == null);
     }
 
     @Override
@@ -34,6 +36,12 @@ public class WaterPresenter extends PresenterBase implements IPresenter {
             _view.UpdateView(water_segment.UPDATE_COMPLETE,statisticModel.currentEntity.Water);
         }
     }
+
+    @Override
+    public Context getCurrentContext() {
+        return _view.getAppActivity();
+    }
+
     public void addWater(int amt){
         StatisticEntity entity = statisticModel.getCurrentStatistic();
         if(entity!= null) {

@@ -1,5 +1,6 @@
 package com.example.se114_healthcareapplication.presenter;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,16 +24,20 @@ public class StepsCountPresenter extends PresenterBase implements IPresenter {
     public StepsCountPresenter(IView view) {
         super(view);
         statisticModel = new StatisticModel(this);
-        statisticModel.registerListenerForSteps();
     }
 
     @Override
     public void NotifyPresenter(int code) {
-        if(code == STEPS_COUNT_UPDATED){
-            currentSteps = statisticModel.getCurrentSteps();
+        if(code == StatisticModel.DONE_INIT_DATA){
+            currentSteps = statisticModel.currentEntity.Steps;
             _view.UpdateView(step_segment.UPDATE_STEPS,currentSteps);
             _view.UpdateView(step_segment.UPDATE_PERCENT,((double)currentSteps/3000)*100);
         }
+    }
+
+    @Override
+    public Context getCurrentContext() {
+        return _view.getAppActivity();
     }
 
 }

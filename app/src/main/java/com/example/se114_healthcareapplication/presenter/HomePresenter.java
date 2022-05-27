@@ -1,5 +1,7 @@
 package com.example.se114_healthcareapplication.presenter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -44,5 +46,10 @@ public class HomePresenter extends PresenterBase implements IPresenter {
             FragmentManager manager = _view.GetFragmentManager();
             manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new UserFragment()).commit();
         }
+    }
+
+    @Override
+    public Context getCurrentContext() {
+        return _view.getAppActivity();
     }
 }

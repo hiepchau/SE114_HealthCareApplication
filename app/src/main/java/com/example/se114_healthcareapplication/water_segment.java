@@ -1,8 +1,12 @@
 package com.example.se114_healthcareapplication;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.*;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -41,6 +45,7 @@ ScrollChoice waterchoice ;
     public water_segment() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -92,6 +97,7 @@ ScrollChoice waterchoice ;
                 mainPresenter.addWater(amt);
             }
         });
+        Log.e("Water","Register receiver");
         setMainPresenter(new WaterPresenter(this));
         return v;
     }

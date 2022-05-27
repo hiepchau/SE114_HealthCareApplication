@@ -1,5 +1,7 @@
 package com.example.se114_healthcareapplication.presenter;
 
+import android.app.Activity;
+import android.content.Context;
 import com.example.se114_healthcareapplication.bmi_segment;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
@@ -29,5 +31,10 @@ public class BMIPresenter extends PresenterBase implements IPresenter {
             bmilist.add(Height);
             _view.UpdateView(bmi_segment.UPDATE_BMI,bmilist);
         }
+    }
+
+    @Override
+    public Context getCurrentContext() {
+        return _view.getAppActivity();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.se114_healthcareapplication.Services;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -32,27 +33,22 @@ import java.util.Calendar;
 
 public class StepsCountServices extends Service implements SensorEventListener, IPresenter {
 
+
     @Override
     public void NotifyPresenter(int code) {
-        if(code==STEPS_COUNT_UPDATED){
-            currentSteps = statisticModel.getCurrentSteps();
+        if(code==StatisticModel.DONE_INIT_DATA){
+            currentSteps = statisticModel.currentEntity.Steps;
         }
     }
 
-    class DayChangedReciver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED))
-            {
-                statisticModel.registerListenerForSteps();
-            }
-        }
+    @Override
+    public Context getCurrentContext() {
+        return getApplicationContext();
     }
+
 
     private SensorManager sensorManager;
     private int currentSteps;
-    private FirebaseAuth auth;
     private StatisticModel statisticModel;
     @Nullable
     @Override
@@ -64,17 +60,12 @@ public class StepsCountServices extends Service implements SensorEventListener, 
     public void onCreate() {
         super.onCreate();
         sensorManager = (SensorManager) getSystemService(getApplicationContext().SENSOR_SERVICE);
-        auth = FirebaseAuth.getInstance();
-        Toast.makeText(getApplicationContext(),"Service created",Toast.LENGTH_SHORT);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         RegisterSensor();
         statisticModel = new StatisticModel(this);
-        statisticModel.registerListenerForSteps();
-        DayChangedReciver reciver = new DayChangedReciver();
-        getApplicationContext().registerReceiver(reciver,new IntentFilter(Intent.ACTION_DATE_CHANGED));
         return START_STICKY;
     }
 

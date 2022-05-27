@@ -1,11 +1,18 @@
 package com.example.se114_healthcareapplication.model;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
+import com.example.se114_healthcareapplication.Services.StepsCountServices;
 import com.example.se114_healthcareapplication.generalinterfaces.IModel;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
+import com.example.se114_healthcareapplication.presenter.PresenterBase;
 import com.example.se114_healthcareapplication.water_segment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +25,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StatisticModel extends ModelBase implements IModel<StatisticEntity> {
+
+    class DayChangedReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED))
+            {
+                getCurrentStatistic();
+                Toast.makeText(_presenter.getCurrentContext(), "day changed",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
     ArrayList<StatisticEntity> statlist;
     FirebaseAuth auth;
@@ -35,6 +53,8 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         weight = 0;
         currentWater = 0;
         currentSteps = 0;
+        DayChangedReceiver receiver = new DayChangedReceiver();
+        _presenter.getCurrentContext().registerReceiver(receiver,new IntentFilter(Intent.ACTION_DATE_CHANGED));
         getCurrentStatistic();
     }
 
@@ -112,35 +132,6 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         ref.setValue(slp);
     }
 
-    public void registerListenerForSteps(){
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
-                .child("Statistic")
-                .child(format.format(LocalDateTime.now()))
-                .child("Steps");
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if(!snapshot.exists()){
-                    getCurrentStatistic();
-                    _presenter.NotifyPresenter(IPresenter.STEPS_COUNT_UPDATED);
-                }
-                else {
-                    currentSteps = snapshot.getValue(int.class);
-                    _presenter.NotifyPresenter(IPresenter.STEPS_COUNT_UPDATED);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    public int getCurrentSteps(){
-        return currentSteps;
-    }
 
     public StatisticEntity getCurrentStatistic() {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");

@@ -1,5 +1,7 @@
 package com.example.se114_healthcareapplication.presenter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -53,5 +55,10 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
             _view.getAppActivity().finish();
         }
 
+    }
+
+    @Override
+    public Context getCurrentContext() {
+        return _view.getAppActivity();
     }
 }

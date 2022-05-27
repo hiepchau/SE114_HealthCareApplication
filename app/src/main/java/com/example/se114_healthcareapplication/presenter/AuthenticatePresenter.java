@@ -1,6 +1,7 @@
 package com.example.se114_healthcareapplication.presenter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.wifi.hotspot2.pps.Credential;
@@ -133,6 +134,11 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                     break;
 
         }
+    }
+
+    @Override
+    public Context getCurrentContext() {
+        return _view.getAppActivity();
     }
 
     public void Authenticate(String email, String pass){

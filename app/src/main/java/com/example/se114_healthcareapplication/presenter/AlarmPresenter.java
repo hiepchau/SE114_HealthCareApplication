@@ -1,6 +1,7 @@
 package com.example.se114_healthcareapplication.presenter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -32,6 +33,11 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
     @Override
     public void NotifyPresenter(int code) {
 
+    }
+
+    @Override
+    public Activity getCurrentContext() {
+        return _view.getAppActivity();
     }
 
     public void setAlarm(int Hour, int Minute, String message, Boolean isrepeated){
@@ -74,9 +80,9 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY,HRS);
         calendar.set(Calendar.MINUTE,MIN);
-        if(calendar.getTimeInMillis()< System.currentTimeMillis()){
-            calendar.add(Calendar.DATE,1);
-        }
+//        if(calendar.getTimeInMillis()< System.currentTimeMillis()){
+//            calendar.add(Calendar.DATE,1);
+//        }
 
 
         PendingIntent fireIntent = PendingIntent.getBroadcast(_view.getAppActivity(),0,alarmIntent,0);

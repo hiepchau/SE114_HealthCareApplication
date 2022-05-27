@@ -11,4 +11,7 @@ public class PresenterBase {
     public PresenterBase(IView view){
         this._view = view;
     }
+    public IView getView(){
+        return _view;
+    };
 }

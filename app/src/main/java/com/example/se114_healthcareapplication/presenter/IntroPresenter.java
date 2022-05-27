@@ -1,6 +1,8 @@
 package com.example.se114_healthcareapplication.presenter;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.widget.Toast;
 import androidx.core.content.ContextCompat;
@@ -18,6 +20,11 @@ public class IntroPresenter extends PresenterBase implements IPresenter {
     @Override
     public void NotifyPresenter(int code) {
         _view.SwitchView(0);
+    }
+
+    @Override
+    public Context getCurrentContext() {
+        return _view.getAppActivity();
     }
 
     public void getRequiredPermission(){
