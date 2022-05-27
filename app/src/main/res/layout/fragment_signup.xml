@@ -40,12 +40,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.141"
             android:id="@+id/register_mail_edt"/>
+
     <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/et_login"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Full Name"
+            android:hint="First Name"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center"
@@ -55,8 +56,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.258" android:id="@+id/firstname_edt"/>
-
+            app:layout_constraintVertical_bias="0.256" android:id="@+id/firstname_edt"
+            app:layout_constraintHorizontal_bias="0.132"/>
+    <EditText
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/et_login"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Last Name"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textColor="@color/gray2"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.256"
+            app:layout_constraintHorizontal_bias="0.87"/>
     <EditText android:layout_width="150dp" android:layout_height="40dp"
               android:hint="Age"
               android:paddingLeft="10dp"
@@ -66,6 +84,23 @@
               app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintHorizontal_bias="0.137" app:layout_constraintVertical_bias="0.363"/>
 
+    <RadioButton
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Male"
+            android:fontFamily="@font/outfit_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.603"
+            app:layout_constraintVertical_bias="0.359"/>
+
+    <RadioButton
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Female"
+            android:fontFamily="@font/outfit_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.853"
+            app:layout_constraintVertical_bias="0.359"/>
     <EditText android:layout_width="165dp" android:layout_height="40dp"
               android:hint="Height"
               android:paddingLeft="10dp"
@@ -116,6 +151,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.708"
             android:id="@+id/register_repass_edt"/>
+
+    <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="*Not match with Password"
+            android:textColor="#FF0000"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.159" app:layout_constraintVertical_bias="0.749"/>
     <android.widget.Button
             android:id="@+id/btn_signup"
             android:layout_width="wrap_content"
@@ -133,7 +177,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.829"/>
+            app:layout_constraintVertical_bias="0.847"/>
     <TextView
             android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:text="Already have an account?"
@@ -142,7 +186,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.879"/>
+            app:layout_constraintVertical_bias="0.879" android:id="@+id/textView9"/>
     <android.widget.Button
             android:id="@+id/btn_back_login"
             android:layout_width="wrap_content"
