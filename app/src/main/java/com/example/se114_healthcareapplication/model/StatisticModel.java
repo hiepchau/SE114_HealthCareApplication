@@ -123,15 +123,6 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         ref.setValue(slp);
     }
 
-    public void UpdateSleep(long slp){
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
-                .child("Statistic")
-                .child(format.format(LocalDateTime.now()))
-                .child("Steps");
-        ref.setValue(slp);
-    }
-
 
     public StatisticEntity getCurrentStatistic() {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");

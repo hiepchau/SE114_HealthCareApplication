@@ -26,6 +26,7 @@
     <string name="action_notification">Notification</string>
     <string name="action_user">User</string>
     <string name="pref_previously_started">false</string>
+    <string name="pref_sleep_time">0</string>
     <string-array name="wateramount">
         <item>0</item>
         <item>200</item>
