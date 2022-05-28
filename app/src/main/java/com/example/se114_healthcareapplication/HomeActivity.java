@@ -58,7 +58,6 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
 
         Intent registerintent = new Intent(HomeActivity.this, RegisterService.class);
         startService(registerintent);
-
     }
 
     @Override
@@ -98,7 +97,7 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
 
     @Override
     public Fragment getCurrentFragment() {
-        return null;
+        return getSupportFragmentManager().findFragmentById(R.id.fragmentContainer_homeactivity);
     }
 
     @Override

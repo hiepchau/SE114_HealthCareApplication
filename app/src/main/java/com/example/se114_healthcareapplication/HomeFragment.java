@@ -1,17 +1,27 @@
 package com.example.se114_healthcareapplication;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentManager;
+import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.presenter.HomePresenter;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements IView<HomePresenter> {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +31,10 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private HomePresenter mainPresenter;
+    private ImageView avtImage;
+    private TextView avtText;
+    public static final int UPDATE_AVATAR = 932845;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -57,6 +71,67 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+        avtImage = v.findViewById(R.id.profile_image);
+        avtText = v.findViewById(R.id.avt_txt);
+        setMainPresenter(new HomePresenter(this));
+        avtText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.changeAvatar();
+            }
+        });
+        return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mainPresenter.getAvatar()!=null){
+            avtImage.setImageBitmap(mainPresenter.getAvatar());
+        }
+    }
+
+    @Override
+    public void UpdateView(int code, Object entity) {
+        if(code == UPDATE_AVATAR){
+            avtImage.setImageBitmap((Bitmap) entity);
+        }
+    }
+
+    @Override
+    public void SwitchView(int code) {
+
+    }
+
+    @Override
+    public void setMainPresenter(HomePresenter presenter) {
+        this.mainPresenter = presenter;
+    }
+
+    @Override
+    public HomePresenter getMainpresnter() {
+        return mainPresenter;
+    }
+
+    @Override
+    public void StartNewActivity(Intent intent) {
+        startActivity(intent);
+    }
+
+    @Override
+    public Activity getAppActivity() {
+        return getActivity();
+    }
+
+    @Override
+    public Fragment getCurrentFragment() {
+        return this;
+    }
+
+    @Override
+    public FragmentManager GetFragmentManager() {
+        return getActivity().getSupportFragmentManager();
     }
 }

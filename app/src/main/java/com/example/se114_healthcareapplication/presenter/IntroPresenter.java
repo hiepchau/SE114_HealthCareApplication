@@ -49,6 +49,12 @@ public class IntroPresenter extends PresenterBase implements IPresenter {
                 &&
                         (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.DISABLE_KEYGUARD) ==
                                 PackageManager.PERMISSION_GRANTED)
+                &&
+                        (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                                PackageManager.PERMISSION_GRANTED)
+                &&
+                        (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.CAMERA) ==
+                                PackageManager.PERMISSION_GRANTED)
         ) {
             Toast.makeText(_view.getAppActivity(), "Permission grandted", Toast.LENGTH_SHORT).show();
         }
@@ -60,7 +66,9 @@ public class IntroPresenter extends PresenterBase implements IPresenter {
                             Manifest.permission.INTERNET,
                             Manifest.permission.ACCESS_NETWORK_STATE,
                     Manifest.permission.WAKE_LOCK,
-                    Manifest.permission.DISABLE_KEYGUARD},
+                    Manifest.permission.DISABLE_KEYGUARD,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA},
                     1);
         }
     }

@@ -3,12 +3,24 @@ package com.example.se114_healthcareapplication.presenter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.widget.Toast;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.se114_healthcareapplication.*;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.model.AvatarModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.lang.annotation.Target;
@@ -20,8 +32,24 @@ public class HomePresenter extends PresenterBase implements IPresenter {
     public static final int SWITCH_TO_TARGET = 2;
     public static final int SWITCH_TO_NOTIFICATIONS = 3;
     public static final int SWITCH_TO_USER = 4;
+    private AvatarModel avatarModel;
+    private Uri avatar;
+    ActivityResultLauncher<Intent> activityResultLauncher;
     public HomePresenter(IView view) {
+
         super(view);
+        avatarModel = new AvatarModel(this);
+        activityResultLauncher = _view.getCurrentFragment().registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if(result.getResultCode()==Activity.RESULT_OK){
+                            avatar = result.getData().getData();
+                            avatarModel.UploadAvatar(avatar);
+                        }
+                    }
+                });
     }
 
     @Override
@@ -46,10 +74,25 @@ public class HomePresenter extends PresenterBase implements IPresenter {
             FragmentManager manager = _view.GetFragmentManager();
             manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new UserFragment()).commit();
         }
+        if(code == AvatarModel.UPLOAD_SUCCESS){
+            avatarModel.retrieveAvatar();
+        }
+        if(code == AvatarModel.RETRIEVE_SUCCESS){
+            if(getAvatar()!=null)
+            _view.UpdateView(HomeFragment.UPDATE_AVATAR,getAvatar());
+        }
     }
 
     @Override
     public Context getCurrentContext() {
         return _view.getAppActivity();
+    }
+    public void changeAvatar(){
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        activityResultLauncher.launch(intent);
+    }
+    public Bitmap getAvatar(){
+        return avatarModel.getBitmap();
     }
 }

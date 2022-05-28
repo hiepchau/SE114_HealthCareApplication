@@ -85,6 +85,7 @@
                 android:layout_gravity="bottom|center"
                 android:background="@drawable/image_avt"
                 android:text="Change"
+                android:id="@+id/avt_txt"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
