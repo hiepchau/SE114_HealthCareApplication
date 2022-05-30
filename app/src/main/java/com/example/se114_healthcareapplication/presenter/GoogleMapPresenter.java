@@ -14,7 +14,7 @@ import java.util.TimerTask;
 
 public class GoogleMapPresenter extends PresenterBase implements IPresenter {
     Timer mTimer;
-    long starttime;
+    public long starttime;
     private RunningModel runningModel;
     public boolean isTimerRunning;
     public GoogleMapPresenter(IView view) {
@@ -62,4 +62,5 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
         RunningEntity entity = new RunningEntity(distance,System.currentTimeMillis()-starttime);
         runningModel.UpdateDatabase(entity);
     }
+
 }

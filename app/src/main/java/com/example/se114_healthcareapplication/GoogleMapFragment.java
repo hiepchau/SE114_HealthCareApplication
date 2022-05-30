@@ -2,6 +2,8 @@ package com.example.se114_healthcareapplication;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -30,6 +32,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +53,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
     private String mParam1;
     private String mParam2;
     private TextView textclock;
-    private Button clockbtn;
+    private Button clockbtn,clearbtn;
     private List<LatLng> latLngList;
     private MapView mMap;
     private GoogleMap gMap;
@@ -100,6 +104,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
         textclock = v.findViewById(R.id.text_clock);
         textclock.setText("0:00");
         clockbtn = v.findViewById(R.id.btn_start);
+        clearbtn = v.findViewById(R.id.btn_clear);
         mMap = v.findViewById(R.id.map_view);
         mMap.onCreate(savedInstanceState);
         runlinels = new ArrayList<>();
@@ -149,10 +154,36 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
                     Button b = (Button) v;
                     textclock.setText("0:00");
                     b.setText("Start");
-                    for(Polyline pline : runlinels){
-                        pline.remove();
-                    }
+                    latLngList.clear();
                     mainPresenter.UpdateRunning(lastdistance);
+                    DecimalFormat df = new DecimalFormat("0.00");
+                    df.setRoundingMode(RoundingMode.UP);
+                    float speed = lastdistance/((System.currentTimeMillis()-mainPresenter.starttime)/1000);
+                    new AlertDialog.Builder(getActivity())
+                            .setTitle("Great job")
+                            .setMessage("You have just travelled " + df.format(lastdistance)
+                            +" meters at the average speed of "+df.format(speed) + " m/s")
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            })
+                            .setIcon(android.R.drawable.star_big_on)
+                            .show();
+                    distanceTravelled =0;
+                    lastdistance =0;
+                }
+            }
+        });
+
+        clearbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(Polyline pline : runlinels){
+                    pline.remove();
                 }
             }
         });
