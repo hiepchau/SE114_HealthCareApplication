@@ -170,4 +170,5 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         });
         return currentEntity;
     }
+
 }

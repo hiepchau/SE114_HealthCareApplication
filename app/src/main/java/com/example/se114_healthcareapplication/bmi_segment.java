@@ -14,6 +14,9 @@ import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.BMIPresenter;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.Format;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,10 +88,12 @@ public class bmi_segment extends Fragment implements IView<BMIPresenter> {
             ArrayList<Double> bmilist = (ArrayList<Double>) entity;
             double wei = bmilist.get(0);
             double hei = bmilist.get(1);
-            double bmi = hei/wei;
+            double bmi = wei/(hei/50);
+            DecimalFormat df = new DecimalFormat("0.00");
+            df.setRoundingMode(RoundingMode.UP);
             weighttxt.setText(String.valueOf(wei));
             heighttxt.setText(String.valueOf(hei));
-            bmitxt.setText(String.valueOf(bmi));
+            bmitxt.setText(df.format(bmi));
         }
     }
 

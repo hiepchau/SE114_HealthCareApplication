@@ -26,6 +26,10 @@
         <service android:name=".Services.StepsCountServices"/>
         <service android:name=".Services.RegisterService"/>
 
+        <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyCwi-yl7AQ3M-2dL-B-iiXl31HA9zjKeLg" />
+
         <receiver
                 android:name=".Recievers.AlarmReciever"
                 android:enabled="true"

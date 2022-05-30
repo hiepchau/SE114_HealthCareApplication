@@ -54,7 +54,6 @@ public class AvatarModel extends ModelBase {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                     bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    Toast.makeText(_presenter.getCurrentContext(),"Pictures retrieved!", Toast.LENGTH_SHORT).show();
                     _presenter.NotifyPresenter(RETRIEVE_SUCCESS);
                 }
             }).addOnFailureListener(new OnFailureListener() {
