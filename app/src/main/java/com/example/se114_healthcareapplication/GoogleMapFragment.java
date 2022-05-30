@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.model.RunningModel;
 import com.example.se114_healthcareapplication.presenter.GoogleMapPresenter;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -54,6 +55,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
     private GoogleMap gMap;
     List<Polyline> runlinels;
     private float distanceTravelled;
+    private float lastdistance;
     private FusedLocationProviderClient fusedLocationClient;
 
     public static final int UPDATE_TIMER = 1726346;
@@ -106,6 +108,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
         mMap.onResume(); // needed to get the map to display immediately
         latLngList = new ArrayList<>();
         distanceTravelled = 0;
+        lastdistance = 0;
 
         try {
             MapsInitializer.initialize(getActivity().getApplicationContext());
@@ -149,6 +152,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
                     for(Polyline pline : runlinels){
                         pline.remove();
                     }
+                    mainPresenter.UpdateRunning(lastdistance);
                 }
             }
         });
@@ -190,6 +194,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
 
                         distanceTravelled+= location1.distanceTo(location2);
                         Log.d("Distance",String.valueOf(distanceTravelled));
+                        lastdistance = distanceTravelled;
                     }
                 }
             });

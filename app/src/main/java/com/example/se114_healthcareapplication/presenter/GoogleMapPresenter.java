@@ -4,6 +4,8 @@ import android.content.Context;
 import com.example.se114_healthcareapplication.GoogleMapFragment;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.model.RunningModel;
+import com.example.se114_healthcareapplication.model.entity.RunningEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +15,12 @@ import java.util.TimerTask;
 public class GoogleMapPresenter extends PresenterBase implements IPresenter {
     Timer mTimer;
     long starttime;
+    private RunningModel runningModel;
     public boolean isTimerRunning;
     public GoogleMapPresenter(IView view) {
         super(view);
         isTimerRunning = false;
+        runningModel = new RunningModel(this);
     }
 
     @Override
@@ -53,7 +57,9 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
         isTimerRunning = false;
     }
 
-    public long getRunningTime(){
-        return System.currentTimeMillis() - starttime;
+
+    public void UpdateRunning(float distance){
+        RunningEntity entity = new RunningEntity(distance,System.currentTimeMillis()-starttime);
+        runningModel.UpdateDatabase(entity);
     }
 }
