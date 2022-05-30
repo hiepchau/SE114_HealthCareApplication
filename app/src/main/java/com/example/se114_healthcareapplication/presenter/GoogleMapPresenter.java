@@ -52,4 +52,8 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
         mTimer.purge();
         isTimerRunning = false;
     }
+
+    public long getRunningTime(){
+        return System.currentTimeMillis() - starttime;
+    }
 }

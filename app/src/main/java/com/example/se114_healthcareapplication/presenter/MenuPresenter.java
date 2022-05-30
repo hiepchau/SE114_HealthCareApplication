@@ -33,7 +33,7 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
         if(code == SWITCH_TO_ALARM){
             FragmentManager fragmentManager = _view.GetFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer_function, alarm_segment.class,null).addToBackStack("").commit();
+            fragmentTransaction.replace(R.id.fragmentContainer_function, GoogleMapFragment.class,null).addToBackStack("").commit();
         }
 
         if(code == SWITCH_TO_BMI){
@@ -54,7 +54,6 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
             _view.getAppActivity().startActivity(new Intent(_view.getAppActivity(), AuthenticateActivity.class));
             _view.getAppActivity().finish();
         }
-
     }
 
     @Override
