@@ -23,11 +23,11 @@
             app:layout_constraintVertical_bias="0.103" android:id="@+id/textView8"/>
 
     <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/et_login"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Full Name"
+            android:hint="First Name"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center"
@@ -37,7 +37,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.234" android:id="@+id/firstname_edt"/>
+            app:layout_constraintVertical_bias="0.256" android:id="@+id/firstname_edt"
+            app:layout_constraintHorizontal_bias="0.132"/>
+
+    <EditText
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/et_login"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Last Name"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textColor="@color/gray2"
+            android:textSize="14dp"
+            android:id="@+id/lastname_edt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.256"
+            app:layout_constraintHorizontal_bias="0.87"/>
+
 
     <EditText android:layout_width="150dp" android:layout_height="40dp"
               android:hint="Age"
@@ -47,6 +68,26 @@
               app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintHorizontal_bias="0.137" app:layout_constraintVertical_bias="0.351"
               android:id="@+id/age_edt"/>
+
+    <RadioButton
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Male"
+            android:id="@+id/male_rdo"
+            android:fontFamily="@font/outfit_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.603"
+            app:layout_constraintVertical_bias="0.359"/>
+
+    <RadioButton
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Female"
+            android:id="@+id/female_rdo"
+            android:fontFamily="@font/outfit_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.853"
+            app:layout_constraintVertical_bias="0.359"/>
 
     <EditText android:layout_width="165dp" android:layout_height="40dp"
               android:hint="Height (cm)"
