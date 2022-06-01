@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -35,7 +37,8 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
     private String mParam2;
 
     private Button SigninBtn, BackBtn;
-    private EditText email,pass,repass,firstname,age,height,weight;
+    private EditText email,pass,repass,firstname,age,height,weight,lastnameedt;
+    RadioButton malebtn, femalebtn;
 
     public signup() {
         // Required empty public constructor
@@ -83,7 +86,27 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
         age = v.findViewById(R.id.age_edt);
         height = v.findViewById(R.id.height_edt);
         weight = v.findViewById(R.id.weight_edt);
+        lastnameedt = v.findViewById(R.id.lastname_edt);
+        malebtn = v.findViewById(R.id.male_rdo);
+        femalebtn = v.findViewById(R.id.female_rdo);
         setMainPresenter(new AuthenticatePresenter(this));
+
+        malebtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(malebtn.isChecked()){
+                    femalebtn.setChecked(false);
+                }
+            }
+        });
+
+        femalebtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(femalebtn.isChecked())
+                    malebtn.setChecked(false);
+            }
+        });
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,10 +120,15 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
             public void onClick(View view) {
                 AuthenticatePresenter authen = (AuthenticatePresenter) mainPresenter;
                 String fname = firstname.getText().toString();
+                String lname = lastnameedt.getText().toString();
                 int tAge = Integer.parseInt(age.getText().toString());
                 double tHeight = Double.parseDouble(height.getText().toString());
                 double tWeight = Double.parseDouble(weight.getText().toString());
-                authen.SignUp(email.getText().toString(),pass.getText().toString(),repass.getText().toString(),fname,tAge,tHeight,tWeight);
+                int gender = 0;
+                if(malebtn.isChecked()){
+                    gender =1;
+                }
+                authen.SignUp(email.getText().toString(),pass.getText().toString(),repass.getText().toString(),fname,lname,tAge,tHeight,tWeight,gender);
             }
         });
 
@@ -114,6 +142,7 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
             pass.setText("");
             repass.setText("");
             firstname.setText("");
+            lastnameedt.setText("");
             age.setText("");
             height.setText("");
             weight.setText("");

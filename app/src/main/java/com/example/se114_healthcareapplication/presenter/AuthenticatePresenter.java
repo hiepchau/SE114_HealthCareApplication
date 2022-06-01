@@ -166,7 +166,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 });
     }
 
-    public void SignUp(String email,String pass, String repass, String firstname, int age, double height, double weight){
+    public void SignUp(String email,String pass, String repass, String firstname,String lastname, int age, double height, double weight, int gender){
         String u = email;
         String p = pass;
         String re = repass;
@@ -191,9 +191,9 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                     auth.signInWithEmailAndPassword(u,p);
                     UserModel userModel = new UserModel(this);
                     StatisticModel statisticModel = new StatisticModel(this);
-                    UserEntity userEntity = new UserEntity(firstname,"",age,0,3000);
+                    UserEntity userEntity = new UserEntity(firstname,lastname,age,gender);
                     userModel.UpdateDatabase(userEntity);
-                    StatisticEntity statistic = new StatisticEntity(height,weight,0,0,0);
+                    StatisticEntity statistic = new StatisticEntity(height,weight,0,0,0,1,"");
                     statisticModel.UpdateDatabase(statistic);
                     FirebaseUser user = auth.getCurrentUser();
                     user.sendEmailVerification()
@@ -230,9 +230,9 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
     public void RegisterGoogle(String firstname, int age, double height, double weight){
         UserModel userModel = new UserModel(this);
         StatisticModel statisticModel = new StatisticModel(this);
-        UserEntity userEntity = new UserEntity(firstname,"",age,0,3000);
+        UserEntity userEntity = new UserEntity(firstname,"",age,0);
         userModel.UpdateDatabase(userEntity);
-        StatisticEntity statistic = new StatisticEntity(height,weight,0,0,0);
+        StatisticEntity statistic = new StatisticEntity(height,weight,0,0,0,1,"");
         statisticModel.UpdateDatabase(statistic);
         Intent intent = new Intent(_view.getAppActivity(),HomeActivity.class);
         intent.putExtra("session",auth.getCurrentUser().getUid());

@@ -15,10 +15,10 @@ import java.util.List;
 
 public class UserModel extends ModelBase implements IModel<UserEntity> {
 
-    UserEntity currentUser;
+    public UserEntity currentUser;
     FirebaseAuth auth;
     DatabaseReference ref;
-    public static final int UPDATE_USER_SUCCESS = 1022;
+    public static final int RETRIEVE_USER_SUCCESS = 1022;
     public static final int NOT_REGISTERED = 404;
     public static final int REGISTERED = 200;
     public UserModel(IPresenter presenter){
@@ -43,26 +43,29 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
         ref.setValue(entity);
     }
     public UserEntity getCurrentUser(){
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                for (DataSnapshot snap: snapshot.getChildren()
-                ) {
-                    String firstname = snap.child("FirstName").getValue(String.class);
-                    String lastname = snap.child("LastName").getValue(String.class);
-                    int age = snap.child("Age").getValue(int.class);
-                    int Gen = snap.child("Gender").getValue(int.class);
-                    int rewater = snap.child("recommendWater").getValue(int.class);
-                    currentUser = new UserEntity(firstname,lastname,age,Gen,rewater);
+        if(auth.getCurrentUser()!=null) {
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    for (DataSnapshot snap : snapshot.getChildren()
+                    ) {
+                        String firstname = snap.child("FirstName").getValue(String.class);
+                        String lastname = snap.child("LastName").getValue(String.class);
+                        int age = snap.child("Age").getValue(int.class);
+                        int Gen = snap.child("Gender").getValue(int.class);
+                        currentUser = new UserEntity(firstname, lastname, age, Gen);
+                        _presenter.NotifyPresenter(RETRIEVE_USER_SUCCESS);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
-            }
-        });
-        return currentUser;
+                }
+            });
+            return currentUser;
+        }
+        return null;
     }
     public void checkRegistered(){
         ref.addListenerForSingleValueEvent(new ValueEventListener() {

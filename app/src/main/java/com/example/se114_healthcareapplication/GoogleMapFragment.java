@@ -212,6 +212,8 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
                     latLngList.add(latLng);
                     runlinels.add(gMap.addPolyline(new PolylineOptions()
                             .clickable(true)
+                            .width(25)
+                            .color(R.color.teal_700)
                             .addAll(latLngList)));
                     distanceTravelled = 0;
                     for(int i =0;i<latLngList.stream().count()-1;i++){

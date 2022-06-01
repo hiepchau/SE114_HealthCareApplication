@@ -141,7 +141,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                         @Override
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                             if (!snapshot.exists()) {
-                                currentEntity = new StatisticEntity(height,weight,0,0,0);
+                                currentEntity = new StatisticEntity(height,weight,0,0,0,1,"");
                                 ref.setValue(currentEntity);
                             } else {
                                 double we = snapshot.child("Weight").getValue(double.class);
@@ -149,7 +149,9 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                                 int water = snapshot.child("Water").getValue(int.class);
                                 int steps = snapshot.child("Steps").getValue(int.class);
                                 long sleep = snapshot.child("SleepTime").getValue(int.class);
-                                currentEntity = new StatisticEntity(we,he,water,steps,sleep);
+                                int emo = snapshot.child("EmotionalLevel").getValue(int.class);
+                                String sta = snapshot.child("Status").getValue(String.class);
+                                currentEntity = new StatisticEntity(he,we,water,steps,sleep,emo,sta);
                                 _presenter.NotifyPresenter(DONE_INIT_DATA);
                             }
                         }

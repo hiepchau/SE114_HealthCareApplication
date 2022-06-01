@@ -26,7 +26,7 @@ public class MenuFragment extends Fragment implements IView<MenuPresenter> {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private MenuPresenter mainPresenter;
-    Button water,steps,alarm,bmi;
+    Button water,steps,alarm,bmi,running,status;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -73,6 +73,20 @@ public class MenuFragment extends Fragment implements IView<MenuPresenter> {
         steps = view.findViewById(R.id.btn_steps);
         bmi = view.findViewById(R.id.btn_bmi);
         alarm = view.findViewById(R.id.btn_alarm);
+        running = view.findViewById(R.id.btn_running);
+        status = view.findViewById(R.id.btn_status);
+        running.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(MenuPresenter.SWITCH_TO_RUNNING);
+            }
+        });
+        status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(MenuPresenter.SWITCH_TO_STATUS);
+            }
+        });
         water.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

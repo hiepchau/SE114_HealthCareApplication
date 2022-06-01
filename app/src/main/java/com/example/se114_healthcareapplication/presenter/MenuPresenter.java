@@ -17,6 +17,8 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
     public static final int SWITCH_TO_STEP =2;
     public static final int SWITCH_TO_ALARM =3;
     public static final int SWITCH_TO_BMI = 5;
+    public static final int SWITCH_TO_RUNNING =6;
+    public static final int SWITCH_TO_STATUS =7;
     public static final int LOGOUT = -1;
     public MenuPresenter(IView view) {
         super(view);
@@ -33,7 +35,7 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
         if(code == SWITCH_TO_ALARM){
             FragmentManager fragmentManager = _view.GetFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer_function, GoogleMapFragment.class,null).addToBackStack("").commit();
+            fragmentTransaction.replace(R.id.fragmentContainer_function, alarm_segment.class,null).addToBackStack("").commit();
         }
 
         if(code == SWITCH_TO_BMI){
@@ -53,6 +55,14 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
             FirebaseAuth.getInstance().signOut();
             _view.getAppActivity().startActivity(new Intent(_view.getAppActivity(), AuthenticateActivity.class));
             _view.getAppActivity().finish();
+        }
+        if(code == SWITCH_TO_RUNNING){
+            FragmentManager fragmentManager = _view.GetFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer_function, GoogleMapFragment.class,null).addToBackStack("").commit();
+        }
+        if(code == SWITCH_TO_STATUS){
+
         }
     }
 
