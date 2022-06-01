@@ -17,6 +17,7 @@ import com.example.se114_healthcareapplication.*;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.AvatarModel;
+import com.example.se114_healthcareapplication.model.UserModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
@@ -32,7 +33,9 @@ public class HomePresenter extends PresenterBase implements IPresenter {
     public static final int SWITCH_TO_TARGET = 2;
     public static final int SWITCH_TO_NOTIFICATIONS = 3;
     public static final int SWITCH_TO_USER = 4;
+    public static final int UPDATE_USER_INFO = 38742;
     private AvatarModel avatarModel;
+    private UserModel userModel;
     private Uri avatar;
     ActivityResultLauncher<Intent> activityResultLauncher;
     public HomePresenter(IView view) {
@@ -50,6 +53,8 @@ public class HomePresenter extends PresenterBase implements IPresenter {
                         }
                     }
                 });
+        userModel = new UserModel(this);
+        userModel.getCurrentUser();
     }
 
     @Override
@@ -81,6 +86,12 @@ public class HomePresenter extends PresenterBase implements IPresenter {
             if(getAvatar()!=null)
             _view.UpdateView(HomeFragment.UPDATE_AVATAR,getAvatar());
         }
+        if(code == UserModel.RETRIEVE_USER_SUCCESS){
+            _view.UpdateView(UPDATE_USER_INFO,userModel.currentUser);
+        }
+        if(code == UserModel.USER_NOT_FOUND){
+            logout();
+        }
     }
 
     @Override
@@ -94,5 +105,10 @@ public class HomePresenter extends PresenterBase implements IPresenter {
     }
     public Bitmap getAvatar(){
         return avatarModel.getBitmap();
+    }
+    private void logout(){
+        FirebaseAuth.getInstance().signOut();
+        _view.getAppActivity().startActivity(new Intent(_view.getAppActivity(), AuthenticateActivity.class));
+        _view.getAppActivity().finish();
     }
 }

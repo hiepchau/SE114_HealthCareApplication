@@ -3,6 +3,8 @@ package com.example.se114_healthcareapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -31,7 +33,7 @@ public class register_google extends Fragment implements IView<AuthenticatePrese
     private String mParam1;
     private String mParam2;
     private AuthenticatePresenter mainPresenter;
-    private Button  register;
+    private Button  register,backbtn;
     private EditText firstname,age,height,weight,lastnameedt;
     private RadioButton malebtn, femalebtn;
 
@@ -81,16 +83,101 @@ public class register_google extends Fragment implements IView<AuthenticatePrese
         lastnameedt = v.findViewById(R.id.lastname_edt);
         malebtn = v.findViewById(R.id.male_rdo);
         femalebtn = v.findViewById(R.id.female_rdo);
+        backbtn = v.findViewById(R.id.btn_back_login);
         register.setEnabled(false);
         register.setBackground(getResources().getDrawable(R.drawable.btn_disabled));
 
         setMainPresenter(new AuthenticatePresenter(this));
+        firstname.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkCanRegister();
+            }
+        });
+
+        lastnameedt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkCanRegister();
+            }
+        });
+        age.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkCanRegister();
+            }
+        });
+
+        height.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkCanRegister();
+            }
+        });
+
+        weight.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkCanRegister();
+            }
+        });
         malebtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(malebtn.isChecked()){
                     femalebtn.setChecked(false);
                 }
+                checkCanRegister();
             }
         });
 
@@ -100,6 +187,7 @@ public class register_google extends Fragment implements IView<AuthenticatePrese
                 if(femalebtn.isChecked()){
                     malebtn.setChecked(false);
                 }
+                checkCanRegister();
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +202,13 @@ public class register_google extends Fragment implements IView<AuthenticatePrese
                 if(malebtn.isChecked())
                     gen=1;
                 mainPresenter.RegisterGoogle(fname,lname,Age,Height,Weight,gen);
+            }
+        });
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(AuthenticatePresenter.GO_TO_LOGIN);
             }
         });
 

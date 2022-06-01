@@ -21,6 +21,7 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
     public static final int RETRIEVE_USER_SUCCESS = 1022;
     public static final int NOT_REGISTERED = 404;
     public static final int REGISTERED = 200;
+    public static final int USER_NOT_FOUND = 405;
     public UserModel(IPresenter presenter){
         super(presenter);
         auth = FirebaseAuth.getInstance();
@@ -47,6 +48,9 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    if(!snapshot.exists()){
+                        _presenter.NotifyPresenter(USER_NOT_FOUND);
+                    }
                     for (DataSnapshot snap : snapshot.getChildren()
                     ) {
                         String firstname = snap.child("FirstName").getValue(String.class);

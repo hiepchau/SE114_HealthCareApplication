@@ -48,6 +48,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
     FirebaseAuth auth;
     ActivityResultLauncher<Intent> activityResultLauncher;
     public final int GOOGLE_REQUEST = 1001;
+    public static final int GO_TO_LOGIN = 712834;
     private boolean canContinue;
     private GoogleSignInClient client;
     public AuthenticatePresenter(IView view) {
@@ -123,6 +124,10 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(id.authenticateContainer, register_google.class,null).addToBackStack("").commit();
                 break;
+            case GO_TO_LOGIN:
+                FragmentManager fragmentManager1 = _view.GetFragmentManager();
+                FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
+                fragmentTransaction1.replace(id.authenticateContainer, login.class,null).addToBackStack("").commit();
                 case UserModel.REGISTERED:
                     Intent intent = new Intent(_view.getAppActivity(),HomeActivity.class);
                     intent.putExtra("session",auth.getCurrentUser().getUid());
