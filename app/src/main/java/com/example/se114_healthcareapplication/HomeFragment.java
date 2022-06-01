@@ -14,7 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.model.UserModel;
+import com.example.se114_healthcareapplication.model.entity.UserEntity;
 import com.example.se114_healthcareapplication.presenter.HomePresenter;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +38,7 @@ public class HomeFragment extends Fragment implements IView<HomePresenter> {
     private String mParam2;
     private HomePresenter mainPresenter;
     private ImageView avtImage;
-    private TextView avtText;
+    private TextView avtText,username,date;
     public static final int UPDATE_AVATAR = 932845;
 
     public HomeFragment() {
@@ -75,6 +80,10 @@ public class HomeFragment extends Fragment implements IView<HomePresenter> {
 
         avtImage = v.findViewById(R.id.profile_image);
         avtText = v.findViewById(R.id.avt_txt);
+        username = v.findViewById(R.id.user_name);
+        date = v.findViewById(R.id.Datetime);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("EEE, MMM dd, yyyy");
+        date.setText(format.format(LocalDateTime.now()));
         setMainPresenter(new HomePresenter(this));
         avtText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +106,10 @@ public class HomeFragment extends Fragment implements IView<HomePresenter> {
     public void UpdateView(int code, Object entity) {
         if(code == UPDATE_AVATAR){
             avtImage.setImageBitmap((Bitmap) entity);
+        }
+        if(code == HomePresenter.UPDATE_USER_INFO){
+            UserEntity user = (UserEntity) entity;
+            username.setText("Hello, "+user.FirstName);
         }
     }
 

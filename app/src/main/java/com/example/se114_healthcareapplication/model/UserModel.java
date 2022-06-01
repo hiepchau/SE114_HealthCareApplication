@@ -51,15 +51,13 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
                     if(!snapshot.exists()){
                         _presenter.NotifyPresenter(USER_NOT_FOUND);
                     }
-                    for (DataSnapshot snap : snapshot.getChildren()
-                    ) {
-                        String firstname = snap.child("FirstName").getValue(String.class);
-                        String lastname = snap.child("LastName").getValue(String.class);
-                        int age = snap.child("Age").getValue(int.class);
-                        int Gen = snap.child("Gender").getValue(int.class);
+
+                        String firstname = snapshot.child("FirstName").getValue(String.class);
+                        String lastname = snapshot.child("LastName").getValue(String.class);
+                        int age = snapshot.child("Age").getValue(int.class);
+                        int Gen = snapshot.child("Gender").getValue(int.class);
                         currentUser = new UserEntity(firstname, lastname, age, Gen);
                         _presenter.NotifyPresenter(RETRIEVE_USER_SUCCESS);
-                    }
                 }
 
                 @Override
