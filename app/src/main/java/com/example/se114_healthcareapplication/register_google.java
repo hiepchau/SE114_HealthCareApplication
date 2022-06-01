@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +32,8 @@ public class register_google extends Fragment implements IView<AuthenticatePrese
     private String mParam2;
     private AuthenticatePresenter mainPresenter;
     private Button  register;
-    private EditText firstname,age,height,weight;
+    private EditText firstname,age,height,weight,lastnameedt;
+    private RadioButton malebtn, femalebtn;
 
     public register_google() {
         // Required empty public constructor
@@ -75,16 +78,42 @@ public class register_google extends Fragment implements IView<AuthenticatePrese
         age = v.findViewById(R.id.age_edt);
         height = v.findViewById(R.id.height_edt);
         weight = v.findViewById(R.id.weight_edt);
+        lastnameedt = v.findViewById(R.id.lastname_edt);
+        malebtn = v.findViewById(R.id.male_rdo);
+        femalebtn = v.findViewById(R.id.female_rdo);
+        register.setEnabled(false);
+        register.setBackground(getResources().getDrawable(R.drawable.btn_disabled));
 
         setMainPresenter(new AuthenticatePresenter(this));
+        malebtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(malebtn.isChecked()){
+                    femalebtn.setChecked(false);
+                }
+            }
+        });
+
+        femalebtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(femalebtn.isChecked()){
+                    malebtn.setChecked(false);
+                }
+            }
+        });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String fname = firstname.getText().toString();
+                String lname = lastnameedt.getText().toString();
                 int Age = Integer.parseInt(age.getText().toString());
                 double Height = Double.parseDouble(height.getText().toString());
                 double Weight = Double.parseDouble(weight.getText().toString());
-                mainPresenter.RegisterGoogle(fname,Age,Height,Weight);
+                int gen =0;
+                if(malebtn.isChecked())
+                    gen=1;
+                mainPresenter.RegisterGoogle(fname,lname,Age,Height,Weight,gen);
             }
         });
 
@@ -123,11 +152,27 @@ public class register_google extends Fragment implements IView<AuthenticatePrese
 
     @Override
     public Fragment getCurrentFragment() {
-        return null;
+        return this;
     }
 
     @Override
     public FragmentManager GetFragmentManager() {
         return getActivity().getSupportFragmentManager();
+    }
+
+    private void checkCanRegister(){
+        if(!firstname.getText().toString().isEmpty()
+        && !lastnameedt.getText().toString().isEmpty()
+        && !age.getText().toString().isEmpty()
+        && !height.getText().toString().isEmpty()
+        && !weight.getText().toString().isEmpty()
+        &&(malebtn.isChecked() || femalebtn.isChecked())){
+            register.setEnabled(true);
+            register.setBackground(getResources().getDrawable(R.drawable.btn_intro));
+        }
+        else {
+            register.setEnabled(false);
+            register.setBackground(getResources().getDrawable(R.drawable.btn_disabled));
+        }
     }
 }

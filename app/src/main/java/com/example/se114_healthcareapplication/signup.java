@@ -2,12 +2,12 @@ package com.example.se114_healthcareapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.RadioButton;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.*;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -30,6 +30,7 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public static final int SIGNUP_FAILED = 239841;
     private IPresenter mainPresenter;
 
     // TODO: Rename and change types of parameters
@@ -38,6 +39,7 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
 
     private Button SigninBtn, BackBtn;
     private EditText email,pass,repass,firstname,age,height,weight,lastnameedt;
+    TextView error_text;
     RadioButton malebtn, femalebtn;
 
     public signup() {
@@ -89,7 +91,151 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
         lastnameedt = v.findViewById(R.id.lastname_edt);
         malebtn = v.findViewById(R.id.male_rdo);
         femalebtn = v.findViewById(R.id.female_rdo);
+        error_text = v.findViewById(R.id.error_stat);
+        SigninBtn.setEnabled(false);
+        SigninBtn.setBackground(getResources().getDrawable(R.drawable.btn_disabled));
         setMainPresenter(new AuthenticatePresenter(this));
+
+        age.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkDisableSignUp();
+            }
+        });
+        repass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!repass.getText().toString().equals(pass.getText().toString())){
+                    error_text.setVisibility(View.VISIBLE);
+                }
+                else {
+                    error_text.setVisibility(View.INVISIBLE);
+                }
+                checkDisableSignUp();
+            }
+        });
+
+        pass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkDisableSignUp();
+            }
+        });
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkDisableSignUp();
+            }
+        });
+
+        firstname.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkDisableSignUp();
+            }
+        });
+
+        lastnameedt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkDisableSignUp();
+            }
+        });
+
+        height.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkDisableSignUp();
+            }
+        });
+
+        weight.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkDisableSignUp();
+            }
+        });
 
         malebtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -97,6 +243,7 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
                 if(malebtn.isChecked()){
                     femalebtn.setChecked(false);
                 }
+                checkDisableSignUp();
             }
         });
 
@@ -105,8 +252,10 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(femalebtn.isChecked())
                     malebtn.setChecked(false);
+                checkDisableSignUp();
             }
         });
+
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +277,7 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
                 if(malebtn.isChecked()){
                     gender =1;
                 }
+                SigninBtn.setEnabled(false);
                 authen.SignUp(email.getText().toString(),pass.getText().toString(),repass.getText().toString(),fname,lname,tAge,tHeight,tWeight,gender);
             }
         });
@@ -146,6 +296,9 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
             age.setText("");
             height.setText("");
             weight.setText("");
+            malebtn.setChecked(false);
+            femalebtn.setChecked(false);
+            checkDisableSignUp();
         }
     }
 
@@ -155,7 +308,10 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         switch (code){
             case R.id.btn_goto_signin:
-                fragmentTransaction.replace(R.id.authenticateContainer,login.class,null).commit();
+                fragmentTransaction.replace(R.id.authenticateContainer,login.class,null).addToBackStack("").commit();
+                break;
+            case SIGNUP_FAILED:
+                checkDisableSignUp();
                 break;
         }
     }
@@ -188,5 +344,23 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
     @Override
     public FragmentManager GetFragmentManager() {
        return getActivity().getSupportFragmentManager();
+    }
+
+    private void checkDisableSignUp(){
+        if(!email.getText().toString().isEmpty()
+        && !pass.getText().toString().isEmpty()
+        && !repass.getText().toString().isEmpty()
+        && !firstname.getText().toString().isEmpty()
+        && !lastnameedt.getText().toString().isEmpty()
+        && !height.getText().toString().isEmpty()
+        && !weight.getText().toString().isEmpty()
+        && (malebtn.isChecked() || femalebtn.isChecked())){
+            SigninBtn.setEnabled(true);
+            SigninBtn.setBackground(getResources().getDrawable(R.drawable.btn_intro));
+        }
+        else {
+            SigninBtn.setEnabled(false);
+            SigninBtn.setBackground(getResources().getDrawable(R.drawable.btn_disabled));
+        }
     }
 }

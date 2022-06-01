@@ -103,9 +103,6 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                         } else {
                             Toast.makeText(_view.getAppActivity(), "Cannot authenticate via Google at the moment", Toast.LENGTH_SHORT).show();
                         }
-
-
-                        // ...
                     }
                 });
     }
@@ -221,16 +218,17 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(_view.getAppActivity(),"Register failed:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            _view.SwitchView(signup.SIGNUP_FAILED);
                         }
                     });
 
         }
     }
 
-    public void RegisterGoogle(String firstname, int age, double height, double weight){
+    public void RegisterGoogle(String firstname,String lastname, int age, double height, double weight, int gender){
         UserModel userModel = new UserModel(this);
         StatisticModel statisticModel = new StatisticModel(this);
-        UserEntity userEntity = new UserEntity(firstname,"",age,0);
+        UserEntity userEntity = new UserEntity(firstname,lastname,age,gender);
         userModel.UpdateDatabase(userEntity);
         StatisticEntity statistic = new StatisticEntity(height,weight,0,0,0,1,"");
         statisticModel.UpdateDatabase(statistic);

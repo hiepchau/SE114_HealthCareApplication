@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -103,10 +105,46 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
         AuthenticatePresenter authen = (AuthenticatePresenter) mainPresenter;
         authen.checkSignedin();
         authen.registerGoogleAuthen();
+        LoginBtn.setEnabled(false);
+        LoginBtn.setBackground(getResources().getDrawable(R.drawable.btn_disabled));
         SignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SwitchView(R.id.btn_goto_signin);
+            }
+        });
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkCanLogin();
+            }
+        });
+
+        pass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                checkCanLogin();
             }
         });
 
@@ -121,6 +159,8 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
                 }
             }
         });
+
+
 
 
 
@@ -151,7 +191,7 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         switch (code){
             case R.id.btn_goto_signin:
-                fragmentTransaction.replace(R.id.authenticateContainer,signup.class,null).commit();
+                fragmentTransaction.replace(R.id.authenticateContainer,signup.class,null).addToBackStack("").commit();
                 break;
         }
     }
@@ -184,6 +224,18 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
     @Override
     public FragmentManager GetFragmentManager() {
         return getActivity().getSupportFragmentManager();
+    }
+
+    private void checkCanLogin(){
+        if(!email.getText().toString().isEmpty()
+          && !pass.getText().toString().isEmpty()){
+            LoginBtn.setEnabled(true);
+            LoginBtn.setBackground(getResources().getDrawable(R.drawable.btn_intro));
+        }
+        else {
+            LoginBtn.setEnabled(false);
+            LoginBtn.setBackground(getResources().getDrawable(R.drawable.btn_disabled));
+        }
     }
 
 }
