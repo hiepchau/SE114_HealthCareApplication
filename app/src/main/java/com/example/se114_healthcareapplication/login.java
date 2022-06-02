@@ -100,7 +100,6 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
         GoogleBtn = v.findViewById(R.id.Google_btn);
         email = v.findViewById(R.id.et_login_username);
         pass = v.findViewById(R.id.et_login_password);
-        email.setEnabled(false);
 
 
         setMainPresenter(new AuthenticatePresenter(this));

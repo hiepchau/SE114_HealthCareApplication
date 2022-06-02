@@ -15,6 +15,7 @@ import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.AlarmPresenter;
 import com.webianks.library.scroll_choice.ScrollChoice;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +79,8 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
 
 
         setMainPresenter(new AlarmPresenter(this));
+        LocalDateTime localDateTime = LocalDateTime.now();
+        mainPresenter.triggerCustomAlarm(localDateTime.getHour(),localDateTime.getMinute(),localDateTime.getHour(),localDateTime.getMinute());
         return view;
     }
 

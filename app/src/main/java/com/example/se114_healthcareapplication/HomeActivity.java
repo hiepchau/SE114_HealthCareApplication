@@ -23,6 +23,7 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
 
     private HomePresenter mainPresenter;
     private Intent serviceIntent;
+    int selectedItemMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +31,16 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
         setContentView(R.layout.activity_home);
         setMainPresenter(new HomePresenter(this));
         StepsCountPresenter stepsCountPresenter = new StepsCountPresenter(this);
+        selectedItemMenu = R.id.action_home;
 
         BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+                if(item.getItemId() == selectedItemMenu){
+                    return true;
+                }
+                selectedItemMenu = item.getItemId();
                 switch (item.getItemId()){
                     case R.id.action_home:
                         mainPresenter.NotifyPresenter(HomePresenter.SWITCH_TO_HOME);

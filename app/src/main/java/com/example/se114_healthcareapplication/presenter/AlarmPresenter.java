@@ -89,7 +89,7 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         fireIntent.cancel();
         alarmMgr.cancel(fireIntent);
     }
-    public void triggerCustomAlarm(int HRS, int MIN,int WHRS, int WMIN){
+    public void triggerCustomAlarm(int HRS, int MIN,int BeginHRS, int BeginMIN){
 
         Intent alarmIntent = new Intent("CUSTOM_ALARM");
         Calendar calendar = Calendar.getInstance();
@@ -99,11 +99,9 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         if(calendar.getTimeInMillis()< System.currentTimeMillis()){
             calendar.add(Calendar.DATE,1);
         }
-        beginSleeping(HRS,MIN,WHRS,WMIN);
+        beginSleeping(BeginMIN,BeginHRS,MIN,HRS);
 
         PendingIntent fireIntent = PendingIntent.getBroadcast(_view.getAppActivity(),0,alarmIntent,0);
-        fireIntent.cancel();
-        alarmMgr.cancel(fireIntent);
         alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis() ,fireIntent);
     }
 
@@ -124,7 +122,7 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         long wake = prefs.getLong(_view.getAppActivity().getString(R.string.pref_wake_time), 0);
         return wake;
     }
-    public void beginSleeping(int beginmin, int beginhrs,int stopmin, int stophour){
+    private void beginSleeping(int beginmin, int beginhrs,int stopmin, int stophour){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_view.getAppActivity().getApplicationContext());
 
         Calendar calendar = Calendar.getInstance();
@@ -142,7 +140,7 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         edit.putLong(_view.getAppActivity().getString(R.string.pref_wake_time),calendarwake.getTimeInMillis());
         edit.commit();
     }
-    public void stopSleeping(){
+    private void stopSleeping(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_view.getAppActivity().getApplicationContext());
         SharedPreferences.Editor edit = prefs.edit();
         edit.putLong(_view.getAppActivity().getString(R.string.pref_sleep_time), 0);
@@ -154,7 +152,7 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         if(isTurnedOnSleeping()){
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_view.getAppActivity().getApplicationContext());
             long sleeping = prefs.getLong(_view.getAppActivity().getString(R.string.pref_sleep_time), 0);
-            long sleeptoupdate = System.currentTimeMillis() - sleeping;
+            long sleeptoupdate = Calendar.getInstance().getTimeInMillis() - sleeping;
             sleeptoupdate += CurrentSleeping;
             statisticModel.UpdateSleepTime(sleeptoupdate);
             stopSleeping();
