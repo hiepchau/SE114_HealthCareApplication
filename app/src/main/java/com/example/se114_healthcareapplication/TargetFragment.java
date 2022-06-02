@@ -1,8 +1,13 @@
 package com.example.se114_healthcareapplication;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +15,12 @@ import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.TargetPresenter;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +38,9 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
     private String mParam1;
     private String mParam2;
     private TargetPresenter mainPresenter;
+    private Button calendarbtn;
+    private ProgressBar progressBarwater, progressBarsteps, progressBarsleep;
+    private TextView datetxt;
 
     public TargetFragment() {
         // Required empty public constructor
@@ -65,6 +79,29 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_target, container, false);
 
+        calendarbtn = v.findViewById(R.id.btn_calendar);
+        progressBarwater = v.findViewById(R.id.water_prs);
+        progressBarsleep = v.findViewById(R.id.sleep_prs);
+        progressBarsteps = v.findViewById(R.id.steps_prs);
+        datetxt = v.findViewById(R.id.date_txv);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("EEE, MMM dd, yyyy");
+        datetxt.setText(format.format(LocalDateTime.now()));
+
+        calendarbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LocalDate date = LocalDate.parse(datetxt.getText().toString(),format);
+                DatePickerDialog dialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        DateTimeFormatter format = DateTimeFormatter.ofPattern("EEE, MMM dd, yyyy");
+                        LocalDateTime local = LocalDateTime.of(year,month,dayOfMonth,0,0);
+                        datetxt.setText(format.format(local));
+                    }
+                },date.getYear(),date.getMonthValue(),date.getDayOfMonth());
+                dialog.show();
+            }
+        });
         setMainPresenter(new TargetPresenter(this));
         return v;
     }
