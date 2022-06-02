@@ -3,7 +3,7 @@
 
 ## Contributors
 - GV hướng dẫn: ThS. Nguyễn Tấn Toàn
-- DTSV:
+- DDSSVTSV:
   - Châu Đức Hiệp - 20520499
   - Nguyễn Huy Trí Dũng - 20520459
   - La Thanh Huy - 20520577
@@ -17,7 +17,7 @@
   - Gradle version: 7.2
 - Database: MongoDB
 - IDE: Android Studio, IntelliJ IDEA
-- 
+
 ## Hướng dẫn sử dụng
 - Bước 1: Cài đặt đầy đủ phần mềm yêu cầu
 - Bước 2: Chạy ứng dụng
