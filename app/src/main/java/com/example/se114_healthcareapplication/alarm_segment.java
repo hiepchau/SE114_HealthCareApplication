@@ -3,6 +3,8 @@ package com.example.se114_healthcareapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,10 @@ import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.AlarmPresenter;
+import com.webianks.library.scroll_choice.ScrollChoice;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +29,7 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private ToggleButton alarmToggle;
     private AlarmPresenter mainPresenter;
 
     // TODO: Rename and change types of parameters
@@ -65,6 +72,10 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_alarm_segment, container, false);
+        alarmToggle = view.findViewById(R.id.toggleBtnAlarm);
+
+
+
 
         setMainPresenter(new AlarmPresenter(this));
         return view;
@@ -72,7 +83,6 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
 
     @Override
     public void UpdateView(int code, Object entity) {
-
     }
 
     @Override

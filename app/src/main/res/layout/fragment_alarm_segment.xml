@@ -12,6 +12,7 @@
 
 
     <com.webianks.library.scroll_choice.ScrollChoice
+            android:id="@+id/sleepmin_choice"
             android:layout_height="120dp"
             android:layout_width="60dp"
             app:scroll_background_color="@color/background_blue"
@@ -25,6 +26,7 @@
             app:layout_constraintHorizontal_bias="0.304" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.236"/>
     <com.webianks.library.scroll_choice.ScrollChoice
+            android:id="@+id/sleephrs_choice"
             android:layout_height="120dp"
             android:layout_width="60dp"
             app:scroll_background_color="@color/background_blue"
@@ -39,6 +41,7 @@
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.236"/>
     <com.webianks.library.scroll_choice.ScrollChoice
             android:layout_height="120dp"
+            android:id="@+id/wakehrs_choice"
             android:layout_width="60dp"
             app:scroll_background_color="@color/background_blue"
             app:scroll_selected_item_background="@color/white"
@@ -51,6 +54,7 @@
             app:layout_constraintHorizontal_bias="0.701" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.236"/>
     <com.webianks.library.scroll_choice.ScrollChoice
+            android:id="@+id/wakemin_choice"
             android:layout_height="120dp"
             android:layout_width="60dp"
             app:scroll_background_color="@color/background_blue"
