@@ -125,6 +125,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 fragmentTransaction.replace(id.authenticateContainer, register_google.class,null).addToBackStack("").commit();
                 break;
             case GO_TO_LOGIN:
+                auth.signOut();
                 FragmentManager fragmentManager1 = _view.GetFragmentManager();
                 FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
                 fragmentTransaction1.replace(id.authenticateContainer, login.class,null).addToBackStack("").commit();
@@ -134,7 +135,6 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                     _view.StartNewActivity(intent);
                     _view.getAppActivity().finish();
                     break;
-
         }
     }
 
