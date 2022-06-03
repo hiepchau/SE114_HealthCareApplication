@@ -119,10 +119,14 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
     public void UpdateView(int code, Object entity) {
         if(code == TargetPresenter.UPDATE_USER_INFO){
             UserEntity user = (UserEntity) entity;
-            if(user.Gender==0)
+            if(user.Gender==0) {
                 progressBarwater.setMax(2500);
-            else
+                maxwater.setText("2500");
+            }
+            else {
                 progressBarwater.setMax(3500);
+                maxwater.setText("3500");
+            }
             progressBarsteps.setMax(3000);
             progressBarsleep.setMax(8);
         }

@@ -39,6 +39,7 @@ ScrollChoice waterchoice ;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    TextView goalWater;
 
     public water_segment() {
         // Required empty public constructor
@@ -84,6 +85,7 @@ ScrollChoice waterchoice ;
         complete = v.findViewById(R.id.CompleteValue);
         confirm = v.findViewById(R.id.btn_confirm);
         waterchoice = v.findViewById(R.id.Scrollchoice123);
+        goalWater = v.findViewById(R.id.DailyGoalWaterValue);
         waterchoice.addItems(datas,0);//default choice
 
 
@@ -119,6 +121,13 @@ ScrollChoice waterchoice ;
         if(code == UPDATE_COMPLETE){
             int update = (int)entity;
             complete.setText(String.valueOf(update)+" ml");
+        }
+        if(code == WaterPresenter.UPDATE_DAILY_GOAL){
+            int gen = (int)entity;
+            if(gen==0){
+                goalWater.setText("2500");
+            }
+            else goalWater.setText("3500");
         }
     }
 
