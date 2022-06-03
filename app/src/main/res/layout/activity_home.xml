@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#5261EA"
-        tools:context=".bottom_nav.HomeActivity">
+        tools:context=".view.HomeActivity">
 
 
 
@@ -31,7 +31,7 @@
     <androidx.fragment.app.FragmentContainerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.example.se114_healthcareapplication.HomeFragment"
+            android:name="com.example.se114_healthcareapplication.view.bottom_nav.HomeFragment"
             android:id="@+id/fragmentContainer_homeactivity"
             android:layout_marginBottom="50dp"
             />

@@ -1,17 +1,18 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.se114_healthcareapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link status_segment#newInstance} factory method to
+ * Use the {@link manage_data#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class status_segment extends Fragment {
+public class manage_data extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,7 +23,7 @@ public class status_segment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public status_segment() {
+    public manage_data() {
         // Required empty public constructor
     }
 
@@ -32,11 +33,11 @@ public class status_segment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment status_segment.
+     * @return A new instance of fragment manage_data.
      */
     // TODO: Rename and change types and number of parameters
-    public static status_segment newInstance(String param1, String param2) {
-        status_segment fragment = new status_segment();
+    public static manage_data newInstance(String param1, String param2) {
+        manage_data fragment = new manage_data();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -57,6 +58,6 @@ public class status_segment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_status_segment, container, false);
+        return inflater.inflate(R.layout.fragment_manage_data, container, false);
     }
 }

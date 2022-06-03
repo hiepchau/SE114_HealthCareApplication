@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
-import com.example.se114_healthcareapplication.AlarmActivity;
+import com.example.se114_healthcareapplication.view.AlarmActivity;
 
 public class AlarmReciever extends BroadcastReceiver {
     @Override

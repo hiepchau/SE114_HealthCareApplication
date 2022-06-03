@@ -37,14 +37,14 @@
                 android:enabled="true"
                 android:exported="true"/>
         <activity
-                android:name=".AlarmActivity"
+                android:name=".view.AlarmActivity"
                 android:exported="true"
                 android:launchMode="singleInstance"/>
 
 
 
         <activity
-                android:name=".AuthenticateActivity"
+                android:name=".view.AuthenticateActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -56,7 +56,7 @@
 
         </activity>
         <activity
-                android:name=".bottom_nav.HomeActivity"
+                android:name=".view.HomeActivity"
                 android:exported="true">
         </activity>
     </application>

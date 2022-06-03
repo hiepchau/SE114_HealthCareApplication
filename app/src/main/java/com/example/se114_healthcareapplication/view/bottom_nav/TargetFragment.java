@@ -1,4 +1,4 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view.bottom_nav;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
+import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
@@ -20,9 +21,7 @@ import com.example.se114_healthcareapplication.presenter.TargetPresenter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.

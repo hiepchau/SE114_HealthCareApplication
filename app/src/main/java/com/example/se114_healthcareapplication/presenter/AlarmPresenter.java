@@ -1,29 +1,19 @@
 package com.example.se114_healthcareapplication.presenter;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.AlarmClock;
-import android.util.Log;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
-import com.example.se114_healthcareapplication.AlarmActivity;
 import com.example.se114_healthcareapplication.R;
-import com.example.se114_healthcareapplication.Recievers.AlarmReciever;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.StatisticModel;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class AlarmPresenter extends PresenterBase implements IPresenter {
 

@@ -1,4 +1,4 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view.components;
 
 import android.Manifest;
 import android.app.Activity;
@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
@@ -19,14 +18,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
+import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
-import com.example.se114_healthcareapplication.model.RunningModel;
 import com.example.se114_healthcareapplication.presenter.GoogleMapPresenter;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -100,12 +98,12 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_google_map, container, false);
-        textclock = v.findViewById(R.id.text_clock);
+        View v = inflater.inflate(com.example.se114_healthcareapplication.R.layout.fragment_google_map, container, false);
+        textclock = v.findViewById(com.example.se114_healthcareapplication.R.id.text_clock);
         textclock.setText("0:00");
-        clockbtn = v.findViewById(R.id.btn_start);
-        clearbtn = v.findViewById(R.id.btn_clear);
-        mMap = v.findViewById(R.id.map_view);
+        clockbtn = v.findViewById(com.example.se114_healthcareapplication.R.id.btn_start);
+        clearbtn = v.findViewById(com.example.se114_healthcareapplication.R.id.btn_clear);
+        mMap = v.findViewById(com.example.se114_healthcareapplication.R.id.map_view);
         mMap.onCreate(savedInstanceState);
         runlinels = new ArrayList<>();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());

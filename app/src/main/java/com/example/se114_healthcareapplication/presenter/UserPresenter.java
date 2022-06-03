@@ -2,7 +2,7 @@ package com.example.se114_healthcareapplication.presenter;
 
 import android.content.Context;
 import android.content.Intent;
-import com.example.se114_healthcareapplication.AuthenticateActivity;
+import com.example.se114_healthcareapplication.view.AuthenticateActivity;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.StatisticModel;

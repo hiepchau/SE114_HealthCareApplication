@@ -1,16 +1,10 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import android.widget.Button;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -18,12 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.se114_healthcareapplication.R;
+import com.example.se114_healthcareapplication.view.authentication.login;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.IntroPresenter;
-import org.jetbrains.annotations.NotNull;
-
-import static androidx.core.app.ActivityCompat.requestPermissions;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -104,7 +97,7 @@ public class intro extends Fragment implements IView<IntroPresenter> {
     public void SwitchView(int code) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.authenticateContainer,login.class,null).commit();
+        fragmentTransaction.replace(R.id.authenticateContainer, login.class,null).commit();
     }
 
     @Override

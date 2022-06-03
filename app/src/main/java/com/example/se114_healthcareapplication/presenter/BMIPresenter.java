@@ -1,8 +1,7 @@
 package com.example.se114_healthcareapplication.presenter;
 
-import android.app.Activity;
 import android.content.Context;
-import com.example.se114_healthcareapplication.bmi_segment;
+import com.example.se114_healthcareapplication.view.components.bmi_segment;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.StatisticModel;

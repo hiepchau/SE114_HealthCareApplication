@@ -1,7 +1,7 @@
 package com.example.se114_healthcareapplication.presenter;
 
 import android.content.Context;
-import com.example.se114_healthcareapplication.GoogleMapFragment;
+import com.example.se114_healthcareapplication.view.components.GoogleMapFragment;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.RunningModel;

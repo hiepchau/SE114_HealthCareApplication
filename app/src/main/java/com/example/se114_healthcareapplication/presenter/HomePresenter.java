@@ -5,28 +5,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.widget.Toast;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import com.example.se114_healthcareapplication.*;
+import com.example.se114_healthcareapplication.view.AuthenticateActivity;
+import com.example.se114_healthcareapplication.view.bottom_nav.HomeFragment;
+import com.example.se114_healthcareapplication.view.bottom_nav.NotificationsFragment;
+import com.example.se114_healthcareapplication.view.bottom_nav.TargetFragment;
+import com.example.se114_healthcareapplication.view.bottom_nav.UserFragment;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.AvatarModel;
 import com.example.se114_healthcareapplication.model.UserModel;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.lang.annotation.Target;
-
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class HomePresenter extends PresenterBase implements IPresenter {
     public static final int SWITCH_TO_HOME = 1;

@@ -1,9 +1,10 @@
-package com.example.se114_healthcareapplication.components;
+package com.example.se114_healthcareapplication.view.components;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ToggleButton;
+import android.util.Log;
+import android.widget.*;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,31 +12,38 @@ import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
-import com.example.se114_healthcareapplication.presenter.AlarmPresenter;
+import com.example.se114_healthcareapplication.presenter.WaterPresenter;
+import com.webianks.library.scroll_choice.ScrollChoice;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link alarm_segment#newInstance} factory method to
+ * Use the {@link water_segment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
-
+public class water_segment extends Fragment implements IView<WaterPresenter> {
+List<String> datas = new ArrayList<>();
+TextView complete;
+Button confirm;
+WaterPresenter mainPresenter;
+ScrollChoice waterchoice ;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private ToggleButton alarmToggle;
-    private AlarmPresenter mainPresenter;
+
+    public static final int UPDATE_COMPLETE = 101;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public alarm_segment() {
+    public water_segment() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -43,11 +51,11 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment alarm_segment.
+     * @return A new instance of fragment water_segment.
      */
     // TODO: Rename and change types and number of parameters
-    public static alarm_segment newInstance(String param1, String param2) {
-        alarm_segment fragment = new alarm_segment();
+    public static water_segment newInstance(String param1, String param2) {
+        water_segment fragment = new water_segment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,20 +76,50 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_alarm_segment, container, false);
-        alarmToggle = view.findViewById(R.id.toggleBtnAlarm);
 
 
+        View v= inflater.inflate(R.layout.fragment_water_segment, container, false);
+        loadDatas();
+
+        complete = v.findViewById(R.id.CompleteValue);
+        confirm = v.findViewById(R.id.btn_confirm);
+        waterchoice = v.findViewById(R.id.Scrollchoice123);
+        waterchoice.addItems(datas,0);//default choice
 
 
-        setMainPresenter(new AlarmPresenter(this));
-        LocalDateTime localDateTime = LocalDateTime.now();
-        mainPresenter.triggerCustomAlarm(localDateTime.getHour(),localDateTime.getMinute(),localDateTime.getHour(),localDateTime.getMinute());
-        return view;
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int amt = waterchoice.getCurrentItemPosition();
+                amt = amt*2*100;
+                mainPresenter.addWater(amt);
+            }
+        });
+        Log.e("Water","Register receiver");
+        setMainPresenter(new WaterPresenter(this));
+        return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    private void loadDatas(){
+        datas.add("0");
+        datas.add("200");
+        datas.add("400");
+        datas.add("600");
+        datas.add("800");
+        datas.add("1000");
     }
 
     @Override
     public void UpdateView(int code, Object entity) {
+        if(code == UPDATE_COMPLETE){
+            int update = (int)entity;
+            complete.setText(String.valueOf(update)+" ml");
+        }
     }
 
     @Override
@@ -90,12 +128,12 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
     }
 
     @Override
-    public void setMainPresenter(AlarmPresenter presenter) {
+    public void setMainPresenter(WaterPresenter presenter) {
         mainPresenter = presenter;
     }
 
     @Override
-    public AlarmPresenter getMainpresnter() {
+    public WaterPresenter getMainpresnter() {
         return mainPresenter;
     }
 
