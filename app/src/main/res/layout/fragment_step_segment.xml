@@ -6,7 +6,7 @@
                                                    android:layout_height="420dp"
                                                    android:background="@drawable/background_fragment_menu"
                                                    android:layout_gravity="center"
-                                                   tools:context=".step_segment"
+                                                   tools:context=".view.components.step_segment"
                                                    android:clickable="true">
 
     <TextView

@@ -7,7 +7,7 @@
         android:layout_gravity="center"
         android:background="@drawable/background_fragment_menu"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".GoogleMapFragment">
+        tools:context=".view.components.GoogleMapFragment">
 
 
     <com.google.android.gms.maps.MapView

@@ -1,13 +1,13 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.R;
+import com.example.se114_healthcareapplication.view.authentication.login;
 
 public class AuthenticateActivity extends AppCompatActivity {
 
@@ -27,12 +27,12 @@ public class AuthenticateActivity extends AppCompatActivity {
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.authenticateContainer,intro.class,null).commit();
+            fragmentTransaction.replace(R.id.authenticateContainer, intro.class,null).commit();
         }
         else {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.authenticateContainer,login.class,null).commit();
+            fragmentTransaction.replace(R.id.authenticateContainer, login.class,null).commit();
         }
     }
 

@@ -6,7 +6,7 @@
              android:layout_height="match_parent"
              android:layout_gravity="center"
              android:background="@color/background_blue"
-             tools:context=".UserFragment">
+             tools:context=".view.bottom_nav.UserFragment">
 
 
     <!--Open Manage data-->

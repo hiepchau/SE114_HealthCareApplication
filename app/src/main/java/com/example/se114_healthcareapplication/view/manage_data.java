@@ -1,4 +1,4 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
 import com.example.se114_healthcareapplication.presenter.UserPresenter;
+import com.example.se114_healthcareapplication.R;
+
 
 /**
  * A simple {@link Fragment} subclass.

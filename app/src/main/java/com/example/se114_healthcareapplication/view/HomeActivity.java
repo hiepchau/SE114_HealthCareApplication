@@ -1,4 +1,4 @@
-package com.example.se114_healthcareapplication.bottom_nav;
+package com.example.se114_healthcareapplication.view;
 
 import android.app.Activity;
 import android.content.Intent;

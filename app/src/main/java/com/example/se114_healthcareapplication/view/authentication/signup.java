@@ -1,8 +1,7 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view.authentication;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 
 import android.text.Editable;
@@ -15,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.AuthenticatePresenter;
@@ -308,7 +308,7 @@ public class signup extends Fragment implements IView<AuthenticatePresenter> {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         switch (code){
             case R.id.btn_goto_signin:
-                fragmentTransaction.replace(R.id.authenticateContainer,login.class,null).addToBackStack("").commit();
+                fragmentTransaction.replace(R.id.authenticateContainer, login.class,null).addToBackStack("").commit();
                 break;
             case SIGNUP_FAILED:
                 checkDisableSignUp();

@@ -6,7 +6,7 @@
                                                    android:layout_gravity="center"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:background="@drawable/background_fragment_menu"
-                                                   tools:context=".MenuFragment">
+                                                   tools:context=".view.MenuFragment">
 
     <RelativeLayout
             android:layout_width="100dp" android:layout_height="150dp"

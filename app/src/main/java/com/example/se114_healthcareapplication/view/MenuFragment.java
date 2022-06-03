@@ -1,4 +1,4 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.MenuPresenter;
 

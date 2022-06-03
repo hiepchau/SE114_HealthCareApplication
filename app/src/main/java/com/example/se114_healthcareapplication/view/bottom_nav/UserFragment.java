@@ -1,4 +1,4 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view.bottom_nav;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,11 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
+import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
-import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
-import com.example.se114_healthcareapplication.presenter.MenuPresenter;
 import com.example.se114_healthcareapplication.presenter.UserPresenter;
 import com.google.firebase.auth.FirebaseAuth;
 

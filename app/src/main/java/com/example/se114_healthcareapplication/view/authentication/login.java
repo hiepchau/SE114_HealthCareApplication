@@ -1,4 +1,4 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view.authentication;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,13 +9,6 @@ import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -23,21 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.AuthenticatePresenter;
-import com.example.se114_healthcareapplication.presenter.PresenterBase;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -192,7 +174,7 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         switch (code){
             case R.id.btn_goto_signin:
-                fragmentTransaction.replace(R.id.authenticateContainer,signup.class,null).addToBackStack("").commit();
+                fragmentTransaction.replace(R.id.authenticateContainer, signup.class,null).addToBackStack("").commit();
                 break;
         }
     }

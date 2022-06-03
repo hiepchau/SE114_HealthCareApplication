@@ -1,17 +1,18 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view.components;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.se114_healthcareapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link date_picker#newInstance} factory method to
+ * Use the {@link confirm_code#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class date_picker extends Fragment {
+public class confirm_code extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,7 +23,7 @@ public class date_picker extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public date_picker() {
+    public confirm_code() {
         // Required empty public constructor
     }
 
@@ -32,11 +33,11 @@ public class date_picker extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment date_picker.
+     * @return A new instance of fragment confirm_code.
      */
     // TODO: Rename and change types and number of parameters
-    public static date_picker newInstance(String param1, String param2) {
-        date_picker fragment = new date_picker();
+    public static confirm_code newInstance(String param1, String param2) {
+        confirm_code fragment = new confirm_code();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -57,6 +58,6 @@ public class date_picker extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_date_picker, container, false);
+        return inflater.inflate(R.layout.fragment_confirm_code, container, false);
     }
 }

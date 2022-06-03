@@ -1,10 +1,11 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view.components;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.se114_healthcareapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -2,13 +2,14 @@ package com.example.se114_healthcareapplication.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.fragment.app.FragmentManager;
-import com.example.se114_healthcareapplication.AuthenticateActivity;
-import com.example.se114_healthcareapplication.NotificationsFragment;
+import com.example.se114_healthcareapplication.view.AuthenticateActivity;
+import com.example.se114_healthcareapplication.view.bottom_nav.NotificationsFragment;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
-import com.example.se114_healthcareapplication.manage_data;
+import com.example.se114_healthcareapplication.view.manage_data;
 import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.model.UserModel;
 import com.google.firebase.auth.FirebaseAuth;

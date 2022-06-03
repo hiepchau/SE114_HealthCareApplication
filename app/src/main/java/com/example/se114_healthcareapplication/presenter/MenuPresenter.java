@@ -5,9 +5,10 @@ import android.content.Intent;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.se114_healthcareapplication.*;
-import com.example.se114_healthcareapplication.components.alarm_segment;
+import com.example.se114_healthcareapplication.view.components.*;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.view.AuthenticateActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuPresenter extends PresenterBase implements IPresenter {
@@ -27,7 +28,7 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
         if(code == SWITCH_TO_WATER){
             FragmentManager fragmentManager = _view.GetFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer_function,water_segment.class,null).addToBackStack("").commit();
+            fragmentTransaction.replace(R.id.fragmentContainer_function, water_segment.class,null).addToBackStack("").commit();
         }
 
         if(code == SWITCH_TO_ALARM){

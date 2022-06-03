@@ -1,19 +1,18 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.view.authentication;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.se114_healthcareapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link info_user#newInstance} factory method to
+ * Use the {@link forgot_password#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class info_user extends Fragment {
+public class forgot_password extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +23,7 @@ public class info_user extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public info_user() {
+    public forgot_password() {
         // Required empty public constructor
     }
 
@@ -34,11 +33,11 @@ public class info_user extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment info_user.
+     * @return A new instance of fragment forgot_password.
      */
     // TODO: Rename and change types and number of parameters
-    public static info_user newInstance(String param1, String param2) {
-        info_user fragment = new info_user();
+    public static forgot_password newInstance(String param1, String param2) {
+        forgot_password fragment = new forgot_password();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +58,6 @@ public class info_user extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info_user, container, false);
+        return inflater.inflate(R.layout.fragment_forgot_password, container, false);
     }
 }
