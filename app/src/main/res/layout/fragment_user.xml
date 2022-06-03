@@ -24,19 +24,35 @@
 
         <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="20520525@gm.uit.edu.vn" app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/email_txv"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.863"
                 app:layout_constraintVertical_bias="0.241"/>
+
+
         <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Birthday" app:layout_constraintEnd_toEndOf="parent"
+                android:text="Name" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.055"
+                app:layout_constraintVertical_bias="0.175"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/name_txv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.863"
+                app:layout_constraintVertical_bias="0.176"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Age" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.055"
                 app:layout_constraintVertical_bias="0.324"/>
         <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Aug 18,1990"
+                android:id="@+id/age_txv"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +66,7 @@
                 app:layout_constraintVertical_bias="0.404"/>
         <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="175 cm"
+                android:id="@+id/height_txv"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +80,8 @@
         />
         <TextView
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="75 kg" app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/weight_txv"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.909"
                 app:layout_constraintVertical_bias="0.516"/>
@@ -74,14 +91,10 @@
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintVertical_bias="0.588"/>
-        <android.widget.ToggleButton
+        <TextView
+                android:id="@+id/gender_txv"
                 android:layout_width="60dp" android:layout_height="25dp"
-                android:text="Male"
-                android:textOff="Male"
-                android:textOn="Female"
-                android:textColor="@color/white"
-                android:fontFamily="@font/poppins_regular"
-                android:background="@drawable/background_gender" android:layout_alignParentEnd="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true" app:layout_constraintEnd_toEndOf="parent"
@@ -109,6 +122,7 @@
                 android:layout_width="390dp" android:layout_height="40dp"
                 android:background="@drawable/background_fragment_menu"
                 android:text="Manage my data"
+                android:id="@+id/btn_managedata"
                 android:textAllCaps="false"
                 android:textAlignment="center"
                 android:drawableStart="@drawable/ic_manage_account"
