@@ -1,13 +1,8 @@
 package com.example.se114_healthcareapplication.presenter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.wifi.hotspot2.pps.Credential;
-import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Display;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -17,19 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.se114_healthcareapplication.*;
-import com.example.se114_healthcareapplication.R;
-import com.example.se114_healthcareapplication.generalinterfaces.IModel;
+import com.example.se114_healthcareapplication.bottom_nav.HomeActivity;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.model.UserModel;
-import com.example.se114_healthcareapplication.model.entity.BaseModelEntity;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
-
-import static android.os.Build.VERSION_CODES.R;
-import static android.provider.Settings.System.getString;
-import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 import com.example.se114_healthcareapplication.R.id;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -42,7 +31,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class AuthenticatePresenter extends PresenterBase implements IPresenter {
     FirebaseAuth auth;
@@ -130,7 +118,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
                 fragmentTransaction1.replace(id.authenticateContainer, login.class,null).addToBackStack("").commit();
                 case UserModel.REGISTERED:
-                    Intent intent = new Intent(_view.getAppActivity(),HomeActivity.class);
+                    Intent intent = new Intent(_view.getAppActivity(), HomeActivity.class);
                     intent.putExtra("session",auth.getCurrentUser().getUid());
                     _view.StartNewActivity(intent);
                     _view.getAppActivity().finish();

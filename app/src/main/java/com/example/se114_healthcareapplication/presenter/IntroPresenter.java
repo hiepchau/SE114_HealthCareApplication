@@ -1,12 +1,10 @@
 package com.example.se114_healthcareapplication.presenter;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.widget.Toast;
 import androidx.core.content.ContextCompat;
-import com.example.se114_healthcareapplication.HomeActivity;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 

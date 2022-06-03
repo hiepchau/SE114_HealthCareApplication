@@ -1,14 +1,14 @@
-package com.example.se114_healthcareapplication;
+package com.example.se114_healthcareapplication.bottom_nav;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.Services.RegisterService;
 import com.example.se114_healthcareapplication.Services.StepsCountServices;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
