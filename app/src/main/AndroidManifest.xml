@@ -56,7 +56,7 @@
 
         </activity>
         <activity
-                android:name=".HomeActivity"
+                android:name=".bottom_nav.HomeActivity"
                 android:exported="true">
         </activity>
     </application>

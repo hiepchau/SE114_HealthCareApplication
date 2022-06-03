@@ -7,7 +7,7 @@
         android:layout_height="420dp"
         android:background="@drawable/background_fragment_menu"
         android:layout_gravity="center"
-        tools:context=".alarm_segment"
+        tools:context=".components.alarm_segment"
         android:clickable="true">
 
 
