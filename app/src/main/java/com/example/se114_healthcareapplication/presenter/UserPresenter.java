@@ -2,9 +2,13 @@ package com.example.se114_healthcareapplication.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.AuthenticateActivity;
+import com.example.se114_healthcareapplication.NotificationsFragment;
+import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.manage_data;
 import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.model.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,6 +17,7 @@ public class UserPresenter extends PresenterBase implements IPresenter {
     public static final int LOGOUT = 203493;
     public static final int UPDATE_USER_INFO = 6187239;
     public static final int UPDATE_STATISTIC = 9182372;
+    public static final int SWITCH_TO_MANAGEDATA = 127381;
     StatisticModel statisticModel;
     UserModel userModel;
     public UserPresenter(IView view) {
@@ -35,6 +40,10 @@ public class UserPresenter extends PresenterBase implements IPresenter {
         }
         if(code == UserModel.RETRIEVE_USER_SUCCESS){
             _view.UpdateView(UPDATE_USER_INFO,userModel.currentUser);
+        }
+        if(code == SWITCH_TO_MANAGEDATA){
+            FragmentManager manager = _view.GetFragmentManager();
+            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new manage_data()).addToBackStack("").commit();
         }
     }
 

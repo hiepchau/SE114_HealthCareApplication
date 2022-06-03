@@ -35,7 +35,7 @@ public class UserFragment extends Fragment implements IView<UserPresenter> {
     private String mParam1;
     private String mParam2;
     private UserPresenter mainPresenter;
-    private Button logoutbtn, mangebtn;
+    private Button logoutbtn, managebtn;
 
     public UserFragment() {
         // Required empty public constructor
@@ -79,12 +79,20 @@ public class UserFragment extends Fragment implements IView<UserPresenter> {
         weighttxt = v.findViewById(R.id.weight_txv);
         gendertxt = v.findViewById(R.id.gender_txv);
         nametxt = v.findViewById(R.id.name_txv);
+        managebtn = v.findViewById(R.id.btn_managedata);
         logoutbtn = v.findViewById(R.id.btn_logout);
 
         logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mainPresenter.NotifyPresenter(UserPresenter.LOGOUT);
+            }
+        });
+
+        managebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(UserPresenter.SWITCH_TO_MANAGEDATA);
             }
         });
         setMainPresenter(new UserPresenter(this));
