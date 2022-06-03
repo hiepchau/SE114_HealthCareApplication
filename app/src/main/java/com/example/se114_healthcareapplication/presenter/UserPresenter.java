@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.fragment.app.FragmentManager;
+import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
+import com.example.se114_healthcareapplication.model.entity.UserEntity;
 import com.example.se114_healthcareapplication.view.AuthenticateActivity;
 import com.example.se114_healthcareapplication.view.bottom_nav.NotificationsFragment;
 import com.example.se114_healthcareapplication.R;
@@ -51,5 +53,13 @@ public class UserPresenter extends PresenterBase implements IPresenter {
     @Override
     public Context getCurrentContext() {
         return _view.getAppActivity().getApplicationContext();
+    }
+    public void UpdateData(UserEntity user, StatisticEntity stat){
+        statisticModel.UpdateDatabase(stat);
+        userModel.UpdateDatabase(user);
+    }
+    public void refresh(){
+        userModel.getCurrentUser();
+        statisticModel.getCurrentStatistic();
     }
 }

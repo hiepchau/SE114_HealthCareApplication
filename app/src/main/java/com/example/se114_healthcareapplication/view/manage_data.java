@@ -170,6 +170,21 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
                 checkIfCanUpdate();
             }
         });
+
+        acceptbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(stat!= null && user!=null) {
+                    user.FirstName = firstnametxt.getText().toString();
+                    user.LastName = lastnametxt.getText().toString();
+                    user.Age = Integer.parseInt(agetxt.getText().toString());
+                    stat.Height = Double.parseDouble(heighttxt.getText().toString());
+                    stat.Weight = Double.parseDouble(weighttxt.getText().toString());
+                    mainPresenter.UpdateData(user,stat);
+                    mainPresenter.refresh();
+                }
+            }
+        });
         return v;
     }
 
@@ -190,7 +205,6 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
 
     private void checkIfCanUpdate(){
         if(stat!=null && user!=null) {
-
             if (!heighttxt.getText().toString().isEmpty()
                     && !weighttxt.getText().toString().isEmpty()
                     && !lastnametxt.getText().toString().isEmpty()
