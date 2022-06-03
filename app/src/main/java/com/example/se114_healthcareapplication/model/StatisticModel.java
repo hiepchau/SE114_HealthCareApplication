@@ -173,4 +173,37 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         return currentEntity;
     }
 
+    public void getStatisticFromPath(String pth){
+        DatabaseReference tmpref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
+                .child("Statistic")
+                .child(pth);
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if (!snapshot.exists()) {
+                    currentEntity = null;
+                    _presenter.NotifyPresenter(DONE_INIT_DATA);
+                } else {
+                    double we = snapshot.child("Weight").getValue(double.class);
+                    double he = snapshot.child("Height").getValue(double.class);
+                    int water = snapshot.child("Water").getValue(int.class);
+                    int steps = snapshot.child("Steps").getValue(int.class);
+                    long sleep = snapshot.child("SleepTime").getValue(int.class);
+                    int emo = snapshot.child("EmotionalLevel").getValue(int.class);
+                    String sta = snapshot.child("Status").getValue(String.class);
+                    currentEntity = new StatisticEntity(he,we,water,steps,sleep,emo,sta);
+                    _presenter.NotifyPresenter(DONE_INIT_DATA);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                currentEntity = null;
+            }
+        };
+        tmpref.addListenerForSingleValueEvent(listener);
+
+    }
+
 }

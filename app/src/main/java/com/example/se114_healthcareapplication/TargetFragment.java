@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
+import com.example.se114_healthcareapplication.model.entity.UserEntity;
 import com.example.se114_healthcareapplication.presenter.TargetPresenter;
 
 import java.time.LocalDate;
@@ -40,7 +42,7 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
     private TargetPresenter mainPresenter;
     private Button calendarbtn;
     private ProgressBar progressBarwater, progressBarsteps, progressBarsleep;
-    private TextView datetxt;
+    private TextView datetxt, minhrs, maxhrs, minsteps, maxsteps, minwater, maxwater;
 
     public TargetFragment() {
         // Required empty public constructor
@@ -84,6 +86,12 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
         progressBarsleep = v.findViewById(R.id.sleep_prs);
         progressBarsteps = v.findViewById(R.id.steps_prs);
         datetxt = v.findViewById(R.id.date_txv);
+        minhrs = v.findViewById(R.id.minhour);
+        maxhrs = v.findViewById(R.id.maxhour);
+        minsteps = v.findViewById(R.id.minsteps);
+        maxsteps = v.findViewById(R.id.maxsteps);
+        minwater = v.findViewById(R.id.minwater);
+        maxwater = v.findViewById(R.id.maxwater);
         DateTimeFormatter format = DateTimeFormatter.ofPattern("EEE, MMM dd, yyyy");
         datetxt.setText(format.format(LocalDateTime.now()));
 
@@ -95,8 +103,10 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         DateTimeFormatter format = DateTimeFormatter.ofPattern("EEE, MMM dd, yyyy");
+                        DateTimeFormatter formatsearch = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                         LocalDateTime local = LocalDateTime.of(year,month,dayOfMonth,0,0);
                         datetxt.setText(format.format(local));
+                        mainPresenter.getSpecificData(formatsearch.format(local));
                     }
                 },date.getYear(),date.getMonthValue(),date.getDayOfMonth());
                 dialog.show();
@@ -108,7 +118,33 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
 
     @Override
     public void UpdateView(int code, Object entity) {
-
+        if(code == TargetPresenter.UPDATE_USER_INFO){
+            UserEntity user = (UserEntity) entity;
+            if(user.Gender==0)
+                progressBarwater.setMax(2500);
+            else
+                progressBarwater.setMax(3500);
+            progressBarsteps.setMax(3000);
+            progressBarsleep.setMax(8);
+        }
+        if(code == TargetPresenter.UPDATE_DAILY_STATISTIC){
+            if(entity!=null) {
+                StatisticEntity stat = (StatisticEntity) entity;
+                progressBarwater.setProgress(stat.Water);
+                progressBarsteps.setProgress(stat.Steps);
+                double sleeptime = Math.abs((double) stat.SleepTime / (3600 * 1000));
+                int partime = (int) sleeptime;
+                progressBarsleep.setProgress(partime);
+                minwater.setText(String.valueOf(stat.Water) + " ml");
+                minsteps.setText(String.valueOf(stat.Steps) + " steps");
+                minhrs.setText(String.valueOf(partime) + " hours");
+            }
+            else {
+                progressBarwater.setProgress(0);
+                progressBarsteps.setProgress(0);
+                progressBarsleep.setProgress(0);
+            }
+        }
     }
 
     @Override
