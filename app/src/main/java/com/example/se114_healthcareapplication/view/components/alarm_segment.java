@@ -76,7 +76,7 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
 
         setMainPresenter(new AlarmPresenter(this));
         LocalDateTime localDateTime = LocalDateTime.now();
-        mainPresenter.triggerCustomAlarm(localDateTime.getHour()+1,localDateTime.getMinute(),localDateTime.getHour(),localDateTime.getMinute());
+        mainPresenter.triggerCustomAlarm(localDateTime.getHour()-1,localDateTime.getMinute(),localDateTime.getHour(),localDateTime.getMinute());
         return view;
     }
 

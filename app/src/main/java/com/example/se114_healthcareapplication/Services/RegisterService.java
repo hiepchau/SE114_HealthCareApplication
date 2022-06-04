@@ -24,7 +24,6 @@ public class RegisterService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         registerReceiver(new AlarmReciever(),new IntentFilter("CUSTOM_ALARM"));
-        Toast.makeText(getApplicationContext(),"Registed alarm", Toast.LENGTH_SHORT).show();
         return START_STICKY;
     }
 }
