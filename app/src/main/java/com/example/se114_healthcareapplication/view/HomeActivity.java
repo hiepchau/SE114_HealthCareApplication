@@ -23,6 +23,7 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
 
     private HomePresenter mainPresenter;
     private Intent serviceIntent;
+    Intent registerintent;
     int selectedItemMenu;
 
     @Override
@@ -62,7 +63,7 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
         serviceIntent = new Intent(HomeActivity.this,StepsCountServices.class);
         startService(serviceIntent);
 
-        Intent registerintent = new Intent(HomeActivity.this, RegisterService.class);
+        registerintent = new Intent(HomeActivity.this, RegisterService.class);
         startService(registerintent);
     }
 
