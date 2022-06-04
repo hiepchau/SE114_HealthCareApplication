@@ -141,7 +141,7 @@
                   app:layout_constraintHorizontal_bias="0.112"
                   app:layout_constraintVertical_bias="0.608"/>
         <TextView android:layout_width="wrap_content"
-                  ndroid:layout_height="wrap_content"
+                  android:layout_height="wrap_content"
                   android:hint="3000 ml"
                   android:id="@+id/maxwater"
                   android:fontFamily="@font/outfit_regular"
