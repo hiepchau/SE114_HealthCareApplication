@@ -59,8 +59,7 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
 
 
     public void UpdateRunning(float distance){
-        RunningEntity entity = new RunningEntity(distance,System.currentTimeMillis()-starttime);
+        RunningEntity entity = new RunningEntity(distance,System.currentTimeMillis()-starttime, System.currentTimeMillis());
         runningModel.UpdateDatabase(entity);
     }
-
 }
