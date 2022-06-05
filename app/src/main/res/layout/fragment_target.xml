@@ -29,18 +29,22 @@
                 android:textSize="16dp"
                 android:id="@+id/btn_calendar"
                 android:fontFamily="@font/outfit_bold"
-                android:drawableStart="@drawable/ic_down_chevron"
                 android:drawableEnd="@drawable/ic_calender"
         />
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:textSize="20dp"
-                  android:text="Date"
-                  android:id="@+id/date_txv"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  android:layout_marginLeft="20dp"
-                  android:layout_marginBottom="150dp"/>
 
+        <TextView
+                android:background="@drawable/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Date"
+                android:fontFamily="@font/outfit_regular"
+                android:gravity="center"
+                android:id="@+id/date_txv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintVertical_bias="0.162"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:text="Water"
@@ -50,9 +54,8 @@
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintHorizontal_bias="0.115"
-                  app:layout_constraintVertical_bias="0.109"/>
-
+                  app:layout_constraintHorizontal_bias="0.462"
+                  app:layout_constraintVertical_bias="0.289" android:id="@+id/textView11"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:textSize="16dp"
@@ -62,8 +65,8 @@
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintHorizontal_bias="0.113"
-                  app:layout_constraintVertical_bias="0.302"/>
+                  app:layout_constraintHorizontal_bias="0.455"
+                  app:layout_constraintVertical_bias="0.446"/>
         <TextView android:layout_width="49dp"
                   android:layout_height="23dp"
                   android:text="Sleep"
@@ -73,8 +76,8 @@
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintHorizontal_bias="0.116"
-        />
+                  app:layout_constraintHorizontal_bias="0.461"
+                  app:layout_constraintVertical_bias="0.607" android:id="@+id/textView10"/>
         <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="310dp"
@@ -84,8 +87,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.47"
-                app:layout_constraintVertical_bias="0.173"/>
+                app:layout_constraintHorizontal_bias="0.405"
+                app:layout_constraintVertical_bias="0.323"/>
         <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="310dp"
@@ -95,9 +98,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.47"
-                app:layout_constraintVertical_bias="0.361"/>
-
+                app:layout_constraintHorizontal_bias="0.405"
+                app:layout_constraintVertical_bias="0.476"/>
         <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="310dp"
@@ -107,8 +109,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.415"
-                app:layout_constraintVertical_bias="0.562"/>
+                app:layout_constraintHorizontal_bias="0.386"
+                app:layout_constraintVertical_bias="0.633"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:text="0 steps"
@@ -118,9 +120,10 @@
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
                   app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintHorizontal_bias="0.107"
-                  app:layout_constraintVertical_bias="0.4"
+                  app:layout_constraintHorizontal_bias="0.106"
+                  app:layout_constraintVertical_bias="0.499"
                   android:id="@+id/minsteps"/>
+
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:id="@+id/minwater"
@@ -131,8 +134,8 @@
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
                   app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintHorizontal_bias="0.107"
-                  app:layout_constraintVertical_bias="0.215"/>
+                  app:layout_constraintHorizontal_bias="0.106"
+                  app:layout_constraintVertical_bias="0.346"/>
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -144,8 +147,8 @@
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintHorizontal_bias="0.112"
-                  app:layout_constraintVertical_bias="0.608"/>
+                  app:layout_constraintHorizontal_bias="0.105"
+                  app:layout_constraintVertical_bias="0.655"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:hint="3000 ml"
@@ -156,8 +159,8 @@
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintHorizontal_bias="0.868"
-                  app:layout_constraintVertical_bias="0.215"/>
+                  app:layout_constraintHorizontal_bias="0.832"
+                  app:layout_constraintVertical_bias="0.345"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:hint="3000 steps"
@@ -167,10 +170,9 @@
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
                   app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintHorizontal_bias="0.863"
-                  app:layout_constraintVertical_bias="0.4"
+                  app:layout_constraintHorizontal_bias="0.823"
+                  app:layout_constraintVertical_bias="0.499"
                   android:id="@+id/maxsteps"/>
-
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:hint="8 hours"
@@ -181,10 +183,20 @@
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
                   app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintHorizontal_bias="0.855"
-                  app:layout_constraintVertical_bias="0.608"/>
+                  app:layout_constraintHorizontal_bias="0.83"
+                  app:layout_constraintVertical_bias="0.655"/>
 
 
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="“One part at a time, one day at a time, we can accomplish any goal we set for ourselves.” — Karen Casey."
+                android:fontFamily="@font/outfit_bold"
+                android:gravity="center"
+                android:drawableEnd="@drawable/ic_target_cloud"
+                android:textSize="18dp" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.876" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="1.0"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
