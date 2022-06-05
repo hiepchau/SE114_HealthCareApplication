@@ -12,10 +12,10 @@
 
 ## Yêu cầu cài đặt
 - Android
-  - minSdkVersion: 26
-  - targetSdkVersion: 32
-  - Gradle version: 7.2
-- Database: MongoDB
+  - Min SDK Version: 26
+  - Target SDK Version: 32
+  - Gradle Version: 7.2
+- Database: Firebase
 - IDE: Android Studio, IntelliJ IDEA
 
 ## Hướng dẫn sử dụng
@@ -25,7 +25,7 @@
 
 >Tài khoản mặc định:
 >hvhiep9411@gmail.com ||
-> password: 123456
+> password: 12345678
 
 
 
@@ -39,11 +39,10 @@
 - Công nghệ
     - Ngôn ngữ: Java
     - Mô hình: [MVP](https://www.geeksforgeeks.org/mvp-model-view-presenter-architecture-pattern-in-android-with-example/)
-    - Kỹ thuật: [DependencyInjection](https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection)
-    - Framework: [dotnet](https://github.com/dotnet)
-    - Framework UI: [WPF](https://github.com/dotnet/wpf)
-    - Database: [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+
+    - Framework UI: [XML](https://www.geeksforgeeks.org/a-complete-guide-to-learn-xml-for-android-app-development/)
+    - Database: [Firebase](https://github.com/topics/firebase)
 - Thư viện
-    - [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+    - [Material-Components-Android](https://github.com/material-components/material-components-android)
     - [Live-Charts](https://github.com/Live-Charts/Live-Charts)
     - [Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
