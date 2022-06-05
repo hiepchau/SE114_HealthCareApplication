@@ -1,8 +1,11 @@
 package com.example.se114_healthcareapplication.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.inputmethod.InputMethodManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -110,5 +113,13 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
     @Override
     public FragmentManager GetFragmentManager() {
         return getSupportFragmentManager();
+    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }
