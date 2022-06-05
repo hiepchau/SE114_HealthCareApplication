@@ -14,6 +14,7 @@ public class RunningModel extends ModelBase implements IModel<RunningEntity> {
     FirebaseAuth auth;
     DatabaseReference ref;
     final String path = "RunningStat";
+
     public RunningModel(IPresenter _presenter) {
         super(_presenter);
         auth = FirebaseAuth.getInstance();

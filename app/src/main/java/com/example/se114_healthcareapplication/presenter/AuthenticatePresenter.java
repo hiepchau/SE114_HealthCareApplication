@@ -39,13 +39,15 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
     ActivityResultLauncher<Intent> activityResultLauncher;
     public final int GOOGLE_REQUEST = 1001;
     public static final int GO_TO_LOGIN = 712834;
+    static final String FIREBASE_TOKEN = "593884992492-5qj5ecn99fs0oc2ue2n51jel09a611hq.apps.googleusercontent.com";
     private boolean canContinue;
     private GoogleSignInClient client;
+
     public AuthenticatePresenter(IView view) {
         super(view);
         auth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("593884992492-5qj5ecn99fs0oc2ue2n51jel09a611hq.apps.googleusercontent.com")
+                .requestIdToken(FIREBASE_TOKEN)
                 .requestEmail()
                 .build();
         client = GoogleSignIn.getClient(_view.getAppActivity(), gso);
