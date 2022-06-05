@@ -13,6 +13,8 @@ import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.StepsCountPresenter;
 
+import java.text.DecimalFormat;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link step_segment#newInstance} factory method to
@@ -85,7 +87,8 @@ public class step_segment extends Fragment implements IView<StepsCountPresenter>
         }
         if(code== UPDATE_PERCENT){
             double tmp =(double) entity;
-            percent.setText(String.valueOf(tmp)+"%");
+            DecimalFormat df = new DecimalFormat("0.00");
+            percent.setText(df.format(tmp)+"%");
         }
     }
 

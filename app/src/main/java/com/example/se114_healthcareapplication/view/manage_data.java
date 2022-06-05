@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.model.CustomeEditText;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
 import com.example.se114_healthcareapplication.presenter.UserPresenter;
@@ -34,7 +35,7 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private EditText heighttxt, weighttxt, firstnametxt, lastnametxt, agetxt;
+    private CustomeEditText heighttxt, weighttxt, firstnametxt, lastnametxt, agetxt;
     private Button acceptbtn;
     private UserPresenter mainPresenter;
     private UserEntity user;
@@ -77,8 +78,8 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_manage_data, container, false);
         heighttxt = v.findViewById(R.id.height_edt);
-        weighttxt = v.findViewById(R.id.weight_edt);
-        firstnametxt = v.findViewById(R.id.firstname_edt);
+        weighttxt =  v.findViewById(R.id.weight_edt);
+        firstnametxt =v.findViewById(R.id.firstname_edt);
         lastnametxt = v.findViewById(R.id.lastname_edt);
         agetxt = v.findViewById(R.id.age_edt);
         acceptbtn = v.findViewById(R.id.btn_accept);

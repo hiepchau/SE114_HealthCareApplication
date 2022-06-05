@@ -114,12 +114,12 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
     public FragmentManager GetFragmentManager() {
         return getSupportFragmentManager();
     }
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (getCurrentFocus() != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        }
-        return super.dispatchTouchEvent(ev);
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        if (getCurrentFocus() != null) {
+//            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+//        }
+//        return super.dispatchTouchEvent(ev);
+//    }
 }

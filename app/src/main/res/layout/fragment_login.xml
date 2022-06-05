@@ -6,7 +6,9 @@
               android:layout_height="match_parent"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:background="@color/background_blue"
-              tools:context=".view.authentication.login">
+              tools:context=".view.authentication.login"
+android:clickable="true"
+android:focusableInTouchMode="true">
 
 
     <TextView
@@ -45,7 +47,7 @@
             app:layout_constraintVertical_bias="0.234"/>
 
 
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:id="@+id/et_login_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +67,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.373"/>
 
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:id="@+id/et_login_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
