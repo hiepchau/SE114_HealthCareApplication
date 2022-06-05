@@ -34,6 +34,10 @@ public class AlarmActivity extends AppCompatActivity implements IView<AlarmPrese
         actionBar.hide();
         skipBtn = findViewById(R.id.skipAlarm);
         setMainPresenter(new AlarmPresenter(this));
+        if(!mainPresenter.isTurnedOnSleeping()){
+            startActivity(new Intent(AlarmActivity.this,HomeActivity.class));
+            finish();
+        }
         skipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
