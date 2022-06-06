@@ -24,7 +24,7 @@
             app:layout_constraintVertical_bias="0.05"
             android:id="@+id/textView8"/>
 
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/et_login"
@@ -43,7 +43,7 @@
             app:layout_constraintVertical_bias="0.141"
             android:id="@+id/register_mail_edt"/>
 
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/et_login"
@@ -61,7 +61,7 @@
             app:layout_constraintVertical_bias="0.256"
             android:id="@+id/firstname_edt"
             app:layout_constraintHorizontal_bias="0.132"/>
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:background="@drawable/et_login"
@@ -79,7 +79,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.256"
             app:layout_constraintHorizontal_bias="0.87"/>
-    <EditText android:layout_width="150dp"
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+             android:layout_width="150dp"
               android:layout_height="40dp"
               android:hint="Age"
               android:inputType="number"
@@ -118,7 +119,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHorizontal_bias="0.853"
             app:layout_constraintVertical_bias="0.359"/>
-    <EditText android:layout_width="165dp"
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+              android:layout_width="165dp"
               android:layout_height="40dp"
               android:hint="Height (cm)"
               android:inputType="number"
@@ -131,7 +133,9 @@
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintHorizontal_bias="0.146"
               app:layout_constraintVertical_bias="0.448"/>
-    <EditText android:layout_width="165dp" android:layout_height="40dp"
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+              android:layout_width="165dp"
+              android:layout_height="40dp"
               android:hint="Weight (kg)"
               android:inputType="number"
               android:paddingLeft="10dp"
@@ -143,7 +147,7 @@
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintHorizontal_bias="0.853"
               app:layout_constraintVertical_bias="0.448"/>
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -161,7 +165,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.567"
             android:id="@+id/register_pass_edt"/>
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/et_login"
