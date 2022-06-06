@@ -1,9 +1,12 @@
 package com.example.se114_healthcareapplication.view.components;
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.ToggleButton;
+import android.preference.PreferenceManager;
+import android.widget.*;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +16,9 @@ import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.AlarmPresenter;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.TimeZone;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +32,8 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private ToggleButton alarmToggle;
+    private Button setsleepbtn, setwakebtn;
+    private TextView sleephourtxt, sleepmintxt, wakehourtxt, wakemintxt;
     private AlarmPresenter mainPresenter;
 
     // TODO: Rename and change types of parameters
@@ -70,13 +77,86 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_alarm_segment, container, false);
         alarmToggle = view.findViewById(R.id.toggleBtnAlarm);
-
+        setsleepbtn = view.findViewById(R.id.btn_select_sleep);
+        setwakebtn = view.findViewById(R.id.btn_select_wake);
+        sleephourtxt = view.findViewById(R.id.sleep_hrs_txv);
+        sleepmintxt = view.findViewById(R.id.sleep_min_txv);
+        wakehourtxt = view.findViewById(R.id.wake_hrs_txv);
+        wakemintxt = view.findViewById(R.id.wake_min_txv);
 
 
 
         setMainPresenter(new AlarmPresenter(this));
-        LocalDateTime localDateTime = LocalDateTime.now();
-        mainPresenter.triggerCustomAlarm(localDateTime.getHour()-1,localDateTime.getMinute(),localDateTime.getHour(),localDateTime.getMinute());
+        setupTurnedOnSleeping();
+
+        setsleepbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LocalDateTime localDateTime = LocalDateTime.now();
+                TimePickerDialog dlg = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        String hour = "", min = "";
+                        if(hourOfDay/10==0)
+                            hour+="0";
+                        if(minute/10==0)
+                            min+="0";
+                        hour+=String.valueOf(hourOfDay);
+                        min+=String.valueOf(minute);
+                        sleephourtxt.setText(hour);
+                        sleepmintxt.setText(min);
+                    }
+                },localDateTime.getHour(),localDateTime.getMinute(),true);
+                dlg.show();
+            }
+        });
+
+        setwakebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LocalDateTime localDateTime = LocalDateTime.now();
+                TimePickerDialog dlg = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        String hour = "", min = "";
+                        if(hourOfDay/10==0)
+                            hour+="0";
+                        if(minute/10==0)
+                            min+="0";
+                        hour+=String.valueOf(hourOfDay);
+                        min+=String.valueOf(minute);
+                        wakehourtxt.setText(hour);
+                        wakemintxt.setText(min);
+                    }
+                },localDateTime.getHour(),localDateTime.getMinute(),true);
+                dlg.show();
+            }
+        });
+        alarmToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    if(sleephourtxt.getText().toString().isEmpty()
+                    || sleepmintxt.getText().toString().isEmpty()
+                    || wakehourtxt.getText().toString().isEmpty()
+                    || wakemintxt.getText().toString().isEmpty()){
+                        Toast.makeText(getContext(),"You have to select both bed time and wake up time",Toast.LENGTH_SHORT).show();
+                        alarmToggle.setChecked(false);
+                        return;
+                    }
+                    int bedhour = Integer.parseInt(sleephourtxt.getText().toString());
+                    int bedmin = Integer.parseInt(sleepmintxt.getText().toString());
+                    int wakehour = Integer.parseInt(wakehourtxt.getText().toString());
+                    int wakemin = Integer.parseInt(wakemintxt.getText().toString());
+                    mainPresenter.triggerCustomAlarm(wakehour,wakemin,bedhour,bedmin);
+                }
+                else{
+                    setsleepbtn.setEnabled(true);
+                    setwakebtn.setEnabled(true);
+                    mainPresenter.cancelCurrentAlarm();
+                }
+            }
+        });
         return view;
     }
 
@@ -117,5 +197,21 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
     @Override
     public FragmentManager GetFragmentManager() {
         return getActivity().getSupportFragmentManager();
+    }
+    private void setupTurnedOnSleeping(){
+        if(mainPresenter.isTurnedOnSleeping()){
+            alarmToggle.setChecked(true);
+            long tmpsleep = mainPresenter.getBedTime();
+            long tmpwake = mainPresenter.getWakeTIme();
+            LocalDateTime localsleep = LocalDateTime.ofInstant(Instant.ofEpochMilli(tmpsleep), TimeZone.getDefault().toZoneId());
+            LocalDateTime localwake = LocalDateTime.ofInstant(Instant.ofEpochMilli(tmpwake), TimeZone.getDefault().toZoneId());
+
+            sleephourtxt.setText(String.valueOf(localsleep.getHour()));
+            sleepmintxt.setText(String.valueOf(localsleep.getMinute()));
+            wakehourtxt.setText(String.valueOf(localwake.getHour()));
+            wakemintxt.setText(String.valueOf(localwake.getMinute()));
+            setwakebtn.setEnabled(false);
+            setsleepbtn.setEnabled(false);
+        }
     }
 }

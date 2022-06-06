@@ -74,6 +74,7 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
 
 
     public void cancelCurrentAlarm(){
+        stopSleeping();
         Intent alarmIntent = new Intent("CUSTOM_ALARM");
         PendingIntent fireIntent = PendingIntent.getBroadcast(_view.getAppActivity(),0,alarmIntent,0);
         fireIntent.cancel();
@@ -89,7 +90,12 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         if(calendar.getTimeInMillis()< System.currentTimeMillis()){
             calendar.add(Calendar.DATE,1);
         }
-        beginSleeping(BeginMIN,BeginHRS,MIN,HRS);
+
+        Calendar calendarbegin = Calendar.getInstance();
+        calendarbegin.setTimeInMillis(System.currentTimeMillis());
+        calendarbegin.set(Calendar.HOUR_OF_DAY,BeginHRS);
+        calendarbegin.set(Calendar.MINUTE,BeginMIN);
+        beginSleeping(calendarbegin.getTimeInMillis(),calendar.getTimeInMillis());
 
         PendingIntent fireIntent = PendingIntent.getBroadcast(_view.getAppActivity(),0,alarmIntent,0);
         alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis() ,fireIntent);
@@ -112,23 +118,26 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         long wake = prefs.getLong(_view.getAppActivity().getString(R.string.pref_wake_time), 0);
         return wake;
     }
-    private void beginSleeping(int beginmin, int beginhrs,int stopmin, int stophour){
+    private void beginSleeping(long begintime, long endtime){
+        setSleeping(begintime);
+        setwakeup(endtime);
+    }
+    public void setSleeping(long begintime){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_view.getAppActivity().getApplicationContext());
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY,beginhrs);
-        calendar.set(Calendar.MINUTE,beginmin);
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putLong(_view.getAppActivity().getString(R.string.pref_sleep_time), begintime);
+        edit.commit();
 
-        Calendar calendarwake = Calendar.getInstance();
-        calendarwake.setTimeInMillis(System.currentTimeMillis());
-        calendarwake.set(Calendar.HOUR_OF_DAY,stophour);
-        calendarwake.set(Calendar.MINUTE,stopmin);
+    }
+
+    public void setwakeup(long waketime){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_view.getAppActivity().getApplicationContext());
 
         SharedPreferences.Editor edit = prefs.edit();
-        edit.putLong(_view.getAppActivity().getString(R.string.pref_sleep_time), calendar.getTimeInMillis());
-        edit.putLong(_view.getAppActivity().getString(R.string.pref_wake_time),calendarwake.getTimeInMillis());
+        edit.putLong(_view.getAppActivity().getString(R.string.pref_wake_time), waketime);
         edit.commit();
+
     }
     private void stopSleeping(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_view.getAppActivity().getApplicationContext());

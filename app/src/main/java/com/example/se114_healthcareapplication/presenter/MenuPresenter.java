@@ -67,6 +67,7 @@ public class MenuPresenter extends PresenterBase implements IPresenter {
 
     @Override
     public Context getCurrentContext() {
+
         return _view.getAppActivity();
     }
 }
