@@ -14,136 +14,120 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
-                app:layout_constraintVertical_bias="0.242"/>
-
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/email_txv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
-                app:layout_constraintVertical_bias="0.241"/>
-
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.055"
-                app:layout_constraintVertical_bias="0.175"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/name_txv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.863"
-                app:layout_constraintVertical_bias="0.176"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Age"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.055"
-                app:layout_constraintVertical_bias="0.324"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/age_txv"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.897"
-                app:layout_constraintVertical_bias="0.324"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Height"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintVertical_bias="0.404"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/height_txv"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.906"
-                app:layout_constraintVertical_bias="0.404"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Weight"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/weight_txv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.909"
-                app:layout_constraintVertical_bias="0.516"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="About Me"
+                  android:fontFamily="@font/outfit_bold"
+                  android:textColor="@color/blue"
+                  android:drawableEnd="@drawable/ic_info"
+                  android:textSize="32dp" app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.053"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gender"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView18" android:layout_marginTop="40dp"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@+id/gender_txv" app:layout_constraintHorizontal_bias="0.068"/>
+        <TextView
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:gravity="right"
+                android:id="@+id/email_txv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView17"
+                app:layout_constraintHorizontal_bias="0.894"
+                app:layout_constraintTop_toBottomOf="@+id/name_txv" android:layout_marginTop="44dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.051"
-                app:layout_constraintVertical_bias="0.588"/>
+                android:layout_marginTop="124dp" android:id="@+id/textView20" android:layout_marginStart="20dp"/>
+        <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:id="@+id/name_txv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView20"
+                app:layout_constraintHorizontal_bias="0.936" android:layout_marginTop="124dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:fontFamily="@font/outfit_regular"
+                android:id="@+id/textView21"
+                app:layout_constraintTop_toBottomOf="@+id/textView17"
+                android:layout_marginTop="40dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"/>
+        <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/age_txv"
+                android:gravity="right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView21"
+                app:layout_constraintHorizontal_bias="0.948"
+                app:layout_constraintTop_toBottomOf="@+id/email_txv" android:layout_marginTop="36dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Height"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/textView19"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" android:layout_marginTop="40dp"
+                android:layout_marginStart="20dp"/>
+        <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/height_txv"
+                android:gravity="right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView19"
+                app:layout_constraintHorizontal_bias="0.946" app:layout_constraintTop_toBottomOf="@+id/age_txv"
+                android:layout_marginTop="36dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/textView18"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" android:layout_marginTop="40dp"
+                android:layout_marginStart="20dp"/>
+        <TextView
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/weight_txv"
+                android:gravity="right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.946"
+                app:layout_constraintStart_toEndOf="@+id/textView18"
+                app:layout_constraintTop_toBottomOf="@+id/height_txv" android:layout_marginTop="40dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" android:layout_marginTop="44dp"
+                android:layout_marginStart="20dp"/>
         <TextView
                 android:id="@+id/gender_txv"
                 android:layout_width="60dp"
                 android:layout_height="25dp"
+                android:gravity="right"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.903"
-                app:layout_constraintVertical_bias="0.593"/>
+                app:layout_constraintHorizontal_bias="0.954"
+                app:layout_constraintTop_toBottomOf="@+id/weight_txv" android:layout_marginTop="40dp"/>
         <android.widget.Button
                 android:layout_width="390dp"
                 android:layout_height="40dp"
