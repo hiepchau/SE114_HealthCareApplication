@@ -11,7 +11,8 @@
         android:clickable="true">
 
 
-    <com.example.se114_healthcareapplication.model.CustomeEditText
+    <TextView
+            android:id="@+id/sleep_hrs_txv"
             android:layout_width="70dp"
             android:layout_height="40dp"
             android:hint="hour"
@@ -24,19 +25,20 @@
             app:layout_constraintHorizontal_bias="0.08"
             app:layout_constraintVertical_bias="0.263"/>
 
-    <com.example.se114_healthcareapplication.model.CustomeEditText
-            android:layout_width="70dp" android:layout_height="40dp"
+<TextView   android:layout_width="70dp" android:layout_height="40dp"
             android:hint="minute"
+            android:id="@+id/sleep_min_txv"
             android:gravity="center"
             android:fontFamily="@font/outfit_regular" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.31"
             app:layout_constraintVertical_bias="0.263"/>
 
-    <com.example.se114_healthcareapplication.model.CustomeEditText
+<TextView
             android:layout_width="70dp"
             android:layout_height="40dp"
             android:hint="hour"
+            android:id="@+id/wake_hrs_txv"
             android:gravity="center"
             android:fontFamily="@font/outfit_regular"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,10 +48,11 @@
             app:layout_constraintHorizontal_bias="0.692"
             app:layout_constraintVertical_bias="0.263"/>
 
-    <com.example.se114_healthcareapplication.model.CustomeEditText
+<TextView
             android:layout_width="70dp"
             android:layout_height="40dp"
             android:hint="minute"
+            android:id="@+id/wake_min_txv"
             android:gravity="center"
             android:fontFamily="@font/outfit_regular"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +66,7 @@
             android:layout_width="100dp" android:layout_height="30dp"
             android:text="select time"
             android:textAllCaps="false"
+            android:id="@+id/btn_select_sleep"
             android:fontFamily="@font/outfit_bold"
             android:background="@drawable/btn_normal"
             app:layout_constraintTop_toTopOf="parent"
@@ -72,6 +76,7 @@
     <Button
             android:layout_width="100dp" android:layout_height="30dp"
             android:text="select time"
+            android:id="@+id/btn_select_wake"
             android:textAllCaps="false"
             android:fontFamily="@font/outfit_bold"
             android:background="@drawable/btn_normal"
@@ -80,7 +85,7 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.857"
             app:layout_constraintVertical_bias="0.382"/>
     <TextView
-            android:text="Reminder notification"
+            android:text="Alarm"
             android:fontFamily="@font/outfit_bold"
             android:textSize="20dp"
             android:layout_width="wrap_content"
@@ -97,6 +102,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Confirm"
+            android:visibility="gone"
             android:textAllCaps="false"
             android:fontFamily="@font/outfit_bold"
             android:background="@drawable/btn_confirm"

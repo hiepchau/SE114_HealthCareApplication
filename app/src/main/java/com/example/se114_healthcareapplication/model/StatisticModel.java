@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class StatisticModel extends ModelBase implements IModel<StatisticEntity> {
@@ -31,10 +32,11 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         }
     }
 
-    ArrayList<StatisticEntity> statlist;
+    public ArrayList<StatisticEntity> statlist;
     FirebaseAuth auth;
     public StatisticEntity currentEntity;
     public static int DONE_INIT_DATA = 123;
+    public static int DONE_RETRIEVE_WEEK_LIST = 12093;
     double height, weight;
     int currentWater;
     int currentSteps;
@@ -199,5 +201,43 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         tmpref.addListenerForSingleValueEvent(listener);
 
     }
+
+    public void getLastWeekStatistic(){
+        statlist.clear();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        calendar.set(Calendar.MINUTE,0);
+        calendar.add(Calendar.DATE,-7);
+
+        Query query = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
+                .child("Statistic").orderByChild("CreatedTime").startAt(calendar.getTimeInMillis())
+                .limitToLast(7);
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                    for(DataSnapshot snap:snapshot.getChildren()) {
+                        double we = snap.child("Weight").getValue(double.class);
+                        double he = snap.child("Height").getValue(double.class);
+                        int water = snap.child("Water").getValue(int.class);
+                        int steps = snap.child("Steps").getValue(int.class);
+                        long sleep = snap.child("SleepTime").getValue(int.class);
+                        int emo = snap.child("EmotionalLevel").getValue(int.class);
+                        String sta = snap.child("Status").getValue(String.class);
+                        StatisticEntity entity = new StatisticEntity(he, we, water, steps, sleep, emo, sta);
+                        statlist.add(entity);
+                    }
+                    _presenter.NotifyPresenter(DONE_RETRIEVE_WEEK_LIST);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                _presenter.NotifyPresenter(DONE_RETRIEVE_WEEK_LIST);
+            }
+        };
+        query.addListenerForSingleValueEvent(listener);
+    }
+
 
 }

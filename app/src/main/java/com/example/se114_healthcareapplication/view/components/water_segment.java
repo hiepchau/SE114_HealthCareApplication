@@ -125,9 +125,9 @@ ScrollChoice waterchoice ;
         if(code == WaterPresenter.UPDATE_DAILY_GOAL){
             int gen = (int)entity;
             if(gen==0){
-                goalWater.setText("2500");
+                goalWater.setText("2500 ml");
             }
-            else goalWater.setText("3500");
+            else goalWater.setText("3500 ml");
         }
     }
 

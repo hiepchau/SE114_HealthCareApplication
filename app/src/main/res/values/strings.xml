@@ -25,9 +25,9 @@
     <string name="action_target">Target</string>
     <string name="action_notification">Notification</string>
     <string name="action_user">User</string>
-    <string name="pref_previously_started">false</string>
-    <string name="pref_sleep_time">0</string>
-    <string name="pref_wake_time">0</string>
+    <string name="pref_previously_started">firsttimestarted</string>
+    <string name="pref_sleep_time">sleeptime</string>
+    <string name="pref_wake_time">waketime</string>
     <string-array name="wateramount">
         <item>0</item>
         <item>200</item>
