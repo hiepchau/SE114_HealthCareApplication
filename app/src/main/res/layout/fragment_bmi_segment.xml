@@ -8,6 +8,22 @@
                                                    android:background="@drawable/background_fragment_menu"
                                                    tools:context=".view.components.bmi_segment">
 
+    <Button
+            android:text="Button"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:id="@+id/buttonturnback"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:drawableLeft="@drawable/ic_smallback"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.122"
+            app:layout_constraintVertical_bias="0.074"/>
+
     <RelativeLayout
             android:background="@drawable/btn_weight"
             android:layout_width="80dp"
