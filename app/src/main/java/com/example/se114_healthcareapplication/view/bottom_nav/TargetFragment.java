@@ -121,26 +121,26 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
             UserEntity user = (UserEntity) entity;
             if(user.Gender==0) {
                 progressBarwater.setMax(2500);
-                maxwater.setText("2500");
+                maxwater.setText("2500 ml");
             }
             else {
                 progressBarwater.setMax(3500);
-                maxwater.setText("3500");
+                maxwater.setText("3500 ml");
             }
             progressBarsteps.setMax(3000);
-            progressBarsleep.setMax(8);
+            progressBarsleep.setMax(80);
         }
         if(code == TargetPresenter.UPDATE_DAILY_STATISTIC){
             if(entity!=null) {
                 StatisticEntity stat = (StatisticEntity) entity;
                 progressBarwater.setProgress(stat.Water);
                 progressBarsteps.setProgress(stat.Steps);
-                double sleeptime = Math.abs((double) stat.SleepTime / (3600 * 1000));
+                double sleeptime = Math.abs((double) stat.SleepTime / (3600 * 1000))*10;
                 int partime = (int) sleeptime;
                 progressBarsleep.setProgress(partime);
                 minwater.setText(String.valueOf(stat.Water) + " ml");
                 minsteps.setText(String.valueOf(stat.Steps) + " steps");
-                minhrs.setText(String.valueOf(partime) + " hours");
+                minhrs.setText(String.valueOf(partime/10) + " hours " +String.valueOf((partime%10)*6)+" min");
             }
             else {
                 progressBarwater.setProgress(0);

@@ -96,8 +96,15 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
                 TimePickerDialog dlg = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        sleephourtxt.setText(String.valueOf(hourOfDay));
-                        sleepmintxt.setText(String.valueOf(minute));
+                        String hour = "", min = "";
+                        if(hourOfDay/10==0)
+                            hour+="0";
+                        if(minute/10==0)
+                            min+="0";
+                        hour+=String.valueOf(hourOfDay);
+                        min+=String.valueOf(minute);
+                        sleephourtxt.setText(hour);
+                        sleepmintxt.setText(min);
                     }
                 },localDateTime.getHour(),localDateTime.getMinute(),true);
                 dlg.show();
@@ -111,8 +118,15 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
                 TimePickerDialog dlg = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        wakehourtxt.setText(String.valueOf(hourOfDay));
-                        wakemintxt.setText(String.valueOf(minute));
+                        String hour = "", min = "";
+                        if(hourOfDay/10==0)
+                            hour+="0";
+                        if(minute/10==0)
+                            min+="0";
+                        hour+=String.valueOf(hourOfDay);
+                        min+=String.valueOf(minute);
+                        wakehourtxt.setText(hour);
+                        wakemintxt.setText(min);
                     }
                 },localDateTime.getHour(),localDateTime.getMinute(),true);
                 dlg.show();
@@ -122,6 +136,14 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+                    if(sleephourtxt.getText().toString().isEmpty()
+                    || sleepmintxt.getText().toString().isEmpty()
+                    || wakehourtxt.getText().toString().isEmpty()
+                    || wakemintxt.getText().toString().isEmpty()){
+                        Toast.makeText(getContext(),"You have to select both bed time and wake up time",Toast.LENGTH_SHORT).show();
+                        alarmToggle.setChecked(false);
+                        return;
+                    }
                     int bedhour = Integer.parseInt(sleephourtxt.getText().toString());
                     int bedmin = Integer.parseInt(sleepmintxt.getText().toString());
                     int wakehour = Integer.parseInt(wakehourtxt.getText().toString());
