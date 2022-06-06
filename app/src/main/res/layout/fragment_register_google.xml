@@ -20,7 +20,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.103" android:id="@+id/textView8"/>
+            app:layout_constraintVertical_bias="0.103"
+            android:id="@+id/textView8"/>
 
     <EditText
             android:layout_width="140dp"
@@ -37,7 +38,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.256" android:id="@+id/firstname_edt"
+            app:layout_constraintVertical_bias="0.256"
+            android:id="@+id/firstname_edt"
             app:layout_constraintHorizontal_bias="0.132"/>
 
     <EditText
@@ -60,54 +62,72 @@
             app:layout_constraintHorizontal_bias="0.87"/>
 
 
-    <EditText android:layout_width="150dp" android:layout_height="40dp"
+    <EditText android:layout_width="150dp"
+              android:layout_height="40dp"
               android:hint="Age"
               android:paddingLeft="10dp"
               android:inputType="number"
               android:background="@drawable/et_login"
-              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintHorizontal_bias="0.137" app:layout_constraintVertical_bias="0.351"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintHorizontal_bias="0.137"
+              app:layout_constraintVertical_bias="0.351"
               android:id="@+id/age_edt"/>
     <RadioButton
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Male"
             android:id="@+id/male_rdo"
             android:fontFamily="@font/outfit_regular"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.603"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.603"
             app:layout_constraintVertical_bias="0.359"/>
 
     <RadioButton
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Female"
             android:id="@+id/female_rdo"
             android:fontFamily="@font/outfit_regular"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.853"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.853"
             app:layout_constraintVertical_bias="0.359"/>
 
-    <EditText android:layout_width="165dp" android:layout_height="40dp"
+    <EditText android:layout_width="165dp"
+              android:layout_height="40dp"
               android:hint="Height (cm)"
               android:paddingLeft="10dp"
               android:inputType="number"
               android:background="@drawable/et_login"
-              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintHorizontal_bias="0.146" app:layout_constraintVertical_bias="0.448"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintHorizontal_bias="0.146"
+              app:layout_constraintVertical_bias="0.448"
               android:id="@+id/height_edt"/>
 
-    <EditText android:layout_width="165dp" android:layout_height="40dp"
+    <EditText android:layout_width="165dp"
+              android:layout_height="40dp"
               android:hint="Weight (kg)"
               android:paddingLeft="10dp"
               android:inputType="number"
               android:id="@+id/weight_edt"
               android:background="@drawable/et_login"
-              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintHorizontal_bias="0.853" app:layout_constraintVertical_bias="0.448"/>
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintHorizontal_bias="0.853"
+              app:layout_constraintVertical_bias="0.448"/>
 
     <android.widget.Button
             android:layout_width="wrap_content"
@@ -128,13 +148,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.583"/>
     <TextView
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Already have an account?"
             android:textColor="@color/black"
             android:fontFamily="@font/outfit_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.658"/>
 
     <android.widget.Button
