@@ -126,12 +126,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                 .child("Statistic")
                 .child(format.format(LocalDateTime.now()))
                 .child("Status");
-        ref.setValue(str).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(_presenter.getCurrentContext(), "Status updated",Toast.LENGTH_SHORT).show();
-            }
-        });
+        ref.setValue(str);
     }
 
     public void UpdateEmotionalLevel(int lel){
@@ -142,6 +137,29 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                 .child("EmotionalLevel");
         ref.setValue(lel);
 
+    }
+
+    public void UpdateStatusEmo(String str, int emo){
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
+                .child("Statistic")
+                .child(format.format(LocalDateTime.now()))
+                .child("Status");
+        ref.setValue(str).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                DatabaseReference refemo = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
+                        .child("Statistic")
+                        .child(format.format(LocalDateTime.now()))
+                        .child("EmotionalLevel");
+                refemo.setValue(emo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(_presenter.getCurrentContext(), "Status updated!",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     public StatisticEntity getCurrentStatistic() {

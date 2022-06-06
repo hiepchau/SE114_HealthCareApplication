@@ -24,9 +24,10 @@ public class StatusPresenter extends PresenterBase implements IPresenter {
         }
     }
 
-    public void UpdateStatus(String s){
-        if(!s.equals(statisticEntity.Status))
-            statisticModel.UpdateStatus(s);
+    public void UpdateStatus(String s,int emo){
+        if(!s.equals(statisticEntity.Status)
+        || !(emo==statisticEntity.EmotionalLevel))
+            statisticModel.UpdateStatusEmo(s,emo);
     }
 
     @Override

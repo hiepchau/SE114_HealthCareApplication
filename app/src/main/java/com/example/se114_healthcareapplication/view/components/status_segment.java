@@ -15,6 +15,8 @@ import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.presenter.StatusPresenter;
+import com.hsalf.smilerating.SmileRating;
+import com.hsalf.smileyrating.SmileyRating;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +35,7 @@ public class status_segment extends Fragment implements IView<StatusPresenter> {
     private String mParam2;
     private EditText statusEdt;
     private Button confirmBtn;
+    private SmileyRating ratingbar;
     StatusPresenter mainPresenter;
 
     public status_segment() {
@@ -71,16 +74,16 @@ public class status_segment extends Fragment implements IView<StatusPresenter> {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_status_segment, container, false);
-
         statusEdt = v.findViewById(R.id.Status_edt);
         confirmBtn = v.findViewById(R.id.btn_confirm);
+        ratingbar = v.findViewById(R.id.emotion_ratingbar);
 
         setMainPresenter(new StatusPresenter(this));
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!statusEdt.getText().toString().isEmpty())
-                    mainPresenter.UpdateStatus(statusEdt.getText().toString());
+                    mainPresenter.UpdateStatus(statusEdt.getText().toString(),ratingbar.getSelectedSmiley().getRating());
             }
         });
         return v;
@@ -91,6 +94,7 @@ public class status_segment extends Fragment implements IView<StatusPresenter> {
         StatisticEntity statisticEntity = (StatisticEntity) entity;
         if(code == StatusPresenter.DONE_INIT_STATUS){
             statusEdt.setText(statisticEntity.Status);
+            ratingbar.setRating(statisticEntity.EmotionalLevel,true);
         }
     }
 
