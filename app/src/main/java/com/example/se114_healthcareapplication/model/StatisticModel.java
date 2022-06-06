@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.example.se114_healthcareapplication.generalinterfaces.IModel;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import org.jetbrains.annotations.NotNull;
@@ -119,6 +120,29 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         ref.setValue(slp);
     }
 
+    public void UpdateStatus(String str){
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
+                .child("Statistic")
+                .child(format.format(LocalDateTime.now()))
+                .child("Status");
+        ref.setValue(str).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(_presenter.getCurrentContext(), "Status updated",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void UpdateEmotionalLevel(int lel){
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
+                .child("Statistic")
+                .child(format.format(LocalDateTime.now()))
+                .child("EmotionalLevel");
+        ref.setValue(lel);
+
+    }
 
     public StatisticEntity getCurrentStatistic() {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");

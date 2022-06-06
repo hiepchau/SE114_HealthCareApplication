@@ -8,7 +8,9 @@
                                                    android:layout_gravity="center"
                                                    tools:context=".view.components.status_segment"
                                                    tools:layout_editor_absoluteY="0dp"
-                                                   tools:layout_editor_absoluteX="0dp">
+                                                   tools:layout_editor_absoluteX="0dp"
+                                                   android:clickable="true"
+                                                   android:focusableInTouchMode="true">
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -28,7 +30,7 @@
                app:layout_constraintHorizontal_bias="0.221"
                app:layout_constraintTop_toBottomOf="@+id/appCompatRatingBar"
                android:layout_marginTop="12dp"
-               app:layout_constraintBottom_toTopOf="@+id/editText"
+               app:layout_constraintBottom_toTopOf="@+id/Status_edt"
                app:layout_constraintVertical_bias="0.21"/>
     <ImageView android:layout_width="wrap_content"
                android:layout_height="wrap_content"
@@ -39,7 +41,7 @@
                app:layout_constraintTop_toBottomOf="@+id/appCompatRatingBar"
                android:layout_marginTop="12dp"
                android:id="@+id/imageView5"
-               app:layout_constraintBottom_toTopOf="@+id/editText"
+               app:layout_constraintBottom_toTopOf="@+id/Status_edt"
                app:layout_constraintVertical_bias="0.21"/>
     <ImageView android:layout_width="wrap_content"
                android:layout_height="wrap_content"
@@ -50,7 +52,7 @@
                app:layout_constraintHorizontal_bias="0.498"
                android:id="@+id/imageView4"
                android:layout_marginTop="12dp"
-               app:layout_constraintBottom_toTopOf="@+id/editText"
+               app:layout_constraintBottom_toTopOf="@+id/Status_edt"
                app:layout_constraintVertical_bias="0.192"/>
 
 
@@ -62,7 +64,7 @@
                app:layout_constraintTop_toBottomOf="@+id/appCompatRatingBar"
                app:layout_constraintHorizontal_bias="0.636"
                android:layout_marginTop="12dp"
-               app:layout_constraintBottom_toTopOf="@+id/editText"
+               app:layout_constraintBottom_toTopOf="@+id/Status_edt"
                android:id="@+id/imageView6"
                app:layout_constraintVertical_bias="0.21"/>
     <ImageView android:layout_width="wrap_content"
@@ -73,7 +75,7 @@
                app:layout_constraintTop_toBottomOf="@+id/appCompatRatingBar"
                app:layout_constraintHorizontal_bias="0.775"
                android:layout_marginTop="12dp"
-               app:layout_constraintBottom_toTopOf="@+id/editText"
+               app:layout_constraintBottom_toTopOf="@+id/Status_edt"
                app:layout_constraintVertical_bias="0.21"/>
     <androidx.appcompat.widget.AppCompatRatingBar
             android:layout_width="wrap_content"
@@ -87,8 +89,7 @@
             app:layout_constraintHorizontal_bias="0.496"
             android:id="@+id/appCompatRatingBar"
             android:layout_marginTop="28dp"/>
-    <EditText
-
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="350dp"
             android:layout_height="130dp"
             android:hint="write something for today"
@@ -100,8 +101,8 @@
             android:drawableEnd="@drawable/ic_write"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.355"
-            android:id="@+id/editText"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
+            android:id="@+id/Status_edt"
+            app:layout_constraintBottom_toTopOf="@+id/btn_confirm"
             android:layout_marginBottom="20dp"/>
     <android.widget.Button android:layout_width="120dp"
                            android:layout_height="30dp"
@@ -114,6 +115,6 @@
                            app:layout_constraintStart_toStartOf="parent"
                            app:layout_constraintBottom_toBottomOf="parent"
                            app:layout_constraintHorizontal_bias="0.498"
-                           android:id="@+id/button2"
+                           android:id="@+id/btn_confirm"
                            android:layout_marginBottom="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

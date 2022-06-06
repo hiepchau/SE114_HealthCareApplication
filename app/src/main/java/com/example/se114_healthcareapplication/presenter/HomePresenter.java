@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.*;
+import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.view.AuthenticateActivity;
 import com.example.se114_healthcareapplication.view.bottom_nav.HomeFragment;
 import com.example.se114_healthcareapplication.view.bottom_nav.NotificationsFragment;
@@ -28,8 +29,10 @@ public class HomePresenter extends PresenterBase implements IPresenter {
     public static final int SWITCH_TO_NOTIFICATIONS = 3;
     public static final int SWITCH_TO_USER = 4;
     public static final int UPDATE_USER_INFO = 38742;
+    public static final int UPDATE_STATISTIC = 612738;
     private AvatarModel avatarModel;
     private UserModel userModel;
+    private StatisticModel statisticModel;
     private Uri avatar;
     ActivityResultLauncher<Intent> activityResultLauncher;
     public HomePresenter(IView view) {
@@ -49,6 +52,7 @@ public class HomePresenter extends PresenterBase implements IPresenter {
                 });
         userModel = new UserModel(this);
         userModel.getCurrentUser();
+        statisticModel = new StatisticModel(this);
     }
 
     @Override
@@ -85,6 +89,9 @@ public class HomePresenter extends PresenterBase implements IPresenter {
         }
         if(code == UserModel.USER_NOT_FOUND){
             logout();
+        }
+        if(code == StatisticModel.DONE_INIT_DATA){
+            _view.UpdateView(UPDATE_STATISTIC, statisticModel.currentEntity);
         }
     }
 

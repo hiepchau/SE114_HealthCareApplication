@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.model.StatisticModel;
+import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
 import com.example.se114_healthcareapplication.presenter.HomePresenter;
 
@@ -36,7 +38,7 @@ public class HomeFragment extends Fragment implements IView<HomePresenter> {
     private String mParam2;
     private HomePresenter mainPresenter;
     private ImageView avtImage;
-    private TextView avtText,username,date;
+    private TextView avtText,username,date,statustxt;
     public static final int UPDATE_AVATAR = 932845;
 
     public HomeFragment() {
@@ -82,6 +84,7 @@ public class HomeFragment extends Fragment implements IView<HomePresenter> {
         date = v.findViewById(R.id.Datetime);
         DateTimeFormatter format = DateTimeFormatter.ofPattern("EEE, MMM dd, yyyy");
         date.setText(format.format(LocalDateTime.now()));
+        statustxt = v.findViewById(R.id.statustext);
         setMainPresenter(new HomePresenter(this));
         avtText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +111,10 @@ public class HomeFragment extends Fragment implements IView<HomePresenter> {
         if(code == HomePresenter.UPDATE_USER_INFO){
             UserEntity user = (UserEntity) entity;
             username.setText("Hello, "+user.FirstName);
+        }
+        if(code == HomePresenter.UPDATE_STATISTIC){
+            StatisticEntity statisticEntity = (StatisticEntity) entity;
+            statustxt.setText(statisticEntity.Status);
         }
     }
 
