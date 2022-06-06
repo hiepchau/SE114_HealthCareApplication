@@ -11,75 +11,74 @@
         android:clickable="true">
 
 
-    <com.webianks.library.scroll_choice.ScrollChoice
-            android:id="@+id/sleepmin_choice"
-            android:layout_height="120dp"
-            android:layout_width="60dp"
-            app:scroll_background_color="@color/background_blue"
-            app:scroll_selected_item_background="@color/white"
-            app:scroll_item_text_color="?attr/colorPrimaryDark"
-            app:scroll_atmospheric="true"
-            app:scroll_indicator="true"
-            app:scroll_item_align="center"
-            app:scroll_selected_item_text_color="#ffc107"
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:hint="hour"
+            android:gravity="center"
+            android:fontFamily="@font/outfit_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.304"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.236"/>
-    <com.webianks.library.scroll_choice.ScrollChoice
-            android:id="@+id/sleephrs_choice"
-            android:layout_height="120dp"
-            android:layout_width="60dp"
-            app:scroll_background_color="@color/background_blue"
-            app:scroll_selected_item_background="@color/white"
-            app:scroll_item_text_color="?attr/colorPrimaryDark"
-            app:scroll_atmospheric="true"
-            app:scroll_indicator="true"
-            app:scroll_item_align="center"
-            app:scroll_selected_item_text_color="#ffc107"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.107"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.236"/>
-    <com.webianks.library.scroll_choice.ScrollChoice
-            android:layout_height="120dp"
-            android:id="@+id/wakehrs_choice"
-            android:layout_width="60dp"
-            app:scroll_background_color="@color/background_blue"
-            app:scroll_selected_item_background="@color/white"
-            app:scroll_item_text_color="?attr/colorPrimaryDark"
-            app:scroll_atmospheric="true"
-            app:scroll_indicator="true"
-            app:scroll_item_align="center"
-            app:scroll_selected_item_text_color="#ffc107"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.701"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.236"/>
-    <com.webianks.library.scroll_choice.ScrollChoice
-            android:id="@+id/wakemin_choice"
-            android:layout_height="120dp"
-            android:layout_width="60dp"
-            app:scroll_background_color="@color/background_blue"
-            app:scroll_selected_item_background="@color/white"
-            app:scroll_item_text_color="?attr/colorPrimaryDark"
-            app:scroll_atmospheric="true"
-            app:scroll_indicator="true"
-            app:scroll_item_align="center"
-            app:scroll_selected_item_text_color="#ffc107"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.898"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.236"/>
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintVertical_bias="0.263"/>
 
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+            android:layout_width="70dp" android:layout_height="40dp"
+            android:hint="minute"
+            android:gravity="center"
+            android:fontFamily="@font/outfit_regular" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.31"
+            app:layout_constraintVertical_bias="0.263"/>
+
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:hint="hour"
+            android:gravity="center"
+            android:fontFamily="@font/outfit_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.692"
+            app:layout_constraintVertical_bias="0.263"/>
+
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:hint="minute"
+            android:gravity="center"
+            android:fontFamily="@font/outfit_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.926"
+            app:layout_constraintVertical_bias="0.263"/>
+
+    <Button
+            android:layout_width="100dp" android:layout_height="30dp"
+            android:text="select time"
+            android:textAllCaps="false"
+            android:fontFamily="@font/outfit_bold"
+            android:background="@drawable/btn_normal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintVertical_bias="0.382"/>
+    <Button
+            android:layout_width="100dp" android:layout_height="30dp"
+            android:text="select time"
+            android:textAllCaps="false"
+            android:fontFamily="@font/outfit_bold"
+            android:background="@drawable/btn_normal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.857"
+            app:layout_constraintVertical_bias="0.382"/>
     <TextView
             android:text="Reminder notification"
             android:fontFamily="@font/outfit_bold"
@@ -92,16 +91,18 @@
             app:layout_constraintHorizontal_bias="0.082"
             app:layout_constraintVertical_bias="0.861"
             app:layout_constraintEnd_toEndOf="parent"/>
-    <Button android:layout_width="90dp"
-            android:layout_height="30dp"
+    <Button android:layout_width="100dp"
+            android:layout_height="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:fontFamily="@font/outfit_bold"
             android:background="@drawable/btn_confirm"
-            android:hint="Confirm"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.671"
+            app:layout_constraintVertical_bias="0.587"
             android:id="@+id/button"/>
     <ToggleButton
             android:id="@+id/toggleBtnAlarm"
@@ -114,6 +115,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHorizontal_bias="0.92"
             app:layout_constraintVertical_bias="0.876"/>
+
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text=":"
@@ -124,9 +126,8 @@
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintTop_toTopOf="parent"
               app:layout_constraintHorizontal_bias="0.246"
-              app:layout_constraintVertical_bias="0.294"
+              app:layout_constraintVertical_bias="0.274"
               android:id="@+id/textView5"/>
-
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text=":"
@@ -137,8 +138,9 @@
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintTop_toTopOf="parent"
               app:layout_constraintHorizontal_bias="0.758"
-              app:layout_constraintVertical_bias="0.294"
+              app:layout_constraintVertical_bias="0.274"
               android:id="@+id/textView2"/>
+
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Bed Time"
@@ -148,8 +150,8 @@
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintHorizontal_bias="0.183"
-              app:layout_constraintVertical_bias="0.12"/>
+              app:layout_constraintHorizontal_bias="0.189"
+              app:layout_constraintVertical_bias="0.12" android:id="@+id/textView13"/>
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -160,29 +162,27 @@
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintHorizontal_bias="0.795"
+              app:layout_constraintHorizontal_bias="0.817"
               app:layout_constraintVertical_bias="0.12"
               android:id="@+id/textView3"/>
-
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
+    <ImageView android:layout_width="40dp"
+               android:layout_height="40dp"
                android:src="@drawable/ic_bedtime"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintHorizontal_bias="0.196"
+               app:layout_constraintHorizontal_bias="0.222"
                app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintVertical_bias="0.536"/>
-
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
+               app:layout_constraintVertical_bias="0.021" android:id="@+id/imageView3"/>
+    <ImageView android:layout_width="40dp"
+               android:layout_height="40dp"
                android:src="@drawable/ic_wake_up"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintHorizontal_bias="0.803"
+               app:layout_constraintHorizontal_bias="0.785"
                app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintVertical_bias="0.536"/>
+               app:layout_constraintVertical_bias="0.021"/>
     <ImageView android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:src="@drawable/ic_cloud"
@@ -190,5 +190,5 @@
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintHorizontal_bias="0.498"
-               android:layout_marginBottom="272dp"/>
+               android:layout_marginBottom="272dp" android:id="@+id/imageView2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
