@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"/>
 
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="350dp"
             android:layout_height="130dp"
             android:hint="write something for today"

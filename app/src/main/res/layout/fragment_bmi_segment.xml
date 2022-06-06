@@ -182,7 +182,8 @@
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintHorizontal_bias="0.488"/>
     <ImageView
-            android:layout_width="300dp" android:layout_height="140dp"
+            android:layout_width="300dp"
+            android:layout_height="140dp"
             android:src="@drawable/ic_scale"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

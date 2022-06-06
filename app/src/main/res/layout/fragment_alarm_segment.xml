@@ -25,12 +25,16 @@
             app:layout_constraintVertical_bias="0.263"/>
 
     <com.example.se114_healthcareapplication.model.CustomeEditText
-            android:layout_width="70dp" android:layout_height="40dp"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
             android:hint="minute"
             android:gravity="center"
-            android:fontFamily="@font/outfit_regular" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.31"
+            android:fontFamily="@font/outfit_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.31"
             app:layout_constraintVertical_bias="0.263"/>
 
     <com.example.se114_healthcareapplication.model.CustomeEditText
@@ -60,24 +64,30 @@
             app:layout_constraintVertical_bias="0.263"/>
 
     <Button
-            android:layout_width="100dp" android:layout_height="30dp"
-            android:text="select time"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="Select time"
             android:textAllCaps="false"
             android:fontFamily="@font/outfit_bold"
             android:background="@drawable/btn_normal"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
             app:layout_constraintVertical_bias="0.382"/>
     <Button
-            android:layout_width="100dp" android:layout_height="30dp"
-            android:text="select time"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="Select time"
             android:textAllCaps="false"
             android:fontFamily="@font/outfit_bold"
             android:background="@drawable/btn_normal"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.857"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.857"
             app:layout_constraintVertical_bias="0.382"/>
     <TextView
             android:text="Reminder notification"
@@ -151,7 +161,8 @@
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintHorizontal_bias="0.189"
-              app:layout_constraintVertical_bias="0.12" android:id="@+id/textView13"/>
+              app:layout_constraintVertical_bias="0.12"
+              android:id="@+id/textView13"/>
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -173,7 +184,8 @@
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintHorizontal_bias="0.222"
                app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintVertical_bias="0.021" android:id="@+id/imageView3"/>
+               app:layout_constraintVertical_bias="0.021"
+               android:id="@+id/imageView3"/>
     <ImageView android:layout_width="40dp"
                android:layout_height="40dp"
                android:src="@drawable/ic_wake_up"
@@ -190,5 +202,6 @@
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintHorizontal_bias="0.498"
-               android:layout_marginBottom="272dp" android:id="@+id/imageView2"/>
+               android:layout_marginBottom="272dp"
+               android:id="@+id/imageView2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
