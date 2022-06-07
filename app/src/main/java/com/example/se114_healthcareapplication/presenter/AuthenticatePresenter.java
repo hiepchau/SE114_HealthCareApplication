@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.se114_healthcareapplication.view.components.notify_email_send;
 import com.example.se114_healthcareapplication.view.HomeActivity;
 import com.example.se114_healthcareapplication.view.authentication.login;
 import com.example.se114_healthcareapplication.view.authentication.register_google;
@@ -39,6 +40,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
     ActivityResultLauncher<Intent> activityResultLauncher;
     public final int GOOGLE_REQUEST = 1001;
     public static final int GO_TO_LOGIN = 712834;
+    public static final int EMAIL_RESENT = 1273912;
     static final String FIREBASE_TOKEN = "593884992492-5qj5ecn99fs0oc2ue2n51jel09a611hq.apps.googleusercontent.com";
     private boolean canContinue;
     private GoogleSignInClient client;
@@ -122,10 +124,12 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
                 fragmentTransaction1.replace(id.authenticateContainer, login.class,null).addToBackStack("").commit();
                 case UserModel.REGISTERED:
-                    Intent intent = new Intent(_view.getAppActivity(), HomeActivity.class);
-                    intent.putExtra("session",auth.getCurrentUser().getUid());
-                    _view.StartNewActivity(intent);
-                    _view.getAppActivity().finish();
+                    if(auth.getCurrentUser()!=null) {
+                        Intent intent = new Intent(_view.getAppActivity(), HomeActivity.class);
+                        intent.putExtra("session", auth.getCurrentUser().getUid());
+                        _view.StartNewActivity(intent);
+                        _view.getAppActivity().finish();
+                    }
                     break;
         }
     }
@@ -195,11 +199,10 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                                 @Override
                                 public void onComplete(@NonNull Task task) {
                                     // Re-enable button
-
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(_view.getAppActivity(),
-                                                "Verification email sent to " + user.getEmail(),
-                                                Toast.LENGTH_SHORT).show();
+                                        FragmentManager fragmentManager1 = _view.GetFragmentManager();
+                                        FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
+                                        fragmentTransaction1.replace(id.authenticateContainer, notify_email_send.class,null).addToBackStack("").commit();
                                     } else {
                                         Log.e("Register:", "sendEmailVerification", task.getException());
                                         Toast.makeText(_view.getAppActivity(),
@@ -208,7 +211,6 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                                     }
                                 }
                             });
-                    auth.signOut();
                 }
             })
                     .addOnFailureListener(new OnFailureListener() {
@@ -219,6 +221,17 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                         }
                     });
 
+        }
+    }
+
+    public void resenndEmail(){
+        if(auth.getCurrentUser()!=null){
+            auth.getCurrentUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    _view.SwitchView(EMAIL_RESENT);
+                }
+            });
         }
     }
 
