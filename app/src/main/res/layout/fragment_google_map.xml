@@ -9,7 +9,18 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".view.components.GoogleMapFragment">
 
-    <Button
+    <android.widget.Button
+            android:layout_width="125dp" android:layout_height="30dp"
+            android:background="@drawable/btn_happy"
+            android:text="List Run"
+            android:drawableEnd="@drawable/ic_list_run"
+            android:paddingRight="7dp"
+            android:fontFamily="@font/outfit_bold" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/map_view"
+            app:layout_constraintHorizontal_bias="0.2" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.95"/>
+    <android.widget.Button
             android:text="Button"
             android:layout_width="20dp"
             android:layout_height="15dp"
@@ -27,7 +38,7 @@
 
     <com.google.android.gms.maps.MapView
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="330dp"
             android:id="@+id/map_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,8 +48,17 @@
             app:layout_constraintVertical_bias="1.0"/>
 
     <TextView
-            android:layout_width="200dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Run Time"
+            android:textSize="11dp"
+            android:fontFamily="@font/outfit_regular" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.604" app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/textView16" android:layout_marginTop="52dp"/>
+    <TextView
+            android:hint="30:00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/text_clock"
             android:textSize="20dp"
             android:fontFamily="@font/outfit_bold"
@@ -46,15 +66,14 @@
             android:layout_centerHorizontal="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.164"
-            app:layout_constraintVertical_bias="0.07"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintHorizontal_bias="0.606"
+            app:layout_constraintTop_toBottomOf="@+id/textView16"
+            app:layout_constraintBottom_toTopOf="@+id/map_view" app:layout_constraintVertical_bias="1.0"/>
     <Button
             android:layout_width="120dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:id="@+id/btn_start"
-            android:background="@drawable/btn_intro"
+            android:background="@drawable/btn_sad"
             android:layout_alignParentLeft="true"
             android:text="Start"
             android:fontFamily="@font/outfit_bold"
@@ -64,19 +83,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintVertical_bias="0.957"/>
-    <Button
-            android:layout_width="120dp"
-            android:layout_height="40dp"
+    <android.widget.Button
+            android:layout_width="100dp"
+            android:layout_height="30dp"
             android:id="@+id/btn_clear"
-            android:background="@drawable/btn_confirm"
+            android:background="@drawable/btn_normal"
             android:layout_alignParentLeft="true"
             android:text="Clear"
-            android:layout_marginTop="5dp"
+            android:textSize="13dp"
+            android:drawableStart="@drawable/ic_clear"
+            android:paddingLeft="5dp"
             android:fontFamily="@font/outfit_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.843"
-            app:layout_constraintVertical_bias="0.056"/>
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintBottom_toTopOf="@+id/map_view" app:layout_constraintVertical_bias="0.946"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
