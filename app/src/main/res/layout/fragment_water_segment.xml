@@ -10,6 +10,7 @@
         tools:context=".view.components.water_segment"
         android:clickable="true">
 
+    <!--  Choice how much water  -->
     <TextView
             android:text="Daily goal"
             android:layout_width="wrap_content"
@@ -19,10 +20,9 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
             android:textColor="#1BAEEE"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.171"
-            app:layout_constraintVertical_bias="0.166"/>
+            app:layout_constraintHorizontal_bias="0.119"
+            android:layout_marginTop="104dp"/>
     <TextView
             android:text="Drink"
             android:layout_width="wrap_content"
@@ -34,8 +34,7 @@
             android:textColor="#1BAEEE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.288"
-            app:layout_constraintVertical_bias="0.502"/>
+            app:layout_constraintVertical_bias="0.417"/>
     <TextView
             android:text="4000 ml"
             android:layout_width="wrap_content"
@@ -43,13 +42,11 @@
             android:id="@+id/DailyGoalWaterValue"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
             android:textColor="#C0C0C0"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.184"
-            app:layout_constraintVertical_bias="0.271"/>
+            app:layout_constraintHorizontal_bias="0.148"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" android:layout_marginTop="8dp"/>
     <TextView
             android:text="0 ml"
             android:layout_width="wrap_content"
@@ -57,28 +54,22 @@
             android:id="@+id/CompleteValue"
             app:layout_constraintStart_toStartOf="parent"
             android:textAlignment="center"
-            app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
             android:textColor="#C0C0C0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.863"
-            app:layout_constraintVertical_bias="0.271"/>
+            app:layout_constraintHorizontal_bias="0.859"
+            app:layout_constraintTop_toBottomOf="@+id/TextView6" android:layout_marginTop="8dp"/>
     <TextView
             android:text="Complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/TextView6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
             android:textColor="#1BAEEE"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.928"
-            app:layout_constraintVertical_bias="0.166"/>
-
-    <!--  Choice how much water  -->
+            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="104dp"/>
     <com.webianks.library.scroll_choice.ScrollChoice
             android:layout_width="120dp"
             android:layout_height="wrap_content"
@@ -92,10 +83,8 @@
             android:id="@+id/Scrollchoice123"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.231"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintVertical_bias="0.0" app:layout_constraintEnd_toEndOf="parent"/>
     <Button
             android:text="Button"
             android:layout_width="20dp"
@@ -112,16 +101,55 @@
             app:layout_constraintHorizontal_bias="0.122"
             app:layout_constraintVertical_bias="0.074"/>
 
-    <Button android:layout_width="90dp"
+    <Button
+            android:layout_width="100dp"
             android:layout_height="30dp"
+            android:fontFamily="@font/outfit_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.842"
-            app:layout_constraintVertical_bias="0.764"
-            app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/btn_confirm"
             android:id="@+id/btn_confirm"
-            android:hint="Confirm"/>
+            android:text="Confirm"
+            android:textColor="@color/blue2"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.974"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"/>
 
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="Did you know…?"
+              android:fontFamily="@font/outfit_regular"
+              android:textSize="11dp" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintHorizontal_bias="0.939"
+              android:id="@+id/textView15"
+              app:layout_constraintTop_toBottomOf="@+id/imageView6" android:layout_marginTop="12dp"/>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="WATER IS LIFE"
+              android:fontFamily="@font/outfit_bold"
+              android:textSize="13dp" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintHorizontal_bias="0.967"
+              app:layout_constraintBottom_toBottomOf="parent"
+              android:layout_marginBottom="28dp" app:layout_constraintTop_toTopOf="@+id/textView15"
+              app:layout_constraintVertical_bias="1.0"/>
+    <ImageView
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:src="@drawable/ic_cup_bottle"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.818" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.901" android:id="@+id/imageView6"/>
+    <ImageView android:layout_width="70dp" android:layout_height="70dp"
+               android:src="@drawable/ic_water_drop" app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintHorizontal_bias="0.849"
+               android:id="@+id/imageView4"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/CompleteValue" app:layout_constraintVertical_bias="0.0"/>
+    <ImageView android:layout_width="70dp" android:layout_height="70dp"
+               android:src="@drawable/ic_water_cooler" app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintHorizontal_bias="0.163"
+               app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/imageView5"
+               app:layout_constraintTop_toBottomOf="@+id/DailyGoalWaterValue" app:layout_constraintVertical_bias="0.0"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
