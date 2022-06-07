@@ -6,7 +6,9 @@
                                                    android:orientation="vertical"
                                                    android:background="@color/background_blue"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   tools:context=".view.authentication.signup">
+                                                   tools:context=".view.authentication.signup"
+                                                   android:clickable="true"
+                                                   android:focusableInTouchMode="true">
 
     <TextView
             android:layout_width="wrap_content"
@@ -41,7 +43,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.141"
-            android:id="@+id/register_mail_edt"/>
+            android:id="@+id/register_mail_edt"
+    />
 
     <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="140dp"

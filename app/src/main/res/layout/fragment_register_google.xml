@@ -5,7 +5,9 @@
                                                    android:layout_height="match_parent"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:background="@color/background_blue"
-                                                   tools:context=".view.authentication.register_google">
+                                                   tools:context=".view.authentication.register_google"
+                                                   android:clickable="true"
+                                                   android:focusableInTouchMode="true">
 
     <TextView
             android:layout_width="wrap_content"
@@ -23,7 +25,7 @@
             app:layout_constraintVertical_bias="0.103"
             android:id="@+id/textView8"/>
 
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/et_login"
@@ -42,7 +44,7 @@
             android:id="@+id/firstname_edt"
             app:layout_constraintHorizontal_bias="0.132"/>
 
-    <EditText
+    <com.example.se114_healthcareapplication.model.CustomeEditText
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:background="@drawable/et_login"
@@ -62,19 +64,20 @@
             app:layout_constraintHorizontal_bias="0.87"/>
 
 
-    <EditText android:layout_width="150dp"
-              android:layout_height="40dp"
-              android:hint="Age"
-              android:paddingLeft="10dp"
-              android:inputType="number"
-              android:background="@drawable/et_login"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintHorizontal_bias="0.137"
-              app:layout_constraintVertical_bias="0.351"
-              android:id="@+id/age_edt"/>
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:hint="Age"
+            android:paddingLeft="10dp"
+            android:inputType="number"
+            android:background="@drawable/et_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.137"
+            app:layout_constraintVertical_bias="0.351"
+            android:id="@+id/age_edt"/>
     <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,33 +104,35 @@
             app:layout_constraintHorizontal_bias="0.853"
             app:layout_constraintVertical_bias="0.359"/>
 
-    <EditText android:layout_width="165dp"
-              android:layout_height="40dp"
-              android:hint="Height (cm)"
-              android:paddingLeft="10dp"
-              android:inputType="number"
-              android:background="@drawable/et_login"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintHorizontal_bias="0.146"
-              app:layout_constraintVertical_bias="0.448"
-              android:id="@+id/height_edt"/>
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+            android:layout_width="165dp"
+            android:layout_height="40dp"
+            android:hint="Height (cm)"
+            android:paddingLeft="10dp"
+            android:inputType="number"
+            android:background="@drawable/et_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintVertical_bias="0.448"
+            android:id="@+id/height_edt"/>
 
-    <EditText android:layout_width="165dp"
-              android:layout_height="40dp"
-              android:hint="Weight (kg)"
-              android:paddingLeft="10dp"
-              android:inputType="number"
-              android:id="@+id/weight_edt"
-              android:background="@drawable/et_login"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintHorizontal_bias="0.853"
-              app:layout_constraintVertical_bias="0.448"/>
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+            android:layout_width="165dp"
+            android:layout_height="40dp"
+            android:hint="Weight (kg)"
+            android:paddingLeft="10dp"
+            android:inputType="number"
+            android:id="@+id/weight_edt"
+            android:background="@drawable/et_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.853"
+            app:layout_constraintVertical_bias="0.448"/>
 
     <android.widget.Button
             android:layout_width="wrap_content"
