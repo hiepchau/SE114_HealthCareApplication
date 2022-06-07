@@ -3,6 +3,7 @@ package com.example.se114_healthcareapplication.view.components;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.BMIPresenter;
+import com.example.se114_healthcareapplication.presenter.PresenterBase;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -31,6 +33,7 @@ public class bmi_segment extends Fragment implements IView<BMIPresenter> {
     public static final int UPDATE_BMI =19233;
     BMIPresenter mainPresenter;
     TextView heighttxt, weighttxt, bmitxt;
+    Button btnback;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -75,6 +78,13 @@ public class bmi_segment extends Fragment implements IView<BMIPresenter> {
         heighttxt = v.findViewById(R.id.height_edt);
         weighttxt = v.findViewById(R.id.weight_edt);
         bmitxt = v.findViewById(R.id.bmi_edt);
+        btnback = v.findViewById(R.id.buttonturnback);
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(PresenterBase.BACK_ON_MENU);
+            }
+        });
         setMainPresenter(new BMIPresenter(this));
         return v;
     }

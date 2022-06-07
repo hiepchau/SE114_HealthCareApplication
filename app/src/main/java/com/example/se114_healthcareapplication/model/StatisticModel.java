@@ -179,7 +179,7 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                         @Override
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                             if (!snapshot.exists()) {
-                                currentEntity = new StatisticEntity(height,weight,0,0,0,1,"");
+                                currentEntity = new StatisticEntity(height,weight,0,0,0,3,"");
                                 ref.setValue(currentEntity);
                             } else {
                                 double we = snapshot.child("Weight").getValue(double.class);

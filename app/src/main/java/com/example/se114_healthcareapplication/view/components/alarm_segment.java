@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.AlarmPresenter;
+import com.example.se114_healthcareapplication.presenter.PresenterBase;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -32,7 +33,7 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private ToggleButton alarmToggle;
-    private Button setsleepbtn, setwakebtn;
+    private Button setsleepbtn, setwakebtn, backbtn;
     private TextView sleephourtxt, sleepmintxt, wakehourtxt, wakemintxt;
     private AlarmPresenter mainPresenter;
 
@@ -83,6 +84,7 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
         sleepmintxt = view.findViewById(R.id.sleep_min_txv);
         wakehourtxt = view.findViewById(R.id.wake_hrs_txv);
         wakemintxt = view.findViewById(R.id.wake_min_txv);
+        backbtn = view.findViewById(R.id.buttonturnback);
 
 
 
@@ -149,12 +151,20 @@ public class alarm_segment extends Fragment implements IView<AlarmPresenter> {
                     int wakehour = Integer.parseInt(wakehourtxt.getText().toString());
                     int wakemin = Integer.parseInt(wakemintxt.getText().toString());
                     mainPresenter.triggerCustomAlarm(wakehour,wakemin,bedhour,bedmin);
+                    Toast.makeText(getAppActivity(),"Alarm is activated",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     setsleepbtn.setEnabled(true);
                     setwakebtn.setEnabled(true);
                     mainPresenter.cancelCurrentAlarm();
+                    Toast.makeText(getAppActivity(),"Alarm is deactivated",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(PresenterBase.BACK_ON_MENU);
             }
         });
         return view;

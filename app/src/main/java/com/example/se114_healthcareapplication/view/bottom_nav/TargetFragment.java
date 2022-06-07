@@ -146,6 +146,9 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
                 progressBarwater.setProgress(0);
                 progressBarsteps.setProgress(0);
                 progressBarsleep.setProgress(0);
+                minwater.setText("0 ml");
+                minsteps.setText("0 steps");
+                minhrs.setText("0 hours 0 min");
             }
         }
     }

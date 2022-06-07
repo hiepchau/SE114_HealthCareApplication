@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.presenter.PresenterBase;
 import com.example.se114_healthcareapplication.presenter.WaterPresenter;
 import com.webianks.library.scroll_choice.ScrollChoice;
 
@@ -40,6 +41,7 @@ ScrollChoice waterchoice ;
     private String mParam1;
     private String mParam2;
     TextView goalWater;
+    Button backbtn;
 
     public water_segment() {
         // Required empty public constructor
@@ -86,6 +88,13 @@ ScrollChoice waterchoice ;
         confirm = v.findViewById(R.id.btn_confirm);
         waterchoice = v.findViewById(R.id.Scrollchoice123);
         goalWater = v.findViewById(R.id.DailyGoalWaterValue);
+        backbtn = v.findViewById(R.id.buttonturnback);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(PresenterBase.BACK_ON_MENU);
+            }
+        });
         waterchoice.addItems(datas,0);//default choice
 
 

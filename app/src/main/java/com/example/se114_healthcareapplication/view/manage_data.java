@@ -36,7 +36,7 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
     private String mParam1;
     private String mParam2;
     private CustomeEditText heighttxt, weighttxt, firstnametxt, lastnametxt, agetxt;
-    private Button acceptbtn, resetpassbtn;
+    private Button acceptbtn, resetpassbtn, backbtn;
     private UserPresenter mainPresenter;
     private UserEntity user;
     private StatisticEntity stat;
@@ -84,6 +84,7 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
         agetxt = v.findViewById(R.id.age_edt);
         acceptbtn = v.findViewById(R.id.btn_accept);
         resetpassbtn = v.findViewById(R.id.resetpass_btn);
+        backbtn = v.findViewById(R.id.buttonturnback);
         setMainPresenter(new UserPresenter(this));
         acceptbtn.setEnabled(false);
         acceptbtn.setBackground(getResources().getDrawable(R.drawable.btn_disabled));
@@ -92,6 +93,12 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
             @Override
             public void onClick(View v) {
                 mainPresenter.NotifyPresenter(UserPresenter.SWITCH_TO_RESET_PASS);
+            }
+        });
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(UserPresenter.BACK_TO_DATA);
             }
         });
         heighttxt.addTextChangedListener(new TextWatcher() {

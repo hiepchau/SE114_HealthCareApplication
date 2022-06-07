@@ -13,6 +13,8 @@ import com.example.se114_healthcareapplication.view.bottom_nav.NotificationsFrag
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.view.bottom_nav.UserFragment;
+import com.example.se114_healthcareapplication.view.components.info_user;
 import com.example.se114_healthcareapplication.view.manage_data;
 import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.model.UserModel;
@@ -55,15 +57,15 @@ public class UserPresenter extends PresenterBase implements IPresenter {
         }
         if(code == SWITCH_TO_MANAGEDATA){
             FragmentManager manager = _view.GetFragmentManager();
-            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new manage_data()).addToBackStack("").commit();
+            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new manage_data()).commit();
         }
         if(code == SWITCH_TO_RESET_PASS){
             FragmentManager manager = _view.GetFragmentManager();
-            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new resetpassword()).addToBackStack("").commit();
+            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new resetpassword()).commit();
         }
         if(code == BACK_TO_DATA){
             FragmentManager manager = _view.GetFragmentManager();
-            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new resetpassword()).addToBackStack("").commit();
+            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new UserFragment()).commit();
         }
     }
 

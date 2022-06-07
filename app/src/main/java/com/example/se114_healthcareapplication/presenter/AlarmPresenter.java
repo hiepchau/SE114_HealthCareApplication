@@ -8,10 +8,14 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.provider.AlarmClock;
 import android.widget.Toast;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.StatisticModel;
+import com.example.se114_healthcareapplication.view.MenuFragment;
+import com.example.se114_healthcareapplication.view.bottom_nav.HomeFragment;
 
 import java.util.Calendar;
 
@@ -32,6 +36,11 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
     public void NotifyPresenter(int code) {
         if(code == StatisticModel.DONE_INIT_DATA){
             CurrentSleeping = statisticModel.currentEntity.SleepTime;
+        }
+        if(code == BACK_ON_MENU){
+            FragmentManager fragmentManager = _view.GetFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer_function, MenuFragment.class,null).addToBackStack("").commit();
         }
     }
 

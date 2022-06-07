@@ -3,6 +3,8 @@ package com.example.se114_healthcareapplication.view.components;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
+import com.example.se114_healthcareapplication.presenter.PresenterBase;
 import com.example.se114_healthcareapplication.presenter.StepsCountPresenter;
 
 import java.text.DecimalFormat;
@@ -28,6 +31,8 @@ public class step_segment extends Fragment implements IView<StepsCountPresenter>
     private static final String ARG_PARAM2 = "param2";
     private StepsCountPresenter mainPresenter;
     private TextView completetxt, percent;
+    private Button backbtn;
+    private ProgressBar progressBar;
     public static int UPDATE_STEPS = 1;
     public static int UPDATE_PERCENT = 2;
 
@@ -74,7 +79,15 @@ public class step_segment extends Fragment implements IView<StepsCountPresenter>
 
         completetxt = view.findViewById(R.id.CompleteValue);
         percent = view.findViewById(R.id.percentage);
-
+        backbtn = view.findViewById(R.id.buttonturnback);
+        progressBar = view.findViewById(R.id.steps_prs);
+        progressBar.setMax(3000);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(PresenterBase.BACK_ON_MENU);
+            }
+        });
         setMainPresenter(new StepsCountPresenter(this));
         return view;
     }
@@ -84,6 +97,7 @@ public class step_segment extends Fragment implements IView<StepsCountPresenter>
         if(code == UPDATE_STEPS){
             int tmp = (int)entity;
             completetxt.setText(String.valueOf(tmp)+" steps");
+            progressBar.setProgress(tmp);
         }
         if(code== UPDATE_PERCENT){
             double tmp =(double) entity;

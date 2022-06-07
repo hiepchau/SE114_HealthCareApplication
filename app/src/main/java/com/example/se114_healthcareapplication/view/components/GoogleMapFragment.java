@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.GoogleMapPresenter;
+import com.example.se114_healthcareapplication.presenter.PresenterBase;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.*;
@@ -51,7 +52,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
     private String mParam1;
     private String mParam2;
     private TextView textclock;
-    private Button clockbtn,clearbtn;
+    private Button clockbtn,clearbtn, btnback;
     private List<LatLng> latLngList;
     private MapView mMap;
     private GoogleMap gMap;
@@ -104,6 +105,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
         clockbtn = v.findViewById(com.example.se114_healthcareapplication.R.id.btn_start);
         clearbtn = v.findViewById(com.example.se114_healthcareapplication.R.id.btn_clear);
         mMap = v.findViewById(com.example.se114_healthcareapplication.R.id.map_view);
+        btnback = v.findViewById(R.id.buttonturnback);
         mMap.onCreate(savedInstanceState);
         runlinels = new ArrayList<>();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
@@ -118,7 +120,12 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+         btnback.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 mainPresenter.NotifyPresenter(PresenterBase.BACK_ON_MENU);
+             }
+         });
         mMap.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull @NotNull GoogleMap googleMap) {

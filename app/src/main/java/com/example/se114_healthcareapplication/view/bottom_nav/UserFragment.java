@@ -94,6 +94,7 @@ public class UserFragment extends Fragment implements IView<UserPresenter> {
                 mainPresenter.NotifyPresenter(UserPresenter.SWITCH_TO_MANAGEDATA);
             }
         });
+
         setMainPresenter(new UserPresenter(this));
         emailtxt.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         return v;

@@ -14,4 +14,5 @@ public class PresenterBase {
     public IView getView(){
         return _view;
     };
+    public static final int BACK_ON_MENU = 9645171;
 }

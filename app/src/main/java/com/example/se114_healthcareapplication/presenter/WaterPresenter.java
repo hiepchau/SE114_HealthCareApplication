@@ -1,12 +1,18 @@
 package com.example.se114_healthcareapplication.presenter;
 
 import android.content.Context;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.model.UserModel;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
+import com.example.se114_healthcareapplication.view.MenuFragment;
+import com.example.se114_healthcareapplication.view.bottom_nav.HomeFragment;
+import com.example.se114_healthcareapplication.view.components.status_segment;
 import com.example.se114_healthcareapplication.view.components.water_segment;
 import com.google.firebase.database.*;
 
@@ -31,6 +37,11 @@ public class WaterPresenter extends PresenterBase implements IPresenter {
         }
         if(code == UserModel.RETRIEVE_USER_SUCCESS){
             _view.UpdateView(UPDATE_DAILY_GOAL,userModel.currentUser.Gender);
+        }
+        if(code == BACK_ON_MENU){
+            FragmentManager fragmentManager = _view.GetFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer_function, MenuFragment.class,null).addToBackStack("").commit();
         }
     }
 

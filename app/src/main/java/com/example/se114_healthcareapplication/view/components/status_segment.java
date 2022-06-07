@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.R;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
+import com.example.se114_healthcareapplication.presenter.PresenterBase;
 import com.example.se114_healthcareapplication.presenter.StatusPresenter;
 import com.hsalf.smilerating.SmileRating;
 import com.hsalf.smileyrating.SmileyRating;
@@ -34,7 +35,7 @@ public class status_segment extends Fragment implements IView<StatusPresenter> {
     private String mParam1;
     private String mParam2;
     private EditText statusEdt;
-    private Button confirmBtn;
+    private Button confirmBtn, backbtn;
     private SmileyRating ratingbar;
     StatusPresenter mainPresenter;
 
@@ -77,6 +78,13 @@ public class status_segment extends Fragment implements IView<StatusPresenter> {
         statusEdt = v.findViewById(R.id.Status_edt);
         confirmBtn = v.findViewById(R.id.btn_confirm);
         ratingbar = v.findViewById(R.id.emotion_ratingbar);
+        backbtn = v.findViewById(R.id.buttonturnback);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(PresenterBase.BACK_ON_MENU);
+            }
+        });
 
         setMainPresenter(new StatusPresenter(this));
         confirmBtn.setOnClickListener(new View.OnClickListener() {
