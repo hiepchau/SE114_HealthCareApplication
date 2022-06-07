@@ -40,8 +40,10 @@ ScrollChoice waterchoice ;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    TextView goalWater;
+    TextView goalWater, percent;
     Button backbtn;
+    ProgressBar progressBar;
+    int progress = 1;
 
     public water_segment() {
         // Required empty public constructor
@@ -89,6 +91,8 @@ ScrollChoice waterchoice ;
         waterchoice = v.findViewById(R.id.Scrollchoice123);
         goalWater = v.findViewById(R.id.DailyGoalWaterValue);
         backbtn = v.findViewById(R.id.buttonturnback);
+        progressBar = v.findViewById(R.id.progressbar_water);
+        percent = v.findViewById(R.id.percent_txv);
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,14 +133,29 @@ ScrollChoice waterchoice ;
     public void UpdateView(int code, Object entity) {
         if(code == UPDATE_COMPLETE){
             int update = (int)entity;
+            float tmpper = ((float)update/progress)*100;
+            percent.setText(String.valueOf((int)tmpper)+"%");
             complete.setText(String.valueOf(update)+" ml");
+            progressBar.setProgress((int)entity);
         }
         if(code == WaterPresenter.UPDATE_DAILY_GOAL){
             int gen = (int)entity;
             if(gen==0){
                 goalWater.setText("2500 ml");
+                progressBar.setMax(2500);
+                progress = 2500;
+                int update = (int)entity;
+                float tmpper = ((float)update/progress)*100;
+                percent.setText(String.valueOf((int)tmpper)+"%");
             }
-            else goalWater.setText("3500 ml");
+            else{
+                goalWater.setText("3500 ml");
+                progressBar.setMax(3500);
+                progress = 3500;
+                int update = (int)entity;
+                float tmpper = ((float)update/progress)*100;
+                percent.setText(String.valueOf((int)tmpper)+"%");
+            }
         }
     }
 
