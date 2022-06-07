@@ -11,11 +11,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.se114_healthcareapplication.view.authentication.*;
 import com.example.se114_healthcareapplication.view.components.notify_email_send;
 import com.example.se114_healthcareapplication.view.HomeActivity;
-import com.example.se114_healthcareapplication.view.authentication.login;
-import com.example.se114_healthcareapplication.view.authentication.register_google;
-import com.example.se114_healthcareapplication.view.authentication.signup;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.StatisticModel;
@@ -34,6 +32,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
+import org.jetbrains.annotations.NotNull;
 
 public class AuthenticatePresenter extends PresenterBase implements IPresenter {
     FirebaseAuth auth;
@@ -41,6 +40,8 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
     public final int GOOGLE_REQUEST = 1001;
     public static final int GO_TO_LOGIN = 712834;
     public static final int EMAIL_RESENT = 1273912;
+    public static final int RESET_EMAIL_SENT = 187273;
+    public static final int RESET_EMAIL_FAILED= 91273;
     static final String FIREBASE_TOKEN = "593884992492-5qj5ecn99fs0oc2ue2n51jel09a611hq.apps.googleusercontent.com";
     private boolean canContinue;
     private GoogleSignInClient client;
@@ -109,6 +110,11 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
             case id.btn_goto_signin:
                 _view.SwitchView(id.btn_goto_signin);
                 break;
+            case id.forgotpass_txv:
+                FragmentManager fragmentManager3 = _view.GetFragmentManager();
+                FragmentTransaction fragmentTransaction3 = fragmentManager3.beginTransaction();
+                fragmentTransaction3.replace(id.authenticateContainer, forgot_password.class,null).addToBackStack("").commit();
+                break;
             case REGISTER_FAILED:
                 _view.UpdateView(IView.EMPTY_CODE,null);
                 Toast.makeText(_view.getAppActivity(), "Register failed",Toast.LENGTH_SHORT).show();
@@ -132,6 +138,23 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                     }
                     break;
         }
+    }
+
+    public void ResetPassword(String email){
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        _view.SwitchView(RESET_EMAIL_SENT);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        _view.UpdateView(RESET_EMAIL_FAILED,e.toString());
+                    }
+                })
+        ;
     }
 
     @Override

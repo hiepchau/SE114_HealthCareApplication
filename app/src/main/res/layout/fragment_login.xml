@@ -91,6 +91,7 @@ android:focusableInTouchMode="true">
             android:layout_height="wrap_content"
             android:text="Forgot Password ?"
             android:layout_marginLeft="100dp"
+            android:id="@+id/forgotpass_txv"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:fontFamily="@font/outfit_regular"

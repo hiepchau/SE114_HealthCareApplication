@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
     private ImageButton GoogleBtn;
     private EditText email,pass;
     private IPresenter mainPresenter;
+    TextView forgotpasstxt;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -82,6 +84,14 @@ public class login extends Fragment implements IView<AuthenticatePresenter> {
         GoogleBtn = v.findViewById(R.id.Google_btn);
         email = v.findViewById(R.id.et_login_username);
         pass = v.findViewById(R.id.et_login_password);
+        forgotpasstxt =v.findViewById(R.id.forgotpass_txv);
+
+        forgotpasstxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(R.id.forgotpass_txv);
+            }
+        });
 
 
         setMainPresenter(new AuthenticatePresenter(this));

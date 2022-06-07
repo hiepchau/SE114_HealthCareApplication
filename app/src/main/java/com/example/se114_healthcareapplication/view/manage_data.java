@@ -36,7 +36,7 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
     private String mParam1;
     private String mParam2;
     private CustomeEditText heighttxt, weighttxt, firstnametxt, lastnametxt, agetxt;
-    private Button acceptbtn;
+    private Button acceptbtn, resetpassbtn;
     private UserPresenter mainPresenter;
     private UserEntity user;
     private StatisticEntity stat;
@@ -83,10 +83,17 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
         lastnametxt = v.findViewById(R.id.lastname_edt);
         agetxt = v.findViewById(R.id.age_edt);
         acceptbtn = v.findViewById(R.id.btn_accept);
+        resetpassbtn = v.findViewById(R.id.resetpass_btn);
         setMainPresenter(new UserPresenter(this));
         acceptbtn.setEnabled(false);
         acceptbtn.setBackground(getResources().getDrawable(R.drawable.btn_disabled));
 
+        resetpassbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(UserPresenter.SWITCH_TO_RESET_PASS);
+            }
+        });
         heighttxt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
