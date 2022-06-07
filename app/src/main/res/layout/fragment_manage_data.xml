@@ -55,7 +55,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.256" android:id="@+id/firstname_edt"
+            app:layout_constraintVertical_bias="0.256"
+            android:id="@+id/firstname_edt"
             app:layout_constraintHorizontal_bias="0.132"/>
 
     <com.example.se114_healthcareapplication.model.CustomeEditText
@@ -77,14 +78,19 @@
             app:layout_constraintVertical_bias="0.256"
             app:layout_constraintHorizontal_bias="0.87"/>
 
-    <com.example.se114_healthcareapplication.model.CustomeEditText android:layout_width="150dp" android:layout_height="40dp"
+    <com.example.se114_healthcareapplication.model.CustomeEditText
+            android:layout_width="150dp"
+            android:layout_height="40dp"
               android:hint="Age"
               android:paddingLeft="10dp"
               android:inputType="number"
               android:background="@drawable/et_login"
-              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintHorizontal_bias="0.137" app:layout_constraintVertical_bias="0.351"
+              app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintHorizontal_bias="0.137"
+            app:layout_constraintVertical_bias="0.351"
               android:id="@+id/age_edt"/>
 
 
@@ -95,22 +101,30 @@
               android:inputType="number"
               android:id="@+id/height_edt"
               android:background="@drawable/et_login"
-              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintHorizontal_bias="0.146" app:layout_constraintVertical_bias="0.448"/>
+              app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintVertical_bias="0.448"/>
 
-    <com.example.se114_healthcareapplication.model.CustomeEditText android:layout_width="165dp" android:layout_height="40dp"
-              android:hint="Weight (kg)"
-              android:paddingLeft="10dp"
-              android:inputType="number"
-              android:id="@+id/weight_edt"
-              android:background="@drawable/et_login"
-              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintHorizontal_bias="0.853" app:layout_constraintVertical_bias="0.448"/>
+    <com.example.se114_healthcareapplication.model.CustomeEditText android:layout_width="165dp"
+                                                                   android:layout_height="40dp"
+                                                                   android:hint="Weight (kg)"
+                                                                   android:paddingLeft="10dp"
+                                                                   android:inputType="number"
+                                                                   android:id="@+id/weight_edt"
+                                                                   android:background="@drawable/et_login"
+                                                                   app:layout_constraintEnd_toEndOf="parent"
+                                                                   app:layout_constraintStart_toStartOf="parent"
+                                                                   app:layout_constraintTop_toTopOf="parent"
+                                                                   app:layout_constraintBottom_toBottomOf="parent"
+                                                                   app:layout_constraintHorizontal_bias="0.853"
+                                                                   app:layout_constraintVertical_bias="0.448"/>
 
     <android.widget.Button
-            android:layout_width="390dp" android:layout_height="40dp"
+            android:layout_width="390dp"
+            android:layout_height="40dp"
             android:background="@drawable/background_fragment_menu"
             android:text="Reset password"
             android:textAllCaps="false"
@@ -119,10 +133,13 @@
             android:drawableEnd="@drawable/ic_open"
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.56"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.56"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.238"/>
 
     <android.widget.Button
