@@ -96,6 +96,7 @@ public class AlarmPresenter extends PresenterBase implements IPresenter {
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY,HRS);
         calendar.set(Calendar.MINUTE,MIN);
+        calendar.set(Calendar.SECOND,0);
         if(calendar.getTimeInMillis()< System.currentTimeMillis()){
             calendar.add(Calendar.DATE,1);
         }
