@@ -25,6 +25,7 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
     public static final int SWITCH_TO_RUNNING_LIST = 198234;
     public static final int UPDATE_LIST_RUN = 8123978;
     public static final int BACK_TO_RUNNING = 182391;
+    public static final int APPEND_LIST_RUN = 9128347;
     public boolean isTimerRunning;
     public GoogleMapPresenter(IView view) {
         super(view);
@@ -47,6 +48,10 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
 
         if(code == RunningModel.RUNNING_ENTITY_RETRIEVED){
             _view.UpdateView(UPDATE_LIST_RUN, runningModel.getEntity());
+        }
+
+        if(code == RunningModel.RUNNIG_ENTITY_APPEND){
+            _view.UpdateView(APPEND_LIST_RUN, runningModel.getEntity());
         }
 
         if(code == BACK_TO_RUNNING){
@@ -98,5 +103,9 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
     }
     public void getRunningList(){
         runningModel.retrieveRunningData();
+    }
+
+    public void getRunningLimit6(long cond){
+        runningModel.retrieveDataLimitedTo6(cond);
     }
 }

@@ -40,7 +40,6 @@ public class list_run extends Fragment implements IView<GoogleMapPresenter> {
     private Button backbtn;
     private RunningEntityAdapter adapter;
     private ListView runninglistview;
-    int preLast;
     ArrayList<RunningEntity> runningEntityList;
 
     /**
@@ -85,12 +84,16 @@ public class list_run extends Fragment implements IView<GoogleMapPresenter> {
         backbtn = v.findViewById(R.id.buttonturnback);
         runninglistview.setAdapter(adapter);
         setMainPresenter(new GoogleMapPresenter(this));
-        mainPresenter.getRunningList();
-        preLast=-1;
+        mainPresenter.getRunningLimit6(System.currentTimeMillis());
         runninglistview.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
+                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE
+                        && (runninglistview.getLastVisiblePosition() - runninglistview.getHeaderViewsCount() -
+                        runninglistview.getFooterViewsCount()) >= (adapter.getCount() - 1)) {
 
+                    mainPresenter.getRunningLimit6(runningEntityList.get((int)runningEntityList.stream().count()-1).createdTime);
+                }
             }
 
             @Override
@@ -112,6 +115,12 @@ public class list_run extends Fragment implements IView<GoogleMapPresenter> {
         if(code == GoogleMapPresenter.UPDATE_LIST_RUN){
             ArrayList<RunningEntity> ls = (ArrayList<RunningEntity>)entity;
             adapter.setRunningEntityList(ls);
+            adapter.notifyDataSetChanged();
+        }
+        if(code == GoogleMapPresenter.APPEND_LIST_RUN){
+            ArrayList<RunningEntity> ls = (ArrayList<RunningEntity>)entity;
+            runningEntityList.addAll(ls);
+            adapter.setRunningEntityList(runningEntityList);
             adapter.notifyDataSetChanged();
         }
     }
