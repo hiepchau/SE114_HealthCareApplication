@@ -14,7 +14,7 @@ import com.example.se114_healthcareapplication.*;
 import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.view.AuthenticateActivity;
 import com.example.se114_healthcareapplication.view.bottom_nav.HomeFragment;
-import com.example.se114_healthcareapplication.view.bottom_nav.NotificationsFragment;
+import com.example.se114_healthcareapplication.view.bottom_nav.StatisticsFragment;
 import com.example.se114_healthcareapplication.view.bottom_nav.TargetFragment;
 import com.example.se114_healthcareapplication.view.bottom_nav.UserFragment;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
@@ -70,7 +70,7 @@ public class HomePresenter extends PresenterBase implements IPresenter {
 
         if(code == SWITCH_TO_NOTIFICATIONS){
             FragmentManager manager = _view.GetFragmentManager();
-            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new NotificationsFragment()).commit();
+            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new StatisticsFragment()).commit();
         }
 
         if(code == SWITCH_TO_USER){
