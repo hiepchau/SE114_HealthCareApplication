@@ -3,8 +3,9 @@ package com.example.se114_healthcareapplication.view.components;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ListView;
+import android.util.Log;
+import android.view.ViewTreeObserver;
+import android.widget.*;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class list_run extends Fragment implements IView<GoogleMapPresenter> {
     private Button backbtn;
     private RunningEntityAdapter adapter;
     private ListView runninglistview;
+    int preLast;
     ArrayList<RunningEntity> runningEntityList;
 
     /**
@@ -84,7 +86,17 @@ public class list_run extends Fragment implements IView<GoogleMapPresenter> {
         runninglistview.setAdapter(adapter);
         setMainPresenter(new GoogleMapPresenter(this));
         mainPresenter.getRunningList();
+        preLast=-1;
+        runninglistview.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
 
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+            }
+        });
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +105,7 @@ public class list_run extends Fragment implements IView<GoogleMapPresenter> {
         });
         return v;
     }
+
 
     @Override
     public void UpdateView(int code, Object entity) {
