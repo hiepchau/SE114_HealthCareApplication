@@ -18,10 +18,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
             android:textColor="#EC9A3A"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.16"
-            app:layout_constraintVertical_bias="0.173"/>
+            android:layout_marginTop="64dp" android:layout_marginStart="44dp"/>
     <TextView
             android:text="3000 steps"
             android:layout_width="wrap_content"
@@ -29,13 +26,12 @@
             android:id="@+id/DailyGoalStepValue"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
             android:textColor="#C0C0C0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.145"
-            app:layout_constraintVertical_bias="0.315"/>
+            app:layout_constraintHorizontal_bias="0.14"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" app:layout_constraintVertical_bias="0.092"/>
     <TextView
             android:text="0 step"
             android:layout_width="wrap_content"
@@ -43,26 +39,23 @@
             android:id="@+id/CompleteValue"
             app:layout_constraintStart_toStartOf="parent"
             android:textAlignment="center"
-            app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
             android:textColor="#C0C0C0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.844"
-            app:layout_constraintVertical_bias="0.315"/>
+            app:layout_constraintHorizontal_bias="0.829"
+            app:layout_constraintTop_toBottomOf="@+id/TextView6" app:layout_constraintVertical_bias="0.083"/>
     <TextView
             android:text="Complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/TextView6"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="24dp"
             android:textColor="#EC9A3A"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.171"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.864"/>
+            android:layout_marginTop="64dp" app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintHorizontal_bias="0.768"/>
     <TextView
             android:hint="of 3000 steps"
             android:textSize="20dp"
@@ -70,11 +63,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.545"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.691"
-            android:id="@+id/textView"/>
+            app:layout_constraintHorizontal_bias="0.551"
+            android:id="@+id/textView" app:layout_constraintTop_toBottomOf="@+id/steps_prs"/>
     <TextView
             android:hint="75%"
             android:textSize="20dp"
@@ -83,11 +73,10 @@
             android:id="@+id/percentage"
             app:layout_constraintStart_toStartOf="parent"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.531"
+            app:layout_constraintHorizontal_bias="0.535"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.579"/>
+            android:layout_marginTop="168dp"/>
     <Button
             android:layout_width="20dp"
             android:layout_height="15dp"
@@ -102,16 +91,28 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.154"
             app:layout_constraintVertical_bias="0.044"/>
+
     <ProgressBar
             style="?android:attr/seekBarStyle"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
             android:id="@+id/steps_prs"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.577"
-            app:layout_constraintVertical_bias="0.81"/>
-
+            app:layout_constraintHorizontal_bias="0.565"
+            app:layout_constraintTop_toBottomOf="@+id/percentage" android:layout_marginTop="8dp"/>
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+               android:src="@drawable/ic_walking" app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toTopOf="@+id/textView22"
+               app:layout_constraintHorizontal_bias="0.116" app:layout_constraintTop_toBottomOf="@+id/textView"
+               app:layout_constraintVertical_bias="1.0"/>
+    <TextView android:layout_width="350dp" android:layout_height="wrap_content"
+              android:text="'Walking is the exact balance between spirit and humility' - Gary Snyder."
+              android:fontFamily="@font/outfit_bold"
+              android:textSize="18dp"
+              android:textAlignment="center"
+              app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView"
+              app:layout_constraintHorizontal_bias="0.644" app:layout_constraintVertical_bias="0.794"
+              android:id="@+id/textView22"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

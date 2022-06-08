@@ -8,6 +8,7 @@
                                                    android:background="@drawable/background_fragment_menu"
                                                    tools:context=".view.MenuFragment">
 
+
     <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="150dp"
@@ -54,7 +55,6 @@
 
     </RelativeLayout>
 
-
     <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="150dp"
@@ -98,6 +98,7 @@
                    android:layout_marginStart="30dp"/>
 
     </RelativeLayout>
+
     <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="150dp"
@@ -142,6 +143,7 @@
                 android:layout_marginTop="28dp"
                 android:layout_alignParentTop="true"/>
     </RelativeLayout>
+
     <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="150dp"
@@ -284,6 +286,8 @@
                 android:layout_alignParentTop="true"/>
 
     </RelativeLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
