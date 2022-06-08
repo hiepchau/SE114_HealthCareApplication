@@ -52,7 +52,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
     private String mParam1;
     private String mParam2;
     private TextView textclock;
-    private Button clockbtn,clearbtn, btnback;
+    private Button clockbtn,clearbtn, btnback, btnlist;
     private List<LatLng> latLngList;
     private MapView mMap;
     private GoogleMap gMap;
@@ -107,6 +107,7 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
         mMap = v.findViewById(com.example.se114_healthcareapplication.R.id.map_view);
         btnback = v.findViewById(R.id.buttonturnback);
         mMap.onCreate(savedInstanceState);
+        btnlist = v.findViewById(R.id.btn_goto_runninglist);
         runlinels = new ArrayList<>();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
@@ -145,6 +146,13 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
                         gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentposition, 19));
                     }
                 });
+            }
+        });
+
+        btnlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(GoogleMapPresenter.SWITCH_TO_RUNNING_LIST);
             }
         });
         clockbtn.setOnClickListener(new View.OnClickListener() {

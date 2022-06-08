@@ -6,14 +6,13 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
-import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
-import com.example.se114_healthcareapplication.model.CustomeEditText;
+import com.example.se114_healthcareapplication.custom.CustomEdittext;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
 import com.example.se114_healthcareapplication.presenter.UserPresenter;
@@ -35,7 +34,7 @@ public class manage_data extends Fragment implements IView<UserPresenter> {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private CustomeEditText heighttxt, weighttxt, firstnametxt, lastnametxt, agetxt;
+    private CustomEdittext heighttxt, weighttxt, firstnametxt, lastnametxt, agetxt;
     private Button acceptbtn, resetpassbtn, backbtn;
     private UserPresenter mainPresenter;
     private UserEntity user;

@@ -47,7 +47,7 @@ android:focusableInTouchMode="true">
             app:layout_constraintVertical_bias="0.234"/>
 
 
-    <com.example.se114_healthcareapplication.model.CustomeEditText
+    <com.example.se114_healthcareapplication.custom.CustomEdittext
             android:id="@+id/et_login_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@ android:focusableInTouchMode="true">
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.373"/>
 
-    <com.example.se114_healthcareapplication.model.CustomeEditText
+    <com.example.se114_healthcareapplication.custom.CustomEdittext
             android:id="@+id/et_login_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

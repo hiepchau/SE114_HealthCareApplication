@@ -51,7 +51,7 @@
             app:layout_constraintHorizontal_bias="0.496"
             android:id="@+id/emotion_ratingbar"
             android:layout_marginTop="28dp"/>
-    <com.example.se114_healthcareapplication.model.CustomeEditText
+    <com.example.se114_healthcareapplication.custom.CustomEdittext
             android:layout_width="350dp"
             android:layout_height="130dp"
             android:hint="write something for today"

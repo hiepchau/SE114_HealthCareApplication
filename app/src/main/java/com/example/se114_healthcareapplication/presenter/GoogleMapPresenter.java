@@ -11,6 +11,7 @@ import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.RunningModel;
 import com.example.se114_healthcareapplication.model.entity.RunningEntity;
+import com.example.se114_healthcareapplication.view.components.list_run;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,9 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
     Timer mTimer;
     public long starttime;
     private RunningModel runningModel;
+    public static final int SWITCH_TO_RUNNING_LIST = 198234;
+    public static final int UPDATE_LIST_RUN = 8123978;
+    public static final int BACK_TO_RUNNING = 182391;
     public boolean isTimerRunning;
     public GoogleMapPresenter(IView view) {
         super(view);
@@ -35,6 +39,21 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer_function, MenuFragment.class,null).addToBackStack("").commit();
         }
+        if(code == SWITCH_TO_RUNNING_LIST){
+            FragmentManager fragmentManager = _view.GetFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer_function, list_run.class,null).commit();
+        }
+
+        if(code == RunningModel.RUNNING_ENTITY_RETRIEVED){
+            _view.UpdateView(UPDATE_LIST_RUN, runningModel.getEntity());
+        }
+
+        if(code == BACK_TO_RUNNING){
+            FragmentManager fragmentManager = _view.GetFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer_function, GoogleMapFragment.class,null).addToBackStack("").commit();
+        }
     }
 
     @Override
@@ -47,14 +66,20 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
         mTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                long millis = System.currentTimeMillis() - starttime;
-                int seconds = (int) (millis / 1000);
-                int minutes = seconds / 60;
-                seconds     = seconds % 60;
-                List<Integer> lstime = new ArrayList<>();
-                lstime.add(minutes);
-                lstime.add(seconds);
-                _view.UpdateView(GoogleMapFragment.UPDATE_TIMER,lstime);
+                _view.getAppActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        long millis = System.currentTimeMillis() - starttime;
+                        int seconds = (int) (millis / 1000);
+                        int minutes = seconds / 60;
+                        seconds     = seconds % 60;
+                        List<Integer> lstime = new ArrayList<>();
+                        lstime.add(minutes);
+                        lstime.add(seconds);
+                        _view.UpdateView(GoogleMapFragment.UPDATE_TIMER,lstime);
+                    }
+                });
+
             }
         },0,1000);
         isTimerRunning = true;
@@ -70,5 +95,8 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
     public void UpdateRunning(float distance){
         RunningEntity entity = new RunningEntity(distance,System.currentTimeMillis()-starttime, System.currentTimeMillis());
         runningModel.UpdateDatabase(entity);
+    }
+    public void getRunningList(){
+        runningModel.retrieveRunningData();
     }
 }
