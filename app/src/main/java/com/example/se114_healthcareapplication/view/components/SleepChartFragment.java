@@ -105,8 +105,8 @@ public class SleepChartFragment extends Fragment implements IView<StatisticPrese
             for(StatisticEntity en: ls){
                 yvalues.add(new Entry(en.CreatedTime,en.SleepTime));
             }
-            LineDataSet lineDataSet = new LineDataSet(yvalues,"Water amount (ml)");
-
+            LineDataSet lineDataSet = new LineDataSet(yvalues,"Sleeping time");
+            lineDataSet.setLineWidth(5f);
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(lineDataSet);
             LineData line = new LineData(dataSets);
@@ -124,6 +124,8 @@ public class SleepChartFragment extends Fragment implements IView<StatisticPrese
             XAxis xAxis = mchart.getXAxis();
             YAxis yAxisleft = mchart.getAxisLeft();
             YAxis yAxisright = mchart.getAxisRight();
+            yAxisleft.setAxisMinimum(0);
+            yAxisright.setAxisMinimum(0);
             yAxisleft.setValueFormatter(new ValueFormatter() {
                 @Override
                 public String getAxisLabel(float value, AxisBase axis) {

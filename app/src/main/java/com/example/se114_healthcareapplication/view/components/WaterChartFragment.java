@@ -17,6 +17,7 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -108,12 +109,16 @@ public class WaterChartFragment extends Fragment implements IView<StatisticPrese
                 yvalues.add(new Entry(en.CreatedTime,en.Water));
             }
             LineDataSet lineDataSet = new LineDataSet(yvalues,"Water amount (ml)");
-
+            lineDataSet.setLineWidth(5f);
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(lineDataSet);
             LineData line = new LineData(dataSets);
             mchart.setData(line);
             XAxis xAxis = mchart.getXAxis();
+            YAxis yAxisleft = mchart.getAxisLeft();
+            YAxis yAxisright = mchart.getAxisRight();
+            yAxisleft.setAxisMinimum(0);
+            yAxisright.setAxisMinimum(0);
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
             xAxis.setValueFormatter(new ValueFormatter() {
                 @Override

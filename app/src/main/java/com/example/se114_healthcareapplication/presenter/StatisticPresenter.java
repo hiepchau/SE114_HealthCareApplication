@@ -8,6 +8,7 @@ import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.StatisticModel;
 import com.example.se114_healthcareapplication.model.UserModel;
 import com.example.se114_healthcareapplication.view.bottom_nav.StatisticsFragment;
+import com.example.se114_healthcareapplication.view.components.EmotionalChartFragment;
 import com.example.se114_healthcareapplication.view.components.SleepChartFragment;
 import com.example.se114_healthcareapplication.view.components.WalkChartFragment;
 import com.example.se114_healthcareapplication.view.components.WaterChartFragment;
@@ -19,6 +20,7 @@ public class StatisticPresenter extends PresenterBase implements IPresenter {
     public static final int DATA_RETRIEVED = 182379;
     public static final int SWITCH_TO_WATER =21234;
     public static final int SWITCH_TO_STEPS =9128347;
+    public static final int SWITCH_TO_EMOTION =947;
     public static final int SWITCH_TO_SLEEP =182371;
     public static final int BACK_TO_MAIN_STATISTICS = 195341;
     public StatisticPresenter(IView view) {
@@ -56,6 +58,10 @@ public class StatisticPresenter extends PresenterBase implements IPresenter {
         if(code == BACK_TO_MAIN_STATISTICS){
             FragmentManager manager = _view.GetFragmentManager();
             manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new StatisticsFragment()).addToBackStack("").commit();
+        }
+        if(code == SWITCH_TO_EMOTION){
+            FragmentManager manager = _view.GetFragmentManager();
+            manager.beginTransaction().replace(R.id.fragmentContainer_homeactivity, new EmotionalChartFragment()).addToBackStack("").commit();
         }
     }
 

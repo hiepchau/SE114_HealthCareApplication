@@ -31,10 +31,10 @@ import java.util.TimeZone;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WalkChartFragment#newInstance} factory method to
+ * Use the {@link EmotionalChartFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WalkChartFragment extends Fragment implements IView<StatisticPresenter> {
+public class EmotionalChartFragment extends Fragment implements IView<StatisticPresenter> {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,7 +48,7 @@ public class WalkChartFragment extends Fragment implements IView<StatisticPresen
     private Button backBtn;
     LineChart mchart;
 
-    public WalkChartFragment() {
+    public EmotionalChartFragment() {
         // Required empty public constructor
     }
 
@@ -58,11 +58,11 @@ public class WalkChartFragment extends Fragment implements IView<StatisticPresen
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment WalkChartFragment.
+     * @return A new instance of fragment EmotionalChartFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static WalkChartFragment newInstance(String param1, String param2) {
-        WalkChartFragment fragment = new WalkChartFragment();
+    public static EmotionalChartFragment newInstance(String param1, String param2) {
+        EmotionalChartFragment fragment = new EmotionalChartFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -83,8 +83,7 @@ public class WalkChartFragment extends Fragment implements IView<StatisticPresen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_walk_chart, container, false);
-
+        View v = inflater.inflate(R.layout.fragment_emotional_chart, container, false);
         mchart = v.findViewById(R.id.linechart);
         backBtn = v.findViewById(R.id.buttonturnback);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -103,22 +102,69 @@ public class WalkChartFragment extends Fragment implements IView<StatisticPresen
             ArrayList<StatisticEntity> ls = (ArrayList<StatisticEntity>) entity;
             ArrayList<Entry> yvalues = new ArrayList<>();
             for(StatisticEntity en: ls){
-                yvalues.add(new Entry(en.CreatedTime,en.Steps));
+                yvalues.add(new Entry(en.CreatedTime,en.EmotionalLevel));
             }
-            LineDataSet lineDataSet = new LineDataSet(yvalues,"Steps took");
+            LineDataSet lineDataSet = new LineDataSet(yvalues,"Emotional level");
             lineDataSet.setLineWidth(5f);
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(lineDataSet);
             LineData line = new LineData(dataSets);
-
+            line.setValueFormatter(new ValueFormatter() {
+                @Override
+                public String getFormattedValue(float value) {
+                    if(value== 1 )
+                        return "Terrible";
+                    if(value ==2)
+                        return  "Bad";
+                    if(value==3)
+                        return "Okay";
+                    if(value==4)
+                        return "Good";
+                    if(value ==5)
+                        return "Great";
+                    return "Okay";
+                }
+            });
             mchart.setData(line);
             XAxis xAxis = mchart.getXAxis();
             YAxis yAxisleft = mchart.getAxisLeft();
             YAxis yAxisright = mchart.getAxisRight();
+            yAxisleft.setAxisMinimum(1);
+            yAxisright.setAxisMinimum(1);
             yAxisleft.setGranularity(1);
             yAxisright.setGranularity(1);
-            yAxisleft.setAxisMinimum(0);
-            yAxisright.setAxisMinimum(0);
+            yAxisleft.setValueFormatter(new ValueFormatter() {
+                @Override
+                public String getAxisLabel(float value, AxisBase axis) {
+                    if(value== 1 )
+                        return "Terrible";
+                    if(value ==2)
+                        return  "Bad";
+                    if(value==3)
+                        return "Okay";
+                    if(value==4)
+                        return "Good";
+                    if(value ==5)
+                        return "Great";
+                    return "Okay";
+                }
+            });
+            yAxisright.setValueFormatter(new ValueFormatter() {
+                @Override
+                public String getAxisLabel(float value, AxisBase axis) {
+                    if(value== 1 )
+                        return "Terrible";
+                    if(value ==2)
+                        return  "Bad";
+                    if(value==3)
+                        return "Okay";
+                    if(value==4)
+                        return "Good";
+                    if(value ==5)
+                        return "Great";
+                    return "Okay";
+                }
+            });
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
             xAxis.setValueFormatter(new ValueFormatter() {
                 @Override
