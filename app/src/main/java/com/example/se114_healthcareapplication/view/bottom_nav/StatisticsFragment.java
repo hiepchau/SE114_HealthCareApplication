@@ -33,7 +33,7 @@ public class StatisticsFragment extends Fragment implements IView<StatisticPrese
     private static final String ARG_PARAM2 = "param2";
     RelativeLayout waterRelative, walkRelative, sleepRelative, emoRelative;
     TextView waterstatus, watervalue, waterrate, walkstatus, walkvalue,walkrate, sleepstatus, sleepvalue, sleeprate,
-            emotionvalue;
+            emotionvalue, bmi_status, bmi_index;
     private StatisticPresenter mainPresenter;
     private UserEntity user;
 
@@ -94,6 +94,9 @@ public class StatisticsFragment extends Fragment implements IView<StatisticPrese
         walkrate = v.findViewById(R.id.walk_rate_txv);
         walkstatus = v.findViewById(R.id.walk_status_txv);
         walkvalue = v.findViewById(R.id.walk_value_txv);
+
+        bmi_status = v.findViewById(R.id.bmi_status);
+        bmi_index = v.findViewById(R.id.index_bmi);
 
         emotionvalue = v.findViewById(R.id.emotion_value_txv);
         emoRelative.setOnClickListener(new View.OnClickListener() {
@@ -237,6 +240,23 @@ public class StatisticsFragment extends Fragment implements IView<StatisticPrese
                 emoState = "Great";
             }
             emotionvalue.setText(emoState);
+            StatisticEntity stat = entityArrayList.get(entityArrayList.size()-1);
+            double index = stat.Weight/(stat.Height/50);
+            String bmistate = "";
+            if(index<=18.5){
+                bmistate = "Underweight";
+            }
+            else if(index>18.5 && index<=24){
+                bmistate = "Normal weight";
+            }
+            else if(index>24 && index<=28){
+                bmistate = "Over weight";
+            }
+            else if(index>28){
+                bmistate = "Obese";
+            }
+            bmi_index.setText(decimalFormat.format(index));
+            bmi_status.setText(bmistate);
         }
     }
 
