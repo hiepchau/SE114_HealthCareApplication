@@ -248,12 +248,9 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
         statlist.clear();
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY,0);
-        calendar.set(Calendar.MINUTE,0);
-        calendar.add(Calendar.DATE,-7);
 
         Query query = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
-                .child("Statistic").orderByChild("CreatedTime").startAt(calendar.getTimeInMillis())
+                .child("Statistic").orderByChild("CreatedTime").endAt(calendar.getTimeInMillis())
                 .limitToLast(7);
 
         ValueEventListener listener = new ValueEventListener() {
@@ -266,8 +263,9 @@ public class StatisticModel extends ModelBase implements IModel<StatisticEntity>
                         int steps = snap.child("Steps").getValue(int.class);
                         long sleep = snap.child("SleepTime").getValue(int.class);
                         int emo = snap.child("EmotionalLevel").getValue(int.class);
+                        long cre = snap.child("CreatedTime").getValue(long.class);
                         String sta = snap.child("Status").getValue(String.class);
-                        StatisticEntity entity = new StatisticEntity(he, we, water, steps, sleep, emo, sta);
+                        StatisticEntity entity = new StatisticEntity(he, we, water, steps, sleep, emo, sta,cre);
                         statlist.add(entity);
                     }
                     _presenter.NotifyPresenter(DONE_RETRIEVE_WEEK_LIST);
