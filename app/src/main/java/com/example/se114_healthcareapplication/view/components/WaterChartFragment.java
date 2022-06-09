@@ -109,7 +109,7 @@ public class WaterChartFragment extends Fragment implements IView<StatisticPrese
                 yvalues.add(new Entry(en.CreatedTime,en.Water));
             }
             LineDataSet lineDataSet = new LineDataSet(yvalues,"Water amount (ml)");
-
+            lineDataSet.setLineWidth(5f);
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(lineDataSet);
             LineData line = new LineData(dataSets);

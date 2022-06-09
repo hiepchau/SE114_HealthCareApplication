@@ -105,7 +105,7 @@ public class EmotionalChartFragment extends Fragment implements IView<StatisticP
                 yvalues.add(new Entry(en.CreatedTime,en.EmotionalLevel));
             }
             LineDataSet lineDataSet = new LineDataSet(yvalues,"Emotional level");
-
+            lineDataSet.setLineWidth(5f);
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(lineDataSet);
             LineData line = new LineData(dataSets);

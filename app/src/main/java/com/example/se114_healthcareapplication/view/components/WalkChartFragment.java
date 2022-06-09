@@ -105,11 +105,12 @@ public class WalkChartFragment extends Fragment implements IView<StatisticPresen
             for(StatisticEntity en: ls){
                 yvalues.add(new Entry(en.CreatedTime,en.Steps));
             }
-            LineDataSet lineDataSet = new LineDataSet(yvalues,"Water amount (ml)");
-
+            LineDataSet lineDataSet = new LineDataSet(yvalues,"Steps took");
+            lineDataSet.setLineWidth(5f);
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(lineDataSet);
             LineData line = new LineData(dataSets);
+
             mchart.setData(line);
             XAxis xAxis = mchart.getXAxis();
             YAxis yAxisleft = mchart.getAxisLeft();
