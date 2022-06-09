@@ -21,4 +21,15 @@ public class StatisticEntity extends BaseModelEntity{
         this.CreatedTime = System.currentTimeMillis();
     }
 
+    public StatisticEntity(double height, double weight, int water, int steps, long sleepTime, int emotionalLevel,String status, long cretime) {
+        Height = height;
+        Weight = weight;
+        this.Water = water;
+        this.Steps = steps;
+        this.SleepTime = sleepTime;
+        this.EmotionalLevel = emotionalLevel;
+        this.Status = status;
+        this.CreatedTime = cretime;
+    }
+
 }
