@@ -64,5 +64,4 @@
     - Database: [Firebase](https://github.com/topics/firebase)
 - Thư viện
     - [Material-Components-Android](https://github.com/material-components/material-components-android)
-    - [Live-Charts](https://github.com/Live-Charts/Live-Charts)
     - [Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
