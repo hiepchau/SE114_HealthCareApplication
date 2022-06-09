@@ -366,34 +366,35 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintVertical_bias="0.211"
+                app:layout_constraintVertical_bias="0.388"
                 app:layout_constraintTop_toBottomOf="@+id/statistic_emotional_rlt"/>
         <RelativeLayout android:layout_width="wrap_content" android:layout_height="50dp"
                         android:background="#4396A1"
                         android:id="@+id/statistic_emotional_rlt"
                         android:clickable="true"
                         app:layout_constraintTop_toBottomOf="@+id/relativeLayout5"
-                        android:layout_marginTop="20dp" app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
+                        android:layout_marginTop="32dp" app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0">
 
             <TextView
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Average"
                     android:fontFamily="@font/outfit_bold"
                     android:textSize="24dp"
-                    android:layout_alignParentStart="true" android:layout_marginStart="97dp"
+                    android:id="@+id/tv_average"
+                    android:layout_alignParentStart="true" android:layout_marginStart="86dp"
                     android:layout_alignParentBottom="true" android:layout_marginBottom="12dp"
-                    android:layout_marginTop="11dp" android:layout_alignParentTop="true"/>
+                    android:layout_marginTop="11dp" android:layout_alignParentTop="true"
+                    android:layout_toStartOf="@+id/emotion_value_txv" android:layout_marginEnd="28dp"/>
             <TextView
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="STT"
+                    android:text="Terrible->Great"
                     android:id="@+id/emotion_value_txv"
                     android:fontFamily="@font/outfit_bold"
                     android:textColor="@color/white"
-                    android:textSize="20dp" android:layout_alignParentEnd="true" android:layout_marginEnd="142dp"
-                    android:layout_alignParentBottom="true" android:layout_marginBottom="12dp"
-                    android:layout_marginTop="15dp" android:layout_alignParentTop="true"
-                    android:layout_marginStart="44dp"/>
+                    android:gravity="center"
+                    android:textSize="20dp" android:layout_alignParentEnd="true" android:layout_marginEnd="53dp"
+                    android:layout_alignParentBottom="true" android:layout_marginBottom="13dp"/>
 
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
