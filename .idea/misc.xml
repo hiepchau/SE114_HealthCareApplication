@@ -1,42 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-=======
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/btn_intro.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/btn_menu.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/et_login.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/image_background_icon.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/image_background_login.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/image_background_main.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/image_background_menu.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/image_background_navbar.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/intro_background.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/toolbar_menu.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/toolbar_menu2.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/drawable/toolbar_menu3.xml" value="0.19375" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/layout/activity_authenticate.xml" value="0.17074275362318841" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/layout/activity_home.xml" value="0.17074275362318841" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/layout/fragment_info_user.xml" value="0.17074275362318841" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/layout/fragment_intro.xml" value="0.17074275362318841" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/layout/fragment_intro2.xml" value="0.17074275362318841" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/layout/fragment_login.xml" value="0.17074275362318841" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/layout/fragment_menu.xml" value="0.17074275362318841" />
-        <entry key="..\:/Data/HipChou/Project/Java/SE114_HealthCareApplication/app/src/main/res/layout/fragment_resetpassword.xml" value="0.17074275362318841" />
+        <entry key="..\:/Do an Mobile1/SE114_HealthCareApplication/app/src/main/res/layout/fragment_target.xml" value="0.1" />
       </map>
     </option>
   </component>
->>>>>>> 38179ee2884d1b995161f3f471f0f20262d53342
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="jbr-11" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
-  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK" />
 </project>

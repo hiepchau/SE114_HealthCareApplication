@@ -18,6 +18,7 @@ import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.model.entity.UserEntity;
 import com.example.se114_healthcareapplication.presenter.TargetPresenter;
+import com.hsalf.smileyrating.SmileyRating;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -41,7 +42,8 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
     private TargetPresenter mainPresenter;
     private Button calendarbtn;
     private ProgressBar progressBarwater, progressBarsteps, progressBarsleep;
-    private TextView datetxt, minhrs, maxhrs, minsteps, maxsteps, minwater, maxwater;
+    private TextView datetxt, minhrs, maxhrs, minsteps, maxsteps, minwater, maxwater, statustxt;
+    SmileyRating smileyRating;
 
     public TargetFragment() {
         // Required empty public constructor
@@ -93,6 +95,9 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
         maxwater = v.findViewById(R.id.maxwater);
         DateTimeFormatter format = DateTimeFormatter.ofPattern("EEE, MMM dd, yyyy");
         datetxt.setText(format.format(LocalDateTime.now()));
+        statustxt = v.findViewById(R.id.status_txv);
+        smileyRating = v.findViewById(R.id.emotion_ratingbar);
+        smileyRating.disallowSelection(true);
 
         calendarbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +146,8 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
                 minwater.setText(String.valueOf(stat.Water) + " ml");
                 minsteps.setText(String.valueOf(stat.Steps) + " steps");
                 minhrs.setText(String.valueOf(partime/10) + " hours " +String.valueOf((partime%10)*6)+" min");
+                statustxt.setText(stat.Status);
+                smileyRating.setRating(stat.EmotionalLevel,true);
             }
             else {
                 progressBarwater.setProgress(0);
@@ -149,6 +156,8 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
                 minwater.setText("0 ml");
                 minsteps.setText("0 steps");
                 minhrs.setText("0 hours 0 min");
+                statustxt.setText("");
+                smileyRating.setRating(-1);
             }
         }
     }
