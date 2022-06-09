@@ -60,6 +60,7 @@
             <!--3 status rating: excellent, good, not good-->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:fontFamily="@font/outfit_regular"
+                      android:id="@+id/water_status_txv"
                       android:textSize="20dp"
                       android:text="Status"/>
         </LinearLayout>
@@ -74,12 +75,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
         >
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="Total"
+                      android:text="Average"
                       android:fontFamily="@font/outfit_bold"
                       android:textSize="24dp"/>
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="10000 ml"
+                      android:id="@+id/water_value_txv"
                       android:fontFamily="@font/outfit_regular"
                       android:textSize="20dp"/>
         </LinearLayout>
@@ -100,6 +102,7 @@
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="30 %"
+                      android:id="@+id/water_rate_txv"
                       android:fontFamily="@font/outfit_regular"
                       android:textSize="20dp"/>
         </LinearLayout>
@@ -136,6 +139,7 @@
             <!--3 status rating: excellent, good, not good-->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:fontFamily="@font/outfit_regular"
+                      android:id="@+id/walk_status_txv"
                       android:textSize="20dp"
                       android:text="Status"/>
         </LinearLayout>
@@ -150,11 +154,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
         >
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="Total"
+                      android:text="Average"
                       android:fontFamily="@font/outfit_bold"
                       android:textSize="24dp"/>
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/walk_value_txv"
                       android:text="10000 steps"
                       android:fontFamily="@font/outfit_regular"
                       android:textSize="20dp"/>
@@ -176,6 +181,7 @@
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="100 %"
+                      android:id="@+id/walk_rate_txv"
                       android:fontFamily="@font/outfit_regular"
                       android:textSize="20dp"/>
         </LinearLayout>
@@ -211,6 +217,7 @@
             <!--3 status rating: Healthy, Good enough, Dangerous -->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:fontFamily="@font/outfit_regular"
+                      android:id="@+id/sleep_status_txv"
                       android:textSize="20dp"
                       android:text="Status"/>
         </LinearLayout>
@@ -225,12 +232,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
         >
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="Total"
+                      android:text="Average"
                       android:fontFamily="@font/outfit_bold"
                       android:textSize="24dp"/>
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="50 hours"
+                      android:id="@+id/sleep_value_txv"
                       android:fontFamily="@font/outfit_regular"
                       android:textSize="20dp"/>
         </LinearLayout>
@@ -251,6 +259,7 @@
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="70 %"
+                      android:id="@+id/sleep_rate_txv"
                       android:fontFamily="@font/outfit_regular"
                       android:textSize="20dp"/>
         </LinearLayout>
@@ -284,11 +293,6 @@
                       android:fontFamily="@font/outfit_bold"
                       android:textSize="24dp"/>
 
-            <!--3 status rating: Healthy, Good enough, Dangerous -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:fontFamily="@font/outfit_regular"
-                      android:textSize="20dp"
-                      android:text="Status"/>
         </LinearLayout>
 
         <LinearLayout
@@ -307,6 +311,7 @@
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="50 hours"
+                      android:id="@+id/emotion_value_txv"
                       android:fontFamily="@font/outfit_regular"
                       android:textSize="20dp"/>
         </LinearLayout>
@@ -320,18 +325,11 @@
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
         >
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="Rate"
-                      android:fontFamily="@font/outfit_bold"
-                      android:textSize="24dp"/>
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="70 %"
-                      android:fontFamily="@font/outfit_regular"
-                      android:textSize="20dp"/>
         </LinearLayout>
 
     </RelativeLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
