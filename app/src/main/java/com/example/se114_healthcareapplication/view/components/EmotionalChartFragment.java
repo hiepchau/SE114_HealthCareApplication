@@ -17,7 +17,6 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -32,10 +31,10 @@ import java.util.TimeZone;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SleepChartFragment#newInstance} factory method to
+ * Use the {@link EmotionalChartFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SleepChartFragment extends Fragment implements IView<StatisticPresenter> {
+public class EmotionalChartFragment extends Fragment implements IView<StatisticPresenter> {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,11 +44,11 @@ public class SleepChartFragment extends Fragment implements IView<StatisticPrese
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    StatisticPresenter mainPresenter;
+    private StatisticPresenter mainPresenter;
     private Button backBtn;
     LineChart mchart;
 
-    public SleepChartFragment() {
+    public EmotionalChartFragment() {
         // Required empty public constructor
     }
 
@@ -59,11 +58,11 @@ public class SleepChartFragment extends Fragment implements IView<StatisticPrese
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SleepChartFragment.
+     * @return A new instance of fragment EmotionalChartFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SleepChartFragment newInstance(String param1, String param2) {
-        SleepChartFragment fragment = new SleepChartFragment();
+    public static EmotionalChartFragment newInstance(String param1, String param2) {
+        EmotionalChartFragment fragment = new EmotionalChartFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -84,7 +83,7 @@ public class SleepChartFragment extends Fragment implements IView<StatisticPrese
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_sleep_chart, container, false);
+        View v = inflater.inflate(R.layout.fragment_emotional_chart, container, false);
         mchart = v.findViewById(R.id.linechart);
         backBtn = v.findViewById(R.id.buttonturnback);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -103,9 +102,9 @@ public class SleepChartFragment extends Fragment implements IView<StatisticPrese
             ArrayList<StatisticEntity> ls = (ArrayList<StatisticEntity>) entity;
             ArrayList<Entry> yvalues = new ArrayList<>();
             for(StatisticEntity en: ls){
-                yvalues.add(new Entry(en.CreatedTime,en.SleepTime));
+                yvalues.add(new Entry(en.CreatedTime,en.EmotionalLevel));
             }
-            LineDataSet lineDataSet = new LineDataSet(yvalues,"Water amount (ml)");
+            LineDataSet lineDataSet = new LineDataSet(yvalues,"Emotional level");
 
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(lineDataSet);
@@ -113,37 +112,57 @@ public class SleepChartFragment extends Fragment implements IView<StatisticPrese
             line.setValueFormatter(new ValueFormatter() {
                 @Override
                 public String getFormattedValue(float value) {
-                    int seconds = (int)value/1000;
-                    int minutes = seconds/60;
-                    int hour = minutes/60;
-                    int min = seconds % 60;
-                    return String.valueOf(hour)+" hour" + String.format("%02d", min) +" min";
+                    if(value== 1 )
+                        return "Terrible";
+                    if(value ==2)
+                        return  "Bad";
+                    if(value==3)
+                        return "Okay";
+                    if(value==4)
+                        return "Good";
+                    if(value ==5)
+                        return "Great";
+                    return "Okay";
                 }
             });
             mchart.setData(line);
             XAxis xAxis = mchart.getXAxis();
             YAxis yAxisleft = mchart.getAxisLeft();
             YAxis yAxisright = mchart.getAxisRight();
-            yAxisleft.setAxisMinimum(0);
-            yAxisright.setAxisMinimum(0);
+            yAxisleft.setAxisMinimum(1);
+            yAxisright.setAxisMinimum(1);
+            yAxisleft.setGranularity(1);
+            yAxisright.setGranularity(1);
             yAxisleft.setValueFormatter(new ValueFormatter() {
                 @Override
                 public String getAxisLabel(float value, AxisBase axis) {
-                    int seconds = (int)value/1000;
-                    int minutes = seconds/60;
-                    int hour = minutes/60;
-                    int min = seconds % 60;
-                    return String.valueOf(hour)+" hour" + String.format("%02d", min) +" min";
+                    if(value== 1 )
+                        return "Terrible";
+                    if(value ==2)
+                        return  "Bad";
+                    if(value==3)
+                        return "Okay";
+                    if(value==4)
+                        return "Good";
+                    if(value ==5)
+                        return "Great";
+                    return "Okay";
                 }
             });
             yAxisright.setValueFormatter(new ValueFormatter() {
                 @Override
                 public String getAxisLabel(float value, AxisBase axis) {
-                    int seconds = (int)value/1000;
-                    int minutes = seconds/60;
-                    int hour = minutes/60;
-                    int min = seconds % 60;
-                    return String.valueOf(hour)+" hour" + String.format("%02d", min) +" min";
+                    if(value== 1 )
+                        return "Terrible";
+                    if(value ==2)
+                        return  "Bad";
+                    if(value==3)
+                        return "Okay";
+                    if(value==4)
+                        return "Good";
+                    if(value ==5)
+                        return "Great";
+                    return "Okay";
                 }
             });
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -170,7 +189,7 @@ public class SleepChartFragment extends Fragment implements IView<StatisticPrese
 
     @Override
     public void setMainPresenter(StatisticPresenter presenter) {
-        this.mainPresenter = presenter;
+        mainPresenter = presenter;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class StatisticsFragment extends Fragment implements IView<StatisticPrese
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    RelativeLayout waterRelative, walkRelative, sleepRelative;
+    RelativeLayout waterRelative, walkRelative, sleepRelative, emoRelative;
     private StatisticPresenter mainPresenter;
 
     // TODO: Rename and change types of parameters
@@ -72,6 +72,14 @@ public class StatisticsFragment extends Fragment implements IView<StatisticPrese
         waterRelative = v.findViewById(R.id.statistic_water_rlt);
         walkRelative = v.findViewById(R.id.statistic_steps_rlt);
         sleepRelative = v.findViewById(R.id.statistic_sleep_rlt);
+        emoRelative = v.findViewById(R.id.statistic_emotional_rlt);
+
+        emoRelative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.NotifyPresenter(StatisticPresenter.SWITCH_TO_EMOTION);
+            }
+        });
 
         walkRelative.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -16,6 +16,7 @@ import com.example.se114_healthcareapplication.presenter.StatisticPresenter;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -111,6 +112,12 @@ public class WalkChartFragment extends Fragment implements IView<StatisticPresen
             LineData line = new LineData(dataSets);
             mchart.setData(line);
             XAxis xAxis = mchart.getXAxis();
+            YAxis yAxisleft = mchart.getAxisLeft();
+            YAxis yAxisright = mchart.getAxisRight();
+            yAxisleft.setGranularity(1);
+            yAxisright.setGranularity(1);
+            yAxisleft.setAxisMinimum(0);
+            yAxisright.setAxisMinimum(0);
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
             xAxis.setValueFormatter(new ValueFormatter() {
                 @Override
