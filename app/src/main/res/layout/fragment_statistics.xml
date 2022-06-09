@@ -109,6 +109,8 @@
     <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
                     android:background="@drawable/btn_normal"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    android:clickable="true"
+                    android:id="@+id/statistic_steps_rlt"
                     app:layout_constraintTop_toBottomOf="@+id/tv_statistic" tools:layout_editor_absoluteX="0dp"
                     app:layout_constraintVertical_bias="0.304">
 
@@ -181,6 +183,8 @@
     </RelativeLayout>
     <RelativeLayout android:layout_width="match_parent" android:layout_height="50dp"
                     android:background="@drawable/btn_happy"
+                    android:id="@+id/statistic_sleep_rlt"
+                    android:clickable="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_statistic" tools:layout_editor_absoluteX="0dp"
                     app:layout_constraintVertical_bias="0.485">

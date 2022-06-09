@@ -15,7 +15,6 @@ import com.example.se114_healthcareapplication.model.entity.StatisticEntity;
 import com.example.se114_healthcareapplication.presenter.StatisticPresenter;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -26,17 +25,15 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.TimeZone;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WaterChartFragment#newInstance} factory method to
+ * Use the {@link WalkChartFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WaterChartFragment extends Fragment implements IView<StatisticPresenter> {
+public class WalkChartFragment extends Fragment implements IView<StatisticPresenter> {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,11 +43,11 @@ public class WaterChartFragment extends Fragment implements IView<StatisticPrese
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    StatisticPresenter mainPresenter;
+    private StatisticPresenter mainPresenter;
+    private Button backBtn;
     LineChart mchart;
-    Button backBtn;
 
-    public WaterChartFragment() {
+    public WalkChartFragment() {
         // Required empty public constructor
     }
 
@@ -60,11 +57,11 @@ public class WaterChartFragment extends Fragment implements IView<StatisticPrese
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ChartFragment.
+     * @return A new instance of fragment WalkChartFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static WaterChartFragment newInstance(String param1, String param2) {
-        WaterChartFragment fragment = new WaterChartFragment();
+    public static WalkChartFragment newInstance(String param1, String param2) {
+        WalkChartFragment fragment = new WalkChartFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,7 +82,8 @@ public class WaterChartFragment extends Fragment implements IView<StatisticPrese
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_water_chart, container, false);
+        View v = inflater.inflate(R.layout.fragment_walk_chart, container, false);
+
         mchart = v.findViewById(R.id.linechart);
         backBtn = v.findViewById(R.id.buttonturnback);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +92,6 @@ public class WaterChartFragment extends Fragment implements IView<StatisticPrese
                 mainPresenter.NotifyPresenter(StatisticPresenter.BACK_TO_MAIN_STATISTICS);
             }
         });
-
         setMainPresenter(new StatisticPresenter(this));
         return v;
     }
@@ -105,7 +102,7 @@ public class WaterChartFragment extends Fragment implements IView<StatisticPrese
             ArrayList<StatisticEntity> ls = (ArrayList<StatisticEntity>) entity;
             ArrayList<Entry> yvalues = new ArrayList<>();
             for(StatisticEntity en: ls){
-                yvalues.add(new Entry(en.CreatedTime,en.Water));
+                yvalues.add(new Entry(en.CreatedTime,en.Steps));
             }
             LineDataSet lineDataSet = new LineDataSet(yvalues,"Water amount (ml)");
 
