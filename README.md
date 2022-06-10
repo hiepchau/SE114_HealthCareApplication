@@ -8,6 +8,7 @@
   - Nguyễn Huy Trí Dũng - 20520459
   - La Thanh Huy - 20520577
   - Trần Quốc Huy - 20520554
+  
 ## Tính năng
 - Đo chỉ số BMI
 - Đếm bước chân
@@ -16,6 +17,7 @@
 - Đếm giờ ngủ
 - Cập nhật trạng thái
 - Xem biểu đồ thống kê
+
 ## Yêu cầu cài đặt
 - Android
   - Min SDK Version: 26
