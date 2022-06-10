@@ -100,7 +100,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_marginLeft="180dp"
+                    android:layout_marginLeft="170dp"
                     android:orientation="vertical"
                     android:gravity="center"
                     android:textAlignment="center"
@@ -109,16 +109,14 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="180dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="145dp">
+            >
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total"
+                        android:text="Average"
+                        android:gravity="center"
                         android:fontFamily="@font/outfit_bold"
-                        android:textSize="24dp"/>
+                        android:textSize="22dp"/>
 
                 <TextView
                         android:layout_width="wrap_content"
@@ -127,7 +125,7 @@
                         android:gravity="center"
                         android:id="@+id/water_value_txv"
                         android:fontFamily="@font/outfit_regular"
-                        android:textSize="20dp"/>
+                        android:textSize="18dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -216,16 +214,14 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="170dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="129dp">
+            >
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total"
+                        android:text="Average"
+                        android:gravity="center"
                         android:fontFamily="@font/outfit_bold"
-                        android:textSize="24dp"/>
+                        android:textSize="22dp"/>
 
                 <TextView
                         android:layout_width="wrap_content"
@@ -234,7 +230,7 @@
                         android:gravity="center"
                         android:id="@+id/walk_value_txv"
                         android:fontFamily="@font/outfit_regular"
-                        android:textSize="20dp"/>
+                        android:textSize="18dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -315,25 +311,22 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_marginLeft="185dp"
+                    android:layout_marginLeft="145dp"
                     android:orientation="vertical"
-                    android:gravity="center"
                     android:textAlignment="center"
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="185dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="148dp">
+            >
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total"
+                        android:text="Average"
                         android:fontFamily="@font/outfit_bold"
-                        android:textSize="24dp"/>
+                        android:textSize="22dp"/>
 
                 <TextView
                         android:layout_width="wrap_content"
@@ -342,7 +335,7 @@
                         android:gravity="center"
                         android:id="@+id/sleep_value_txv"
                         android:fontFamily="@font/outfit_regular"
-                        android:textSize="20dp"/>
+                        android:textSize="18dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -377,13 +370,11 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/btn_bmi_statistic"
+                android:background="#E4DD9E"
                 android:clickable="true"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_statistic"
                 tools:layout_editor_absoluteX="0dp"
-                app:layout_constraintVertical_bias="0.567"
-                android:id="@+id/relativeLayout5">
+                android:id="@+id/relativeLayout5" android:layout_marginTop="296dp">
 
             <!--5 status:underweight, normal weight, overweight, obese-->
 
@@ -436,8 +427,8 @@
                     android:layout_marginEnd="27dp"
                     android:layout_toStartOf="@+id/bmi_status"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="13dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="11dp"
                     android:layout_alignParentTop="true"/>
 
         </RelativeLayout>
@@ -462,7 +453,7 @@
                         android:id="@+id/statistic_emotional_rlt"
                         android:clickable="true"
                         app:layout_constraintTop_toBottomOf="@+id/relativeLayout5"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="4dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0">
@@ -470,18 +461,18 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Average"
+                    android:text="Average STT"
                     android:fontFamily="@font/outfit_bold"
                     android:textSize="24dp"
                     android:id="@+id/tv_average"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="86dp"
+                    android:layout_marginStart="57dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="11dp"
+                    android:layout_marginTop="12dp"
                     android:layout_alignParentTop="true"
                     android:layout_toStartOf="@+id/emotion_value_txv"
-                    android:layout_marginEnd="28dp"/>
+                    android:layout_marginEnd="57dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -492,10 +483,9 @@
                     android:gravity="center"
                     android:textSize="20dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="53dp"
+                    android:layout_marginEnd="49dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="13dp"/>
-
+                    android:layout_marginBottom="15dp"/>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
