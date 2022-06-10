@@ -18,8 +18,10 @@ public class RunningModel extends ModelBase implements IModel<RunningEntity> {
     FirebaseAuth auth;
     DatabaseReference ref;
     final String path = "RunningStat";
+    private float furthest;
     public static final int RUNNING_ENTITY_RETRIEVED = 91283;
     public static final int RUNNIG_ENTITY_APPEND = 1921321;
+    public static final int RETRIEVE_FURTHEST_DISTANCE = 871238;
     List<RunningEntity> runningEntityList;
 
     public RunningModel(IPresenter _presenter) {
@@ -28,6 +30,11 @@ public class RunningModel extends ModelBase implements IModel<RunningEntity> {
         ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
                 .child(path);
         runningEntityList = new ArrayList<>();
+        furthest = 0;
+    }
+
+    public float getFurthest(){
+        return furthest;
     }
 
     @Override
@@ -93,6 +100,26 @@ public class RunningModel extends ModelBase implements IModel<RunningEntity> {
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 Toast.makeText(_presenter.getCurrentContext(),"Failed to retrieve data", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void retrieveFurthest(){
+        Query query = ref.orderByChild("distance").limitToLast(1);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot running:snapshot.getChildren()){
+                        furthest = running.child("distance").getValue(float.class);
+                        _presenter.NotifyPresenter(RETRIEVE_FURTHEST_DISTANCE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
             }
         });
     }

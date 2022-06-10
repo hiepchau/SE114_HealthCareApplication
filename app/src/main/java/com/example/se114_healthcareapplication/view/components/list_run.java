@@ -17,6 +17,7 @@ import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.model.entity.RunningEntity;
 import com.example.se114_healthcareapplication.presenter.GoogleMapPresenter;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class list_run extends Fragment implements IView<GoogleMapPresenter> {
     private Button backbtn;
     private RunningEntityAdapter adapter;
     private ListView runninglistview;
+    private TextView furthesttxt;
     ArrayList<RunningEntity> runningEntityList;
 
     /**
@@ -82,9 +84,11 @@ public class list_run extends Fragment implements IView<GoogleMapPresenter> {
         runninglistview = v.findViewById(R.id.listRun);
         adapter = new RunningEntityAdapter(getActivity(),runningEntityList);
         backbtn = v.findViewById(R.id.buttonturnback);
+        furthesttxt = v.findViewById(R.id.run_record_txv);
         runninglistview.setAdapter(adapter);
         setMainPresenter(new GoogleMapPresenter(this));
         mainPresenter.getRunningLimit6(System.currentTimeMillis());
+        mainPresenter.triggerGetFurthest();
         runninglistview.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -122,6 +126,11 @@ public class list_run extends Fragment implements IView<GoogleMapPresenter> {
             runningEntityList.addAll(ls);
             adapter.setRunningEntityList(runningEntityList);
             adapter.notifyDataSetChanged();
+        }
+        if(code == GoogleMapPresenter.UPDATE_FURTHEST_DISTANCE){
+            float dis = (float) entity;
+            DecimalFormat decimalFormat = new DecimalFormat("0.00");
+            furthesttxt.setText(decimalFormat.format(dis)+" m");
         }
     }
 

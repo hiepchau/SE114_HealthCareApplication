@@ -26,6 +26,7 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
     public static final int UPDATE_LIST_RUN = 8123978;
     public static final int BACK_TO_RUNNING = 182391;
     public static final int APPEND_LIST_RUN = 9128347;
+    public static final int UPDATE_FURTHEST_DISTANCE = 781283;
     public boolean isTimerRunning;
     public GoogleMapPresenter(IView view) {
         super(view);
@@ -58,6 +59,10 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
             FragmentManager fragmentManager = _view.GetFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer_function, GoogleMapFragment.class,null).addToBackStack("").commit();
+        }
+
+        if(code == RunningModel.RETRIEVE_FURTHEST_DISTANCE){
+            _view.UpdateView(UPDATE_FURTHEST_DISTANCE,runningModel.getFurthest());
         }
     }
 
@@ -107,5 +112,9 @@ public class GoogleMapPresenter extends PresenterBase implements IPresenter {
 
     public void getRunningLimit6(long cond){
         runningModel.retrieveDataLimitedTo6(cond);
+    }
+
+    public void triggerGetFurthest(){
+        runningModel.retrieveFurthest();
     }
 }
