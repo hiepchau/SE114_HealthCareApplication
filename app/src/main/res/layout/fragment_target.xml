@@ -205,20 +205,25 @@
                 app:layout_constraintBottom_toTopOf="@+id/textView28"
                 app:layout_constraintVertical_bias="0.734"
                 android:id="@+id/editText"/>
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
                   android:id="@+id/status_txv"
                   android:background="@drawable/btn_intro_register"
                   android:gravity="center"
                   android:drawableStart="@drawable/ic_write"
                   app:layout_constraintBottom_toTopOf="@+id/textView28"
-                  android:layout_marginBottom="12dp" app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/editText"
-                  app:layout_constraintHorizontal_bias="0.497" app:layout_constraintVertical_bias="0.064"/>
+                  android:layout_marginBottom="12dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/editText"
+                  app:layout_constraintHorizontal_bias="0.497"
+                  app:layout_constraintVertical_bias="0.064"/>
         <com.hsalf.smileyrating.SmileyRating android:layout_width="match_parent"
                                              android:layout_height="wrap_content"
                                              android:id="@+id/emotion_ratingbar"
                                              app:layout_constraintTop_toBottomOf="@id/status_txv"
-                                             tools:layout_editor_absoluteX="0dp" android:layout_marginTop="4dp"/>
+                                             tools:layout_editor_absoluteX="0dp"
+                                             android:layout_marginTop="4dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -232,7 +237,8 @@
                 app:layout_constraintVertical_bias="0.998"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" android:id="@+id/textView28"/>
+                app:layout_constraintHorizontal_bias="0.0"
+                android:id="@+id/textView28"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

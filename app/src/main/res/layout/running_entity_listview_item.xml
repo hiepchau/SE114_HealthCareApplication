@@ -27,7 +27,8 @@
               android:fontFamily="@font/outfit_regular"
               app:layout_constraintTop_toBottomOf="@id/item_title"
               app:layout_constraintStart_toEndOf="@id/distance"
-              android:id="@+id/item_distance" app:layout_constraintEnd_toEndOf="parent"
+              android:id="@+id/item_distance"
+              app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintHorizontal_bias="0.052"/>
     <TextView android:layout_width="wrap_content"
               android:text="Time:"
@@ -36,7 +37,8 @@
               android:textSize="20dp"
               android:id="@+id/time"
               app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@id/distance" app:layout_constraintBottom_toBottomOf="parent"/>
+              app:layout_constraintTop_toBottomOf="@id/distance"
+              app:layout_constraintBottom_toBottomOf="parent"/>
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="time"
@@ -44,8 +46,10 @@
               android:fontFamily="@font/outfit_regular"
               app:layout_constraintTop_toBottomOf="@id/item_distance"
               app:layout_constraintStart_toEndOf="@id/time"
-              android:id="@+id/item_time" app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.053"
+              android:id="@+id/item_time"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.053"
               app:layout_constraintVertical_bias="0.48"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
