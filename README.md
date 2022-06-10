@@ -15,6 +15,7 @@
 - Theo dõi lượng nước
 - Đếm giờ ngủ
 - Cập nhật trạng thái
+- Xem biểu đồ thống kê
 ## Yêu cầu cài đặt
 - Android
   - Min SDK Version: 26
