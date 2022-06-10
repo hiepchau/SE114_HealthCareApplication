@@ -42,7 +42,7 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
     private TargetPresenter mainPresenter;
     private Button calendarbtn;
     private ProgressBar progressBarwater, progressBarsteps, progressBarsleep;
-    private TextView datetxt, minhrs, maxhrs, minsteps, maxsteps, minwater, maxwater, statustxt;
+    private TextView datetxt, minhrs, maxhrs, minsteps, maxsteps, minwater, maxwater, statustxt,heighttxt,weighttxt;
     SmileyRating smileyRating;
 
     public TargetFragment() {
@@ -97,6 +97,8 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
         datetxt.setText(format.format(LocalDateTime.now()));
         statustxt = v.findViewById(R.id.status_txv);
         smileyRating = v.findViewById(R.id.emotion_ratingbar);
+        heighttxt = v.findViewById(R.id.height_txv);
+        weighttxt = v.findViewById(R.id.weight_txv);
         smileyRating.disallowSelection(true);
 
         calendarbtn.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +149,8 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
                 minsteps.setText(String.valueOf(stat.Steps) + " steps");
                 minhrs.setText(String.valueOf(partime/10) + " hours " +String.valueOf((partime%10)*6)+" min");
                 statustxt.setText(stat.Status);
+                weighttxt.setText(String.valueOf(stat.Weight)+" kg");
+                heighttxt.setText(String.valueOf(stat.Height) + " cm");
                 smileyRating.setRating(stat.EmotionalLevel,true);
             }
             else {
@@ -157,6 +161,8 @@ public class TargetFragment extends Fragment implements IView<TargetPresenter> {
                 minsteps.setText("0 steps");
                 minhrs.setText("0 hours 0 min");
                 statustxt.setText("");
+                heighttxt.setText("");
+                weighttxt.setText("");
                 smileyRating.setRating(-1);
             }
         }
