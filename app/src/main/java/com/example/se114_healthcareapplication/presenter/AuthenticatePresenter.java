@@ -151,7 +151,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull @NotNull Exception e) {
-                        _view.UpdateView(RESET_EMAIL_FAILED,e.toString());
+                        _view.UpdateView(RESET_EMAIL_FAILED,e.getMessage());
                     }
                 })
         ;
@@ -181,8 +181,7 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(_view.getAppActivity(), "Login failed",Toast.LENGTH_SHORT);
-                        _view.UpdateView(IView.EMPTY_CODE,null);
+                        Toast.makeText(_view.getAppActivity(), e.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 });
     }
