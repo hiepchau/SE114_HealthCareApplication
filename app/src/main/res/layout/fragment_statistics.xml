@@ -461,7 +461,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Average STT"
+                    android:text="Average Emotion"
                     android:fontFamily="@font/outfit_bold"
                     android:textSize="24dp"
                     android:id="@+id/tv_average"
@@ -473,6 +473,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_toStartOf="@+id/emotion_value_txv"
                     android:layout_marginEnd="57dp"/>
+
+
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -487,6 +489,13 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="15dp"/>
         </RelativeLayout>
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_info"
+                   android:id="@+id/icon_des"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

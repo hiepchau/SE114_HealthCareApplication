@@ -1,8 +1,11 @@
 package com.example.se114_healthcareapplication.view.bottom_nav;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
@@ -34,6 +37,7 @@ public class StatisticsFragment extends Fragment implements IView<StatisticPrese
     RelativeLayout waterRelative, walkRelative, sleepRelative, emoRelative;
     TextView waterstatus, watervalue, waterrate, walkstatus, walkvalue,walkrate, sleepstatus, sleepvalue, sleeprate,
             emotionvalue, bmi_status, bmi_index;
+    ImageView des;
     private StatisticPresenter mainPresenter;
     private UserEntity user;
 
@@ -99,6 +103,25 @@ public class StatisticsFragment extends Fragment implements IView<StatisticPrese
         bmi_index = v.findViewById(R.id.index_bmi);
 
         emotionvalue = v.findViewById(R.id.emotion_value_txv);
+
+        des = v.findViewById(R.id.icon_des);
+        des.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Info")
+                        .setMessage("The statistics here are combined and analysed from your latest 7 days " +
+                                "data. They illustrate the proportion between your average statistics and recommended statistics")
+
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setIcon(R.drawable.ic_info)
+                        .show();
+            }
+        });
         emoRelative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
