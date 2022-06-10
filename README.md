@@ -66,3 +66,5 @@
 - Thư viện
     - [Material-Components-Android](https://github.com/material-components/material-components-android)
     - [Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
+    - [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)
+    - [SmileyRating](https://github.com/sujithkanna/SmileyRating)
