@@ -10,10 +10,10 @@
         tools:context=".view.components.GoogleMapFragment">
 
     <android.widget.Button
-            android:layout_width="125dp"
+            android:layout_width="110dp"
             android:layout_height="30dp"
             android:background="@drawable/btn_happy"
-            android:text="List Run"
+            android:text="Record"
             android:drawableEnd="@drawable/ic_list_run"
             android:paddingRight="7dp"
             android:id="@+id/btn_goto_runninglist"

@@ -27,8 +27,8 @@
 
     <ListView
             android:id="@+id/listRun"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_width="350dp"
+            android:layout_height="330dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -38,14 +38,22 @@
     </ListView>
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:fontFamily="@font/outfit_bold"
+              android:textSize="16dp"
+              android:textColor="@color/pink3"
+              android:layout_marginLeft="10dp"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               android:text="Furthest distance travelled:"
               android:id="@+id/run_record_title"/>
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:fontFamily="@font/outfit_bold"
+              android:textSize="16dp"
+              android:hint="someone"
+              android:gravity="center"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintStart_toEndOf="@id/run_record_title"
-              android:id="@+id/run_record_txv"/>
+              android:id="@+id/run_record_txv" app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
