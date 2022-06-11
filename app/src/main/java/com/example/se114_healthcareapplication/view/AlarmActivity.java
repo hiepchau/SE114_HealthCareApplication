@@ -47,6 +47,7 @@ public class AlarmActivity extends AppCompatActivity implements IView<AlarmPrese
             }
         });
          mediaPlayer = MediaPlayer.create(this,R.raw.music);
+         mediaPlayer.setLooping(true);
          mediaPlayer.start();
     }
 

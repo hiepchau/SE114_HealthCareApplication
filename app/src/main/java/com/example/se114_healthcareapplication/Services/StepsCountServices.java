@@ -65,13 +65,11 @@ public class StepsCountServices extends Service implements SensorEventListener, 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         RegisterSensor();
-        statisticModel = new StatisticModel(this);
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
-        Toast.makeText(getApplicationContext(), "Service destroyed!", Toast.LENGTH_SHORT).show();
         sensorManager.unregisterListener(this);
         super.onDestroy();
     }
@@ -94,6 +92,7 @@ public class StepsCountServices extends Service implements SensorEventListener, 
         }
         else {
             sensorManager.registerListener(this,stepCounter, SensorManager.SENSOR_DELAY_UI);
+            statisticModel = new StatisticModel(this);
         }
     }
 }

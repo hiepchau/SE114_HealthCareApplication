@@ -3,6 +3,7 @@ package com.example.se114_healthcareapplication.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.example.se114_healthcareapplication.R;
+import com.example.se114_healthcareapplication.Recievers.AlarmReciever;
 import com.example.se114_healthcareapplication.Services.RegisterService;
 import com.example.se114_healthcareapplication.Services.StepsCountServices;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
@@ -66,8 +68,9 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
         serviceIntent = new Intent(HomeActivity.this,StepsCountServices.class);
         startService(serviceIntent);
 
-        registerintent = new Intent(HomeActivity.this, RegisterService.class);
-        startService(registerintent);
+//        registerintent = new Intent(HomeActivity.this, RegisterService.class);
+//        startService(registerintent);
+        registerReceiver(new AlarmReciever(),new IntentFilter("CUSTOM_ALARM"));
     }
 
     @Override
