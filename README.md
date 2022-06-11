@@ -39,7 +39,7 @@
 -	Độ tin cậy: Hệ thống có thể kiểm tra dữ liệu nhập vào (ràng buộc dữ liệu) và thông báo các dữ liệu thực thi sai.
 -	Dễ sử dụng: Hệ thống được thiết kế với đồ họa của các thành phần giao diện có bố cục hợp lý, phù hợp với thói quen sử dụng chung của người dùng.
 -	Tương đối hoàn chỉnh các tính năng cơ bản của một app sức khỏe.
--	Áp dụng kiến thức về giao tiếp giữa Client và Sever.
+-	Áp dụng kiến thức về giao tiếp giữa Client và Cloud database.
 
 ## Hạn chế
 - Về chức năng: chưa đầu tư kinh phí cho server, cloud database còn hạn chế, chưa tối ưa được hết mức hiệu năng từ android dẫn đến còn hạn chế trong UX.
@@ -56,7 +56,7 @@
 - Publish lên Google Play.
 - Hỗ trợ thêm nhiều ngôn ngữ.
 - Nghiên cứu áp dụng AI để gợi ý cho người dùng.
-- Tối ưu việc giao tiếp giữa Client và Sever.
+- Tối ưu việc giao tiếp giữa Client và Database.
 
 ## Công nghệ và thư viện
 - Công nghệ
