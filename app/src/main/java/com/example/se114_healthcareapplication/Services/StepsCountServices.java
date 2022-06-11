@@ -34,6 +34,7 @@ import java.util.Calendar;
 public class StepsCountServices extends Service implements SensorEventListener, IPresenter {
 
 
+    private StatisticModel statisticModel;
     @Override
     public void NotifyPresenter(int code) {
         if(code==StatisticModel.DONE_INIT_DATA){
@@ -49,7 +50,7 @@ public class StepsCountServices extends Service implements SensorEventListener, 
 
     private SensorManager sensorManager;
     private int currentSteps;
-    private StatisticModel statisticModel;
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -65,6 +66,7 @@ public class StepsCountServices extends Service implements SensorEventListener, 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         RegisterSensor();
+        statisticModel = new StatisticModel(this);
         return START_STICKY;
     }
 
@@ -92,7 +94,6 @@ public class StepsCountServices extends Service implements SensorEventListener, 
         }
         else {
             sensorManager.registerListener(this,stepCounter, SensorManager.SENSOR_DELAY_UI);
-            statisticModel = new StatisticModel(this);
         }
     }
 }
