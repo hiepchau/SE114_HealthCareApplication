@@ -17,6 +17,7 @@ import com.example.se114_healthcareapplication.view.authentication.login;
 import com.example.se114_healthcareapplication.generalinterfaces.IPresenter;
 import com.example.se114_healthcareapplication.generalinterfaces.IView;
 import com.example.se114_healthcareapplication.presenter.IntroPresenter;
+import com.example.se114_healthcareapplication.view.authentication.signup;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +31,7 @@ public class intro extends Fragment implements IView<IntroPresenter> {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private IPresenter mainPresenter;
-    private Button nextBtn;
+    private Button nextBtn,registbtn;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -73,6 +74,7 @@ public class intro extends Fragment implements IView<IntroPresenter> {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_intro, container, false);
         nextBtn = v.findViewById(R.id.StartBtn);
+        registbtn = v.findViewById(R.id.btnRegister);
         setMainPresenter(new IntroPresenter(this));
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +84,15 @@ public class intro extends Fragment implements IView<IntroPresenter> {
                 presenter.getRequiredPermission();
 
                 mainPresenter.NotifyPresenter(0);
+            }
+        });
+
+        registbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.authenticateContainer, signup.class,null).commit();
             }
         });
 

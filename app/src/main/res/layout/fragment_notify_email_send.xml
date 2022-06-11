@@ -35,7 +35,7 @@
             android:layout_height="30dp"
             android:background="@drawable/btn_happy"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="Send another mail"
+            android:text="Re-send email"
             android:fontFamily="@font/outfit_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.497"

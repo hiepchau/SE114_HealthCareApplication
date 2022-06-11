@@ -51,9 +51,6 @@ public class IntroPresenter extends PresenterBase implements IPresenter {
                         (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) ==
                                 PackageManager.PERMISSION_GRANTED)
                 &&
-                        (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.CAMERA) ==
-                                PackageManager.PERMISSION_GRANTED)
-                &&
                         (ContextCompat.checkSelfPermission(_view.getAppActivity(), Manifest.permission.ACCESS_FINE_LOCATION) ==
                                 PackageManager.PERMISSION_GRANTED)
                 &&
@@ -72,7 +69,6 @@ public class IntroPresenter extends PresenterBase implements IPresenter {
                     Manifest.permission.WAKE_LOCK,
                     Manifest.permission.DISABLE_KEYGUARD,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.CAMERA,
                             Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.ACCESS_COARSE_LOCATION},
                     1);
