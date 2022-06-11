@@ -38,8 +38,7 @@
 ## Ưu điểm
 -	Độ tin cậy: Hệ thống có thể kiểm tra dữ liệu nhập vào (ràng buộc dữ liệu) và thông báo các dữ liệu thực thi sai.
 -	Dễ sử dụng: Hệ thống được thiết kế với đồ họa của các thành phần giao diện có bố cục hợp lý, phù hợp với thói quen sử dụng chung của người dùng.
--	Hỗ trợ tải xuống hình ảnh, video, tệp..
--	Đầy đủ tính năng cơ bản của ứng dụng nhắn tin.
+-	Tương đối hoàn chỉnh các tính năng cơ bản của một app sức khỏe.
 -	Áp dụng kiến thức về giao tiếp giữa Client và Sever.
 
 ## Hạn chế
