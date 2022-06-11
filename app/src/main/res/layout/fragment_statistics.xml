@@ -311,7 +311,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_marginLeft="145dp"
+                    android:layout_marginLeft="150dp"
                     android:orientation="vertical"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -335,7 +335,7 @@
                         android:gravity="center"
                         android:id="@+id/sleep_value_txv"
                         android:fontFamily="@font/outfit_regular"
-                        android:textSize="18dp"/>
+                        android:textSize="15dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -494,8 +494,8 @@
                    android:layout_height="wrap_content"
                    android:src="@drawable/ic_info"
                    android:id="@+id/icon_des"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toTopOf="parent"/>
+                   app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                   android:layout_marginTop="4dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

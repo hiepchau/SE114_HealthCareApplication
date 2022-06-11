@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="395dp"
-                                                   android:layout_height="420dp"
-                                                   android:layout_gravity="center"
-                                                   android:background="@drawable/background_fragment_menu"
-                                                   tools:context=".view.components.bmi_segment">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="395dp"
+        android:layout_height="420dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/background_fragment_menu"
+        tools:context=".view.components.bmi_segment">
 
     <Button
             android:text="Button"
