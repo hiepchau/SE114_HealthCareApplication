@@ -60,6 +60,8 @@
                 android:fontFamily="@font/outfit_bold"
                 android:layout_width="271dp"
                 android:layout_height="19dp"
+                android:maxLines="3"
+                android:maxLength="200"
                 app:layout_constraintStart_toStartOf="parent"
                 android:textColor="@color/gray"
                 android:id="@+id/statustext"
