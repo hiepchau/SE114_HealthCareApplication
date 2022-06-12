@@ -27,6 +27,7 @@ public class UserModel extends ModelBase implements IModel<UserEntity> {
         auth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference().child(auth.getCurrentUser().getUid())
                 .child("User");
+
     }
     @Override
     public List<UserEntity> getEntity() {

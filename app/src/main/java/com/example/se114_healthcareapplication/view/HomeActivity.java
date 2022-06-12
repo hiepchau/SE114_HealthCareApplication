@@ -21,6 +21,8 @@ import com.example.se114_healthcareapplication.presenter.HomePresenter;
 import com.example.se114_healthcareapplication.presenter.StepsCountPresenter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -34,6 +36,7 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         setContentView(R.layout.activity_home);
         setMainPresenter(new HomePresenter(this));
         StepsCountPresenter stepsCountPresenter = new StepsCountPresenter(this);

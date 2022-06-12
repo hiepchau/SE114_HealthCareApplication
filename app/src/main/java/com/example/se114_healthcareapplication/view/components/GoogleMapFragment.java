@@ -138,14 +138,16 @@ public class GoogleMapFragment extends Fragment implements IView<GoogleMapPresen
                             Manifest.permission.ACCESS_COARSE_LOCATION
                     }, 1);
                 }
-                gMap.setMyLocationEnabled(true);
-                fusedLocationClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        LatLng currentposition = new LatLng(location.getLatitude(),location.getLongitude());
-                        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentposition, 19));
-                    }
-                });
+                else {
+                    gMap.setMyLocationEnabled(true);
+                    fusedLocationClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            LatLng currentposition = new LatLng(location.getLatitude(), location.getLongitude());
+                            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentposition, 19));
+                        }
+                    });
+                }
             }
         });
 
