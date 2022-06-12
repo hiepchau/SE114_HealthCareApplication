@@ -70,7 +70,8 @@
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
                   app:layout_constraintHorizontal_bias="0.498"
-                  app:layout_constraintVertical_bias="0.291" android:id="@+id/textView31"/>
+                  app:layout_constraintVertical_bias="0.291"
+                  android:id="@+id/textView31"/>
         <TextView android:layout_width="49dp"
                   android:layout_height="23dp"
                   android:text="Sleep"
@@ -247,8 +248,10 @@
                   android:background="@drawable/btn_sad"
                   android:fontFamily="@font/outfit_bold"
                   android:id="@+id/weight_txv"
-                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintHorizontal_bias="0.142" app:layout_constraintVertical_bias="0.539"/>
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintHorizontal_bias="0.142"
+                  app:layout_constraintVertical_bias="0.539"/>
         <TextView android:layout_width="100dp"
                   android:layout_height="wrap_content"
                   app:layout_constraintTop_toTopOf="parent"
@@ -258,8 +261,10 @@
                   android:background="@drawable/btn_happy"
                   android:fontFamily="@font/outfit_bold"
                   android:id="@+id/height_txv"
-                  app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintHorizontal_bias="0.85" app:layout_constraintVertical_bias="0.539"/>
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintHorizontal_bias="0.85"
+                  app:layout_constraintVertical_bias="0.539"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -54,6 +54,7 @@
               android:gravity="center"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintStart_toEndOf="@id/run_record_title"
-              android:id="@+id/run_record_txv" app:layout_constraintEnd_toEndOf="parent"/>
+              android:id="@+id/run_record_txv"
+              app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
