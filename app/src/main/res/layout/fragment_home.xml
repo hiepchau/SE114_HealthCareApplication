@@ -25,8 +25,8 @@
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.176"
-                app:layout_constraintVertical_bias="0.052"/>
+                app:layout_constraintHorizontal_bias="0.19"
+                app:layout_constraintVertical_bias="0.023"/>
         <TextView
                 android:text="Hi, Peter"
                 android:maxLength="17"
@@ -41,8 +41,8 @@
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.115"
-                app:layout_constraintHorizontal_bias="0.177"/>
+                app:layout_constraintVertical_bias="0.104"
+                app:layout_constraintHorizontal_bias="0.17"/>
         <TextView
                 android:text="Status today"
                 android:layout_width="wrap_content"
