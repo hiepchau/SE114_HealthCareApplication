@@ -466,13 +466,13 @@
                     android:textSize="24dp"
                     android:id="@+id/tv_average"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="57dp"
+                    android:layout_marginStart="7dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="11dp"
                     android:layout_marginTop="12dp"
                     android:layout_alignParentTop="true"
                     android:layout_toStartOf="@+id/emotion_value_txv"
-                    android:layout_marginEnd="57dp"/>
+                    android:layout_marginEnd="5dp"/>
 
 
             <TextView
@@ -494,7 +494,8 @@
                    android:layout_height="wrap_content"
                    android:src="@drawable/ic_info"
                    android:id="@+id/icon_des"
-                   app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
                    android:layout_marginTop="4dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

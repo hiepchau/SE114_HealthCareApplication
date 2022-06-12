@@ -68,6 +68,7 @@
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_water_chart.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_water_segment.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/running_entity_listview_item.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.25389386297969063" />
       </map>
     </option>
   </component>
@@ -75,5 +76,5 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="17" project-jdk-type="JavaSDK" />
 </project>
