@@ -36,7 +36,6 @@ public class HomeActivity extends AppCompatActivity implements IView<HomePresent
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         setContentView(R.layout.activity_home);
         setMainPresenter(new HomePresenter(this));
         StepsCountPresenter stepsCountPresenter = new StepsCountPresenter(this);
