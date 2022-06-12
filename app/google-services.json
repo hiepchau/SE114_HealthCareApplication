@@ -8,14 +8,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:593884992492:android:987b2e0ea99f6749e7a6c9",
+        "mobilesdk_app_id": "1:593884992492:android:c98013b8fcb9fbb7e7a6c9",
         "android_client_info": {
           "package_name": "com.example.se114_healthcareapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "593884992492-037vma4s9qnr8934f3d7pqftd1shoev2.apps.googleusercontent.com",
+          "client_id": "593884992492-docoodm7rcbpd2gg8si2n4ubutoj8orl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.se114_healthcareapplication",
