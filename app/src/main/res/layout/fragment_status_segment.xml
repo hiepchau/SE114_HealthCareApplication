@@ -54,8 +54,11 @@
     <com.example.se114_healthcareapplication.custom.CustomEdittext
             android:layout_width="350dp"
             android:layout_height="130dp"
+            android:layout_margin="10dp"
             android:hint="write something for today"
             android:textSize="15dp"
+            android:maxLength="200"
+            android:maxLines="3"
             android:gravity="center"
             android:fontFamily="@font/roboto_regular"
             app:layout_constraintStart_toStartOf="parent"
