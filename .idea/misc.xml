@@ -39,21 +39,30 @@
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/activity_alarm.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_alarm_segment.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_bmi_segment.xml" value="0.25" />
+        <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_confirm_code.xml" value="0.25" />
+        <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_date_picker.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_emotional_chart.xml" value="0.25" />
+        <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_forgot_password.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_google_map.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_info_user.xml" value="0.25" />
+        <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_intro.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_list_run.xml" value="0.264" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_manage_data.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_menu.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_notify_email_send.xml" value="0.25" />
+        <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_register_google.xml" value="0.25" />
+        <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_resetpassword.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_signup.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_statistics.xml" value="0.264" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_status_segment.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_step_segment.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_target.xml" value="0.264" />
+        <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_user.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_walk_chart.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_water_chart.xml" value="0.25" />
+        <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/fragment_water_segment.xml" value="0.25" />
         <entry key="..\:/app/SE114_HealthCareApplication/app/src/main/res/layout/running_entity_listview_item.xml" value="0.264" />
       </map>
     </option>

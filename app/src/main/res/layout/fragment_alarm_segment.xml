@@ -28,12 +28,13 @@
             app:layout_constraintVertical_bias="0.074"/>
 
 
-    <com.example.se114_healthcareapplication.custom.CustomEdittext
+    <TextView
             android:id="@+id/sleep_hrs_txv"
             android:layout_width="70dp"
             android:layout_height="40dp"
             android:maxLength="2"
             android:hint="hour"
+            android:inputType="date"
             android:gravity="center"
             android:fontFamily="@font/outfit_regular"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,11 +44,12 @@
             app:layout_constraintHorizontal_bias="0.08"
             app:layout_constraintVertical_bias="0.471"/>
 
-    <com.example.se114_healthcareapplication.custom.CustomEdittext
+    <TextView
             android:layout_width="70dp"
             android:layout_height="40dp"
             android:hint="minute"
             android:maxLength="2"
+            android:inputType="date"
             android:id="@+id/sleep_min_txv"
             android:gravity="center"
             android:fontFamily="@font/outfit_regular"
@@ -58,11 +60,12 @@
             app:layout_constraintHorizontal_bias="0.31"
             app:layout_constraintVertical_bias="0.471"/>
 
-    <com.example.se114_healthcareapplication.custom.CustomEdittext
+    <TextView
             android:layout_width="70dp"
             android:layout_height="40dp"
             android:hint="hour"
             android:maxLength="2"
+            android:inputType="date"
             android:id="@+id/wake_hrs_txv"
             android:gravity="center"
             android:fontFamily="@font/outfit_regular"
@@ -73,11 +76,12 @@
             app:layout_constraintHorizontal_bias="0.692"
             app:layout_constraintVertical_bias="0.471"/>
 
-    <com.example.se114_healthcareapplication.custom.CustomEdittext
+    <TextView
             android:layout_width="70dp"
             android:layout_height="40dp"
             android:hint="minute"
             android:maxLength="2"
+            android:inputType="date"
             android:id="@+id/wake_min_txv"
             android:gravity="center"
             android:fontFamily="@font/outfit_regular"
