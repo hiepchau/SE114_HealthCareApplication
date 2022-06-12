@@ -93,6 +93,8 @@ public class intro extends Fragment implements IView<IntroPresenter> {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.authenticateContainer, signup.class,null).commit();
+                IntroPresenter prstr = (IntroPresenter) mainPresenter;
+                ((IntroPresenter) mainPresenter).getRequiredPermission();
             }
         });
 
