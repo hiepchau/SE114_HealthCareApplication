@@ -53,8 +53,6 @@ public class AuthenticatePresenter extends PresenterBase implements IPresenter {
         auth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(FIREBASE_TOKEN)
-                .requestScopes(new Scope(Scopes.PLUS_LOGIN))
-                .requestScopes(new Scope(Scopes.PLUS_ME))
                 .requestEmail()
                 .build();
         client = GoogleSignIn.getClient(_view.getAppActivity(), gso);
