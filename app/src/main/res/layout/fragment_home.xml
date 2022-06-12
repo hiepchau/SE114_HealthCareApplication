@@ -18,8 +18,10 @@
                 android:id="@+id/Datetime"
                 android:text="Date time"
                 android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:drawableStart="@drawable/ic_calender"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -55,13 +57,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.183"
                 app:layout_constraintVertical_bias="0.191"/>
+
+
         <TextView
                 android:hint="Description"
                 android:fontFamily="@font/outfit_bold"
-                android:layout_width="271dp"
-                android:layout_height="19dp"
-                android:maxLines="3"
-                android:maxLength="200"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:maxLines="2"
+                android:maxLength="120"
                 app:layout_constraintStart_toStartOf="parent"
                 android:textColor="@color/gray"
                 android:id="@+id/statustext"
@@ -69,12 +74,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.314"
-                app:layout_constraintVertical_bias="0.259"/>
-
-
-
-
+                app:layout_constraintHorizontal_bias="0.164"
+                app:layout_constraintVertical_bias="0.246"/>
         <androidx.fragment.app.FragmentContainerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

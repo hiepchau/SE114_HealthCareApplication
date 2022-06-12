@@ -311,7 +311,7 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_marginLeft="150dp"
+                    android:layout_marginLeft="155dp"
                     android:orientation="vertical"
                     android:textAlignment="center"
                     android:gravity="center"
