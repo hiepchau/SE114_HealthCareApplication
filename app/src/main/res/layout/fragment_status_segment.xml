@@ -56,7 +56,7 @@
             android:layout_margin="10dp"
             android:hint="write something for today"
             android:textSize="15dp"
-            android:maxLength="120"
+            android:maxLength="100"
             android:maxLines="3"
             android:gravity="center"
             android:fontFamily="@font/roboto_regular"
